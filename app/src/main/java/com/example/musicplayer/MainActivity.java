@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void oyente_btnRealizarRegistro(View view){
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("3", "User3","User3@gmail.com");
+        Usuario usuario = new Usuario("6", "User6","User6@gmail.com");
 
         int resInsert = usuarioDAO.insertarUsuario(MainActivity.this, usuario);
 
