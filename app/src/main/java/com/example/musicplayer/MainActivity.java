@@ -27,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
     public void oyente_btnRealizarRegistro(View view){
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("1", "User1","prueba@gmail.com");
+        Usuario usuario = new Usuario("3", "User3","User3@gmail.com");
 
         int resInsert = usuarioDAO.insertarUsuario(MainActivity.this, usuario);
 
         if(resInsert == 1){
             Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(MainActivity.this, "NO OK", Toast.LENGTH_SHORT).show();
         }
     }
 }
