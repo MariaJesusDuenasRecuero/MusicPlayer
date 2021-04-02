@@ -2,6 +2,7 @@ package com.example.musicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,5 +38,17 @@ public class MainActivity extends AppCompatActivity {
         else {
             Toast.makeText(MainActivity.this, "NO OK", Toast.LENGTH_SHORT).show();
         }
+    }
+    /**
+     *
+     * Descripcion: Oyente asociado al boton Registro que te permite ir a la actividad para Registrarse
+     *
+     * @param view
+     */
+    public void oyente_btnRegristroAplicacion(View view){
+
+        Intent i = new Intent(this, ventanaRegistro.class );
+        startActivity(i);
+
     }
 }
