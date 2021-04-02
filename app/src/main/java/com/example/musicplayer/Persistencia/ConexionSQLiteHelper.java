@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
-    final String CREAR_TABLA_USUARIO = "CREATE TABLE Usuarios (Id INTEGER, Nombre TEXT, Correo TEXT)";
+    final String CREAR_TABLA_USUARIO = "CREATE TABLE Usuarios (NombreUsuario TEXT, Nombre TEXT, Password TEXT, Telefono TEXT, CorreoElectronico TEXT, FechaNacimiento TEXT)";
 
         /**
          *
@@ -32,9 +32,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(CREAR_TABLA_USUARIO);
-
     }
     /**
      *

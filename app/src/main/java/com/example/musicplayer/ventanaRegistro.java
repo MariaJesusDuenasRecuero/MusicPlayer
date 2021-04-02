@@ -25,17 +25,20 @@ public class ventanaRegistro extends AppCompatActivity {
      */
     public void oyente_btnRealizarRegistro(View view){
 
+
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("7", "User7","User7@gmail.com");
+        Usuario usuario = new Usuario("User2", "UsuarioPrueba2","321",
+                "615822963", "usuario2@gmail.com","02/11/1999");
 
         int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
 
+        //int resInsert = usuarioDAO.borrarTabla(ventanaRegistro.this);
+
         if(resInsert == 1){
-            Toast.makeText(ventanaRegistro.this, "OK", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
         }
         else {
             Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
