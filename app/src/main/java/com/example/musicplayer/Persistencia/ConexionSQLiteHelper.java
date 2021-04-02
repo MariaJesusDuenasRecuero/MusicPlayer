@@ -36,7 +36,6 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(CREAR_TABLA_USUARIO);
 
     }
-
     /**
      *
      * Descripcion: Metodo encargado de verificar si existe una version antigua

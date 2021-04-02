@@ -19,25 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnInsertar = findViewById(R.id.btnInsertarRegistro);
-
-        //ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "nombre_base_de_datos",null,1);
-
-    }
-
-    public void oyente_btnRealizarRegistro(View view){
-
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("6", "User6","User6@gmail.com");
-
-        int resInsert = usuarioDAO.insertarUsuario(MainActivity.this, usuario);
-
-        if(resInsert == 1){
-            Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(MainActivity.this, "NO OK", Toast.LENGTH_SHORT).show();
-        }
     }
     /**
      *
