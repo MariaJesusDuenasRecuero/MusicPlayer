@@ -2,5 +2,8 @@
 <resources>
     <color name="pink">#a00037</color>
     <color name="lightPink">#d81b60</color>
+    <color name="purple_500">#d81b60</color>
+
+    <color name="teal_200">#FFFFFFFF</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
