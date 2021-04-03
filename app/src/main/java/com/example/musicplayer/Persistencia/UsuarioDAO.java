@@ -19,7 +19,7 @@ public class UsuarioDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 4);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 5);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         return db;

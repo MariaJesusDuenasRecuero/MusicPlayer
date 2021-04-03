@@ -43,7 +43,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:background="@drawable/edt_style"
-        android:drawableLeft="@drawable/iconPerfil"
+        android:drawableLeft="@drawable/icon_perfil"
         android:drawablePadding="8dp"
         android:ems="10"
         android:hint="@string/nombreUser" />
