@@ -56,8 +56,7 @@
         android:layout_weight="3"
         android:backgroundTint="@color/pink"
 
-        android:onClick="oyente_btnRegristroAplicacion"
-        android:text="@string/IniciarSesión"/>
+        android:text="@string/IniciarSesión" />
 
 
     <Button
