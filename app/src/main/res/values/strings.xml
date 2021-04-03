@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MusicPlayer</string>
+    <string name="Correo_electrónico">Correo electrónico</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="IniciarSesión">Iniciar sesión</string>
+    <string name="lblDesarrolladores">by Guama</string>
+    <string name="Registrarse">Crear cuenta</string>
+    <string name="Nombre">Nombre</string>
+    <string name="FechaNacimiento">Fecha de Nacimiento</string>
+    <string name="lblRegistroNuevoUsuario">Registro nuevo usuario</string>
+    <string name="VolverInicio">Volver </string>
 </resources>
