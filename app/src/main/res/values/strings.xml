@@ -12,4 +12,5 @@
     <string name="confirmarContraseña">Confirma contraseña</string>
     <string name="nombreUser">Nombre usuario</string>
     <string name="numeroTelefono">Número teléfono</string>
+    <string name="lblintroduzcaDatos">Introduzca credenciales</string>
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -197,5 +198,9 @@ public class ventanaRegistro extends AppCompatActivity {
         AlertDialog dialogo_alert = dialogo_builder.create();
         dialogo_alert.show();
 
+    }
+    public void oyente_btnVolver(View view){
+        Intent i = new Intent(this, MainActivity.class );
+        startActivity(i);
     }
 }
