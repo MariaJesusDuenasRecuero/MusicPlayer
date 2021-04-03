@@ -27,7 +27,7 @@ public class ventanaRegistro extends AppCompatActivity {
 
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("User2", "UsuarioPrueba2","321",
+        Usuario usuario = new Usuario("User3", "UsuarioPrueba3","321",
                 "615822963", "usuario2@gmail.com","02/11/1999");
 
         int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);

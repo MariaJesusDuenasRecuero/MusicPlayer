@@ -55,7 +55,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:background="@drawable/edt_style"
-        android:drawableLeft="@drawable/IconContrasena"
+        android:drawableLeft="@drawable/icon_contrasena"
         android:drawablePadding="8dp"
         android:hint="@string/Contraseña"
         android:inputType="textPassword"/>
@@ -68,7 +68,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:background="@drawable/edt_style"
-        android:drawableLeft="@drawable/IconCalendario"
+        android:drawableLeft="@drawable/icon_calendario"
         android:drawablePadding="8dp"
         android:inputType="date"
         android:hint="@string/FechaNacimiento"

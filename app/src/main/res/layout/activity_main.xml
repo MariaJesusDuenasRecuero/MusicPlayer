@@ -40,7 +40,7 @@
         android:layout_marginRight="20dp"
         android:layout_weight="5"
         android:background="@drawable/edt_style"
-        android:drawableLeft="@drawable/IconContrasena"
+        android:drawableLeft="@drawable/icon_contrasena"
         android:drawablePadding="15dp"
         android:hint="@string/Contraseña"
         android:inputType="textPassword"

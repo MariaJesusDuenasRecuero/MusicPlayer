@@ -3,7 +3,12 @@
     <color name="pink">#a00037</color>
     <color name="lightPink">#d81b60</color>
     <color name="purple_500">#d81b60</color>
+    <color name="purple_200">#d84b60</color>
 
     <color name="teal_200">#FFFFFFFF</color>
+    <color name="teal_700">#FFFFFFFF</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_700">#C71585</color>
+    <color name="black">#000000</color>
+
 </resources>
