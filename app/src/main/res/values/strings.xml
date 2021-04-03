@@ -9,4 +9,7 @@
     <string name="FechaNacimiento">Fecha de Nacimiento</string>
     <string name="lblRegistroNuevoUsuario">Registro nuevo usuario</string>
     <string name="VolverInicio">Volver </string>
+    <string name="confirmarContraseña">Confirma contraseña</string>
+    <string name="nombreUser">Nombre usuario</string>
+    <string name="numeroTelefono">Número teléfono</string>
 </resources>

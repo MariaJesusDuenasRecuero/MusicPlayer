@@ -13,7 +13,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="10"
         android:background="#00FBF9F9"
         android:contentDescription="logo de la aplicacion"
         tools:srcCompat="@drawable/logo" />
@@ -83,15 +83,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="google"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            tools:srcCompat="@drawable/icon_google" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:contentDescription="twitter"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:adjustViewBounds="false"
+            android:contentDescription="facebook"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:cropToPadding="true"
+            android:scaleType="centerInside"
+            tools:srcCompat="@drawable/icon_facebook" />
 
     </LinearLayout>
 
