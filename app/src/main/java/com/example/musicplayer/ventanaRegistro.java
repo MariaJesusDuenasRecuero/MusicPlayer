@@ -165,6 +165,10 @@ public class ventanaRegistro extends AppCompatActivity {
         return  comprobacion;
     }
 
+    /**
+     *
+     * @return boolean que permite conocer si el dato es correcto
+     */
     private boolean comprobarCorreoElectronico(){
 
         boolean correo_correcto = false;

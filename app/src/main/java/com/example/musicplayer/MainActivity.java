@@ -35,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
 
     }
+
+    /**
+     *
+     * Descripcion: Oyente asociado al boton inicio sesion. Permite acceder al sistema si los datos son correctos
+     *
+     * @param view
+     */
     public void oyente_btnIniciarAplicacion(View view){
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
@@ -63,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo que comprueba los datos que faltan por completar
+     *
+     * @param view
+     */
     private void comprobarDatosFormalarioLogin(View view){
 
         //Datos Nombre Usuario
@@ -99,6 +113,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo que comprueba si el nombre de usuaruo introducido se corresponde con la contrasena
+     *
+     * @return entero que permite conocer si la operacion se ha realizado correctamente
+     */
     private int comprobacionPasswordRegistrado(){
 
         int comprobacion = -1;
@@ -120,6 +141,12 @@ public class MainActivity extends AppCompatActivity {
         return  comprobacion;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que comprueba si el nombre de usuario existe en el sistema
+     *
+     * @return entero que permite conocer si la operacion se ha realizado correctamente
+     */
     private int comprobacionUsuarioRegistrado(){
 
         int comprobacion = -1;
