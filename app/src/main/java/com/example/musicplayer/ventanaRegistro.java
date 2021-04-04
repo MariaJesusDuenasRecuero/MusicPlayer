@@ -100,6 +100,13 @@ public class ventanaRegistro extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     *
+     * Descripcion: Metodo que permite insertar un usuario en la aplicacion
+     *
+     * @return entero que permite conocer si la operacion se ha realizado correctamente
+     */
     private int insertarDatosUsuario(){
 
         int comprobacion = 0;
@@ -128,6 +135,14 @@ public class ventanaRegistro extends AppCompatActivity {
         return comprobacion;
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo que permite saber si el nombre de usuario (que es la clave primaria del sistema) ya esta
+     * en el sistema
+     *
+     * @return entero que permite conocer si la operacion se ha realizado correctamente
+     */
     private int comprobacionUsuarioRegistrado(){
 
         int comprobacion = -1;
