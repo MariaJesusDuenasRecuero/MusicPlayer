@@ -32,21 +32,19 @@ public class UsuarioDAO {
      *
      * Descripcion: Metodo para insertar un usuario registrado en la base de datos de la aplicacion
      *
-     * @param context
-     * @param usuario
-     * @return
+     * @param context ventana
+     * @param usuario contiene los datos de los campos
+     * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
      */
     public int insertarUsuario(Context context, Usuario usuario){
 
-        int resultado_consulta = 0;
+        int resultado_consulta = -1;
         SQLiteDatabase db = this.getConn(context);
-        ContentValues values = new ContentValues();
 
         String insertar_usuario_sql = "INSERT INTO "+Constantes.NOMBRE_TABLA_USUARIO+
                 " ("+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+", "+Constantes.CAMPO_USUARIO_NOMBRE+", "+Constantes.CAMPO_USUSARIO_PASSWORD+", "+Constantes.CAMPO_USUARIO_TELEFONO+", "+
                     Constantes.CAMPO_USUARIO_CORREO+", "+Constantes.CAMPO_USUARIO_FECHA_NACIMIENTO+") VALUES ('"+usuario.getNombreUsuario()+"', '"+usuario.getNombre()+"', '"+usuario.getPassword()+
                         "', '"+usuario.getTelefono()+"', '"+usuario.getCorreo()+"', '"+usuario.getFechaNacimiento()+"')";
-
         try{
 
             db.execSQL(insertar_usuario_sql);
@@ -61,23 +59,33 @@ public class UsuarioDAO {
         return  resultado_consulta;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite eliminar un usuario de la base de datos
+     *
+     * @param context ventana
+     * @param nombre_usuario clave primaria
+     * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
+     */
     public int eliminarUsuario(Context context, String nombre_usuario){
 
-        int resultado_eliminar_usuario = -1;
-        String consulta_sql = "DELETE FROM Usuarios WHERE NombreUsuario = ?";
-
+        int resultado_consulta = -1;
         SQLiteDatabase db = this.getConn(context);
+
+        String eliminar_usuario_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_USUARIO+" WHERE NombreUsuario='"+nombre_usuario+"'";
 
         try {
 
-            db.execSQL(consulta_sql);
-            resultado_eliminar_usuario = 1;
+            db.execSQL(eliminar_usuario_sql);
+            resultado_consulta = 1;
 
         } catch (Exception e) {
             Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
         }
 
-        return resultado_eliminar_usuario;
+        db.close();
+
+        return resultado_consulta;
     }
 
     /**

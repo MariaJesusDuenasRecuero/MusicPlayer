@@ -92,8 +92,8 @@ public class ventanaRegistro extends AppCompatActivity {
                         "", txtCorreoElectronico.getText().toString(),"");
 
 
-                //int resInsert = usuarioDAO.eliminarUsuario(ventanaRegistro.this, usuario.getNombreUsuario());
-                int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
+                int resInsert = usuarioDAO.eliminarUsuario(ventanaRegistro.this, "Guada");
+                //int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
 
                 //int resInsert = usuarioDAO.borrarTabla(ventanaRegistro.this);
 
