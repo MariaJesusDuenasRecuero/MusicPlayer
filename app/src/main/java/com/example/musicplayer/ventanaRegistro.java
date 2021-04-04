@@ -86,7 +86,10 @@ public class ventanaRegistro extends AppCompatActivity {
 
 
                 if(validacion_registro_datos == 1){
-                    Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                    dialogoAviso("El usuario ha sido registrado con exito.",ventanaRegistro.this);
+                    Intent i = new Intent(this, MainActivity.class );
+                    startActivity(i);
                 }
                 else {
                     Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
@@ -270,6 +273,13 @@ public class ventanaRegistro extends AppCompatActivity {
         dialogo_alert.show();
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo que permite volver a la actividad anterior
+     *
+     * @param view
+     */
     public void oyente_btnVolver(View view){
         Intent i = new Intent(this, MainActivity.class );
         startActivity(i);

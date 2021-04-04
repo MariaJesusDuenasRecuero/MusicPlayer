@@ -31,7 +31,7 @@
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtNombreUsuarioLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -51,7 +51,7 @@
         android:textColor="#131313" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/txtPasswordLogin"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -68,7 +68,7 @@
 
 
     <Button
-        android:id="@+id/btnRegistro"
+        android:id="@+id/btnInicio"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="30dp"
@@ -76,8 +76,9 @@
         android:layout_marginBottom="30dp"
         android:layout_weight="3"
         android:backgroundTint="@color/pink"
-        android:textSize="16dp"
-        android:text="@string/IniciarSesión" />
+        android:onClick="oyente_btnIniciarAplicacion"
+        android:text="@string/IniciarSesión"
+        android:textSize="16dp" />
 
 
     <Button
