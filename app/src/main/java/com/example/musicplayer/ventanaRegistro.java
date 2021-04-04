@@ -29,6 +29,7 @@ public class ventanaRegistro extends AppCompatActivity {
     private EditText txtCorreoElectronico;
     private EditText txtFechaNacimiento;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +59,13 @@ public class ventanaRegistro extends AppCompatActivity {
         boolean comprobar_correo = comprobarCorreoElectronico();
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuario = new Usuario("User3", "UsuarioPrueba3","321",
-                "615822963", "usuario2@gmail.com","02/11/1999");
+
+        Usuario usuario;
 
         //TODO comprobar_usuario_registrado_sistema
         //El telefono no es obligatorio para registrase en el sistema
+
+
 
         if(txtNombre.getText().toString().equals("") || txtPassword.toString().equals("")
                 || txtConfirmarPassword.toString().equals("") || comprobar_correo == false){
@@ -84,6 +87,23 @@ public class ventanaRegistro extends AppCompatActivity {
                 txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
                 txtCorreoElectronico.setBackgroundColor(Color.rgb(0,255,0));
 
+
+                usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(),txtPassword.getText().toString(),
+                        "", txtCorreoElectronico.getText().toString(),"");
+
+
+                //int resInsert = usuarioDAO.eliminarUsuario(ventanaRegistro.this, usuario.getNombreUsuario());
+                int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
+
+                //int resInsert = usuarioDAO.borrarTabla(ventanaRegistro.this);
+
+                if(resInsert == 1){
+                    Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
+                }
+
             }
             else{
 
@@ -96,22 +116,6 @@ public class ventanaRegistro extends AppCompatActivity {
 
             }
         }
-
-
-        /**
-        int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
-
-        //int resInsert = usuarioDAO.borrarTabla(ventanaRegistro.this);
-
-        if(resInsert == 1){
-            Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
-        }
-        */
-
-
     }
 
     private boolean comprobarCorreoElectronico(){

@@ -6,9 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.musicplayer.Constantes.Constantes;
+
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
-    final String CREAR_TABLA_USUARIO = "CREATE TABLE Usuarios (NombreUsuario TEXT, Nombre TEXT, Password TEXT, Telefono TEXT, CorreoElectronico TEXT, FechaNacimiento TEXT)";
 
         /**
          *
@@ -32,7 +33,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREAR_TABLA_USUARIO);
+        db.execSQL(Constantes.CREAR_TABLA_USUARIO);
     }
     /**
      *
