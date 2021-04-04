@@ -91,17 +91,20 @@ public class ventanaRegistro extends AppCompatActivity {
                 usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(),txtPassword.getText().toString(),
                         "", txtCorreoElectronico.getText().toString(),"");
 
-                int resInsert = usuarioDAO.updateParametroUsuario(ventanaRegistro.this, "User1", "Password", "555");
+                int resInsert = usuarioDAO.usuarioRegistrado(ventanaRegistro.this, "User3");
+                //int resInsert = usuarioDAO.updateParametroUsuario(ventanaRegistro.this, "User1", "Password", "555");
                 //int resInsert = usuarioDAO.eliminarUsuario(ventanaRegistro.this, "Guada");
                 //int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
 
-                //int resInsert = usuarioDAO.borrarTabla(ventanaRegistro.this);
+                //int resInsert = usuarioDAO.borrarTablaUsuario(ventanaRegistro.this);
 
                 if(resInsert == 1){
                     Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                    txtNombreUsuario.setText("Usuario NO esta en el sistema");
                 }
                 else {
                     Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
+                    txtNombreUsuario.setText("Usuario Esta en el sistema");
                 }
 
             }

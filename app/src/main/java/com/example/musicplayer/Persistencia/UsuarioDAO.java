@@ -93,7 +93,7 @@ public class UsuarioDAO {
      * Descripcion: Metodo que permite modificar los campos de la tabla Usuario en la base de datos
      *
      * @param context ventana
-     * @param nombre_usuario nombre del usuario del que se quiere modificar el parametro (clave primaria=
+     * @param nombre_usuario nombre del usuario del que se quiere modificar el parametro (clave primaria)
      * @param nombre_campo_tabla nombre del campo de la tabla que se quiere modificar
      * @param parametro_nuevo nuevo valor para ese campo
      * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
@@ -119,32 +119,63 @@ public class UsuarioDAO {
         return resultado_consulta;
     }
 
-    //TODO buscar usuarioRegistrado
+    /**
+     *
+     * Descripcion: Un usuario no se puede registrar en el sistema con un nombre que ya este en la base de datos, este metodo hace la comprobacion
+     *
+     * @param context ventana
+     * @param nombre_usuario nombre del usuario del que se quiere comprobar si esta en el sistema (clave primaria)
+     * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
+     */
+    public int usuarioRegistrado(Context context, String nombre_usuario){
+
+        int resultado_consulta = -1;
+        SQLiteDatabase db = this.getConn(context);
+
+        String usuario_registrado_sql = "SELECT "+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+" FROM "+Constantes.NOMBRE_TABLA_USUARIO+" WHERE "+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"= '"+nombre_usuario+"'";
+
+        try {
+
+            db.execSQL(usuario_registrado_sql);
+            resultado_consulta = 1;
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+        return resultado_consulta;
+    }
+
     //TODO buscar datoUsuario
     //TODO metodo iniciar sesion Sistema
-    //TODO Revisar borrar tabla
+
+
     /**
      *
      * Descripcion: Metodo que permite borrar la tabla de usuarios entera
      *
-     * @param context
-     * @return
+     * @param context ventana
+     * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
      */
-    public int borrarTabla(Context context){
+    public int borrarTablaUsuario(Context context){
 
-        int resultado_consulta = 0;
-
-        String consulta_sql = "DROP TABLE Usuarios";
+        int resultado_consulta = -1;
         SQLiteDatabase db = this.getConn(context);
+
+        String borrar_tabla_usuario_sql = "DROP TABLE Usuarios";
 
         try{
 
-            db.execSQL(consulta_sql);
+            db.execSQL(borrar_tabla_usuario_sql);
             resultado_consulta = 1;
 
         } catch (Exception e) {
             Log.d("Debug_Excepcion","Se ha producido un error al realizar la consulta");
         }
+
+        db.close();
 
         return resultado_consulta;
     }
