@@ -29,6 +29,9 @@ public class ventanaRegistro extends AppCompatActivity {
     private EditText txtCorreoElectronico;
     private EditText txtFechaNacimiento;
 
+    private UsuarioDAO gestor_usuario = new UsuarioDAO();
+    private Usuario usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,6 @@ public class ventanaRegistro extends AppCompatActivity {
         txtCorreoElectronico = findViewById(R.id.txtCorreoElectronico);
         txtFechaNacimiento = findViewById(R.id.txtFechaNacimiento);
 
-
     }
 
     /**
@@ -57,20 +59,11 @@ public class ventanaRegistro extends AppCompatActivity {
     public void oyente_btnRealizarRegistro(View view){
 
         boolean comprobar_correo = comprobarCorreoElectronico();
+        int comprobar_usuario_registrado_sistema = comprobacionUsuarioRegistrado();
+        int validacion_registro_datos = 0;
 
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-        Usuario usuario;
-
-        //TODO comprobar_usuario_registrado_sistema
-        //El telefono no es obligatorio para registrase en el sistema
-
-
-
-        if(txtNombre.getText().toString().equals("") || txtPassword.toString().equals("")
-                || txtConfirmarPassword.toString().equals("") || comprobar_correo == false){
-
-            //Comprobar si el nombre de usuario esta en uso
+        if(txtNombre.getText().toString().equals("") || txtNombreUsuario.getText().toString().equals("") || comprobar_usuario_registrado_sistema == 0
+                ||  txtPassword.toString().equals("")  || txtConfirmarPassword.toString().equals("") || comprobar_correo == false ){
 
             dialogoAviso("Registo Incompleto. Por favor rellene los campos que faltan.",ventanaRegistro.this);
 
@@ -83,46 +76,75 @@ public class ventanaRegistro extends AppCompatActivity {
 
                 txtNombre.setBackgroundColor(Color.rgb(0,255,0));
                 txtNombreUsuario.setBackgroundColor(Color.rgb(0,255,0));
+
                 txtPassword.setBackgroundColor(Color.rgb(0,255,0));
                 txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
+
                 txtCorreoElectronico.setBackgroundColor(Color.rgb(0,255,0));
 
-
-                usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(),txtPassword.getText().toString(),
-                        "", txtCorreoElectronico.getText().toString(),"");
-
-                int resInsert = 0;
-                        //usuarioDAO.usuarioRegistrado(ventanaRegistro.this, "User3");
-                //int resInsert = usuarioDAO.updateParametroUsuario(ventanaRegistro.this, "User1", "Password", "555");
-                //int resInsert = usuarioDAO.eliminarUsuario(ventanaRegistro.this, "Guada");
-                //int resInsert = usuarioDAO.insertarUsuario(ventanaRegistro.this, usuario);
+                validacion_registro_datos = insertarDatosUsuario();
 
 
-                //String c = usuarioDAO.buscarDatosUsuarioRegistrado(ventanaRegistro.this, "User1","FechaNacimiento");
-                //txtTelefono.setText(c);
-                //int resInsert = usuarioDAO.borrarTablaUsuario(ventanaRegistro.this);
-                /**
-                if(resInsert == 1){
+                if(validacion_registro_datos == 1){
                     Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-                    txtNombreUsuario.setText("Usuario NO esta en el sistema");
                 }
                 else {
                     Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
-                    txtNombreUsuario.setText("Usuario Esta en el sistema");
                 }
-                */
+
             }
             else{
-
-                txtPassword.setBackgroundColor(Color.rgb(255,0,0));
-                txtConfirmarPassword.setBackgroundColor(Color.rgb(255,0,0));
-
-                dialogoAviso("Las contraseñas no coinciden.",ventanaRegistro.this);
 
                 comprobarDatosFormalarioRegistro(view);
 
             }
         }
+    }
+    private int insertarDatosUsuario(){
+
+        int comprobacion = 0;
+        String cadena_formato_fecha = null;
+        String cadena_formato_telefono = null;
+
+        if(txtFechaNacimiento.getText().toString().equals("")){
+            cadena_formato_fecha = "Fecha Nacimiento no registrado";
+        }
+        else{
+            cadena_formato_fecha = txtFechaNacimiento.getText().toString();
+        }
+
+        if(txtTelefono.getText().toString().equals("")){
+            cadena_formato_telefono = "Telefono no registrado";
+        }
+        else{
+            cadena_formato_telefono = txtTelefono.getText().toString();
+        }
+
+        usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
+                cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha);
+
+        comprobacion =  gestor_usuario.insertarUsuario(ventanaRegistro.this, usuario);
+
+        return comprobacion;
+
+    }
+    private int comprobacionUsuarioRegistrado(){
+
+        int comprobacion = -1;
+        String cadena_comprobacion = null;
+
+        if(txtNombreUsuario.getText().toString() != null){
+
+            cadena_comprobacion = gestor_usuario.buscarDatosUsuarioRegistrado(ventanaRegistro.this, txtNombreUsuario.getText().toString(), "NombreUsuario");
+
+            if(cadena_comprobacion != null){
+                comprobacion = 0; //Usuario en uso
+            }
+            else{
+                comprobacion = 1; //Usuario disponible
+            }
+        }
+        return  comprobacion;
     }
 
     private boolean comprobarCorreoElectronico(){
@@ -154,6 +176,23 @@ public class ventanaRegistro extends AppCompatActivity {
             txtNombre.setBackgroundColor(Color.rgb(0,255,0));
         }
 
+        //Datos Nombre usuario
+
+        int usuario_disponible = comprobacionUsuarioRegistrado();
+
+        if(txtNombreUsuario.getText().toString().equals("")) {
+            txtNombreUsuario.setBackgroundColor(Color.rgb(200,0,0));
+        }
+        else{
+            if(usuario_disponible == 0){
+                txtNombreUsuario.setBackgroundColor(Color.rgb(200,0,0));
+                dialogoAviso("Registo Incompleto. Nombre de Usuario no disponible.",ventanaRegistro.this);
+            }
+            else{
+                txtNombreUsuario.setBackgroundColor(Color.rgb(0,255,0));
+            }
+        }
+
         //Datos Contrasena
 
         if(txtPassword.getText().toString().equals("")) {
@@ -169,7 +208,13 @@ public class ventanaRegistro extends AppCompatActivity {
             txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
-            txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
+            if(txtPassword.getText().toString().equals(txtConfirmarPassword.getText().toString())){
+                txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
+            }
+            else{
+                txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
+                dialogoAviso("Las contraseñas no coinciden.",ventanaRegistro.this);
+            }
         }
 
         //Datos correo electronico
@@ -177,10 +222,10 @@ public class ventanaRegistro extends AppCompatActivity {
         boolean correo_correcto_comprobacion = comprobarCorreoElectronico();
 
         if(txtCorreoElectronico.getText().toString().equals("") || correo_correcto_comprobacion == false){
-            txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
+            txtCorreoElectronico.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
-            txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
+            txtCorreoElectronico.setBackgroundColor(Color.rgb(0,255,0));
         }
     }
 
