@@ -84,15 +84,17 @@ public class MainActivity extends AppCompatActivity {
         int usuario_disponible = comprobacionUsuarioRegistrado();
 
         if(txtNombreUsuarioLogin.getText().toString().equals("")) {
-            txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(200,0,0));
+            txtNombreUsuarioLogin.setError("Introduzca su nombre de usuario");
+            //txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
             if(usuario_disponible == 1){
-                txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(200,0,0));
-                dialogoAviso("Nombre de Usuario no existe.",MainActivity.this);
+
+                //txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(200,0,0));
+                //dialogoAviso("Nombre de Usuario no existe.",MainActivity.this);
             }
             else{
-                txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(0,255,0));
+                //txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(0,255,0));
             }
         }
 
@@ -101,14 +103,17 @@ public class MainActivity extends AppCompatActivity {
         int comprobar_password = comprobacionPasswordRegistrado();
 
         if(txtPasswordLogin.getText().toString().equals("")) {
-            txtPasswordLogin.setBackgroundColor(Color.rgb(200,0,0));
+            txtPasswordLogin.setError("Introduzca su nombre de usuario");
+            //txtPasswordLogin.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
             if(usuario_disponible == 1){
-                txtPasswordLogin.setBackgroundColor(Color.rgb(200,0,0));
+                txtPasswordLogin.setError("no se si es contraseña no disponible");
+                //txtPasswordLogin.setBackgroundColor(Color.rgb(200,0,0));
             }
             else{
                 txtPasswordLogin.setBackgroundColor(Color.rgb(0,255,0));
+
             }
         }
 

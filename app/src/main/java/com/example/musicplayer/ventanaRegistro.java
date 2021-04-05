@@ -192,10 +192,14 @@ public class ventanaRegistro extends AppCompatActivity {
         //Datos Nombre
 
         if(txtNombre.getText().toString().equals("")) {
-            txtNombre.setBackgroundColor(Color.rgb(200,0,0));
+            txtNombre.setError("Introduzca su nombre");
+            txtNombre.setTextColor(Color.RED);
+            //txtNombre.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
             txtNombre.setBackgroundColor(Color.rgb(0,255,0));
+
+
         }
 
         //Datos Nombre usuario
@@ -203,11 +207,14 @@ public class ventanaRegistro extends AppCompatActivity {
         int usuario_disponible = comprobacionUsuarioRegistrado();
 
         if(txtNombreUsuario.getText().toString().equals("")) {
-            txtNombreUsuario.setBackgroundColor(Color.rgb(200,0,0));
+            txtNombreUsuario.setError("Introduzca un nombre de usuario" );
+            txtNombreUsuario.setTextColor(Color.RED);
+            //txtNombreUsuario.setBackgroundColor(Color.rgb(200,0,0));
         }
         else{
             if(usuario_disponible == 0){
-                txtNombreUsuario.setBackgroundColor(Color.rgb(200,0,0));
+                txtNombreUsuario.setError("Nombre no disponible" );
+                txtNombreUsuario.setTextColor(Color.RED);
                 dialogoAviso("Registo Incompleto. Nombre de Usuario no disponible.",ventanaRegistro.this);
             }
             else{
@@ -218,7 +225,9 @@ public class ventanaRegistro extends AppCompatActivity {
         //Datos Contrasena
 
         if(txtPassword.getText().toString().equals("")) {
-            txtPassword.setBackgroundColor(Color.rgb(200,0,0));
+            //txtPassword.setBackgroundColor(Color.rgb(200,0,0));
+            txtPassword.setError("Introduzca una contraseña" );
+            txtPassword.setTextColor(Color.RED);
         }
         else{
             txtPassword.setBackgroundColor(Color.rgb(0,255,0));
@@ -227,14 +236,18 @@ public class ventanaRegistro extends AppCompatActivity {
         //Datos confirmar contrasena
 
         if(txtConfirmarPassword.getText().toString().equals("")) {
-            txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
+           // txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
+            txtConfirmarPassword.setError("Repita la contraseña, por favor" );
+            txtConfirmarPassword.setTextColor(Color.RED);
         }
         else{
             if(txtPassword.getText().toString().equals(txtConfirmarPassword.getText().toString())){
                 txtConfirmarPassword.setBackgroundColor(Color.rgb(0,255,0));
             }
             else{
-                txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
+                txtConfirmarPassword.setError("Las contraseñas no coinciden" );
+                txtConfirmarPassword.setTextColor(Color.RED);
+               // txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
                 dialogoAviso("Las contraseñas no coinciden.",ventanaRegistro.this);
             }
         }
@@ -244,7 +257,10 @@ public class ventanaRegistro extends AppCompatActivity {
         boolean correo_correcto_comprobacion = comprobarCorreoElectronico();
 
         if(txtCorreoElectronico.getText().toString().equals("") || correo_correcto_comprobacion == false){
-            txtCorreoElectronico.setBackgroundColor(Color.rgb(200,0,0));
+            //txtCorreoElectronico.setBackgroundColor(Color.rgb(200,0,0));
+            txtCorreoElectronico.setError("Introduzca su correo electrónico" );
+            txtCorreoElectronico.setTextColor(Color.RED);
+
         }
         else{
             txtCorreoElectronico.setBackgroundColor(Color.rgb(0,255,0));

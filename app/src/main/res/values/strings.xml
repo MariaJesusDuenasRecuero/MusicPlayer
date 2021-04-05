@@ -13,4 +13,5 @@
     <string name="nombreUser">Nombre usuario</string>
     <string name="numeroTelefono">Número teléfono</string>
     <string name="lblintroduzcaDatos">Introduzca credenciales</string>
+    <string name="nombreUsuario">Nombre usuario</string>
 </resources>
