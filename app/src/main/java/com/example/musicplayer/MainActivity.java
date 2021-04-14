@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

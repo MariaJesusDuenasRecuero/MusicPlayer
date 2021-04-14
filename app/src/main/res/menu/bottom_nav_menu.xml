@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicio"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/inicio"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/artistas"
+        android:icon="@drawable/cantante"
+        android:title="@string/artistas"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/albumes"
+        android:icon="@drawable/album"
+        android:title="@string/albumes"
+        android:enabled="true"
+        />
+    <item
+        android:id="@+id/canciones"
+        android:icon="@drawable/grabacion"
+        android:title="@string/canciones"
+        android:enabled="true"
+        />
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/icon_perfil"
+        android:title="@string/perfil"
+        android:enabled="true"
+        />
+
+
+
+</menu>

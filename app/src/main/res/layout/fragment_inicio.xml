@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".fragment_inicio">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/artistas"
+            android:textSize="26dp"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:layout_width="408dp"
+            android:layout_height="182dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/imb1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/avici"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/imb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/imb1"
+                    android:src="@drawable/edurne"
+                    app:layout_constraintEnd_toEndOf="@id/imb1"
+                    app:layout_constraintTop_toTopOf="@id/imb1"
+                    android:background="@color/black"/>
+                <ImageButton
+                    android:id="@+id/imb3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/imb2"
+                    android:src="@drawable/queen"
+                    app:layout_constraintEnd_toEndOf="@id/imb2"
+                    app:layout_constraintTop_toTopOf="@id/imb2" />
+                <ImageButton
+                    android:id="@+id/imb4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/imb3"
+                    android:src="@drawable/imagine_dragons"
+                    app:layout_constraintEnd_toEndOf="@id/imb3"
+                    app:layout_constraintTop_toTopOf="@id/imb3" />
+                <ImageButton
+                    android:id="@+id/imb5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintEnd_toStartOf="@id/imb3"
+                    android:src="@drawable/imagine_dragons"
+                    app:layout_constraintEnd_toEndOf="@id/imb4"
+                    app:layout_constraintTop_toTopOf="@id/imb4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -14,4 +14,14 @@
     <string name="numeroTelefono">Número teléfono</string>
     <string name="lblintroduzcaDatos">Introduzca credenciales</string>
     <string name="nombreUsuario">Nombre usuario</string>
+    <string name="title_activity_menu_principal">MainActivity</string>
+    <string name="inicio">Inicio</string>
+    <string name="Ajustes">Ajustes</string>
+    <string name="cerrarSesion">Cerrar sesión</string>
+    <string name="artistas">Artistas</string>
+    <string name="albumes">Álbumes</string>
+    <string name="canciones">Canciones</string>
+    <string name="perfil">Perfil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
