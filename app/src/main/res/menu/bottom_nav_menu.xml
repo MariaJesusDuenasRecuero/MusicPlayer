@@ -11,9 +11,8 @@
     <item
         android:id="@+id/artistas"
         android:icon="@drawable/cantante"
-        android:title="@string/artistas"
-        android:enabled="true"
-        />
+        android:title="Artistas"
+        android:enabled="true"/>
 
     <item
         android:id="@+id/albumes"
@@ -24,7 +23,7 @@
     <item
         android:id="@+id/canciones"
         android:icon="@drawable/grabacion"
-        android:title="@string/canciones"
+        android:title="Canciones"
         android:enabled="true"
         />
     <item
