@@ -16,62 +16,58 @@ import androidx.navigation.ui.NavigationUI;
 
 public class activity_menu_principal extends AppCompatActivity {
 
-    private fragment_inicio inicio = new fragment_inicio();
-    private fragment_artistas artistas = new fragment_artistas();
-    private fragment_albumes albumes = new fragment_albumes();
-    private fragment_canciones canciones = new fragment_canciones();
-    private fragment_perfil perfil = new fragment_perfil();
-
     private BottomNavigationView navigation;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        //BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
-        //navigation.setOnNavigationItemReselectedListener((BottomNavigationView.OnNavigationItemReselectedListener) mOnNavigationItemSelectedListener);
+        //Inicializacion datos navegacion
 
-        navigation = findViewById(R.id.bottom_navigation);
+        navigation = findViewById(R.id.bottomNavigationView);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-       // loadFragment(inicio);
+        //Muestra el Fragmento de inicio el primero
+
+        openInitialFragment();
+
+    }
+
+    private void  openInitialFragment() {
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.framgment_layout, new fragment_inicio()).commit();
 
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch(item.getItemId()){
                 case R.id.inicio:
-                    //loadFragment(inicio);
-                    openFragment(fragment_artistas.newInstance("", ""));
-                    return true;
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framgment_layout, new fragment_inicio()).commit();
+                    break;
                 case R.id.artistas:
-                    loadFragment(artistas);
-                    return true;
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framgment_layout, new fragment_artistas()).commit();
+                    break;
                 case R.id.albumes:
-                    loadFragment(albumes);
-                    return true;
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framgment_layout, new fragment_albumes()).commit();
+                    break;
                 case R.id.canciones:
-                    loadFragment(canciones);
-                    return true;
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framgment_layout, new fragment_canciones()).commit();
+                    break;
                 case R.id.perfil:
-                    loadFragment(perfil);
-                    return true;
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.framgment_layout, new fragment_perfil()).commit();
+                    break;
             }
             return false;
         }
     };
 
-    public void loadFragment (Fragment fragment){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.commit();
-    }
-    public void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 }
