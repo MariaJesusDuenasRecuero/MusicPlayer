@@ -15,6 +15,7 @@
         </activity>
         <activity android:name=".ventanaPrincipal" />
         <activity android:name=".ventanaRegistro" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

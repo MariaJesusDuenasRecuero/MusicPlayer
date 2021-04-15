@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(comprobar_password == 0 && usuario_disponible == 0){
 
-                Intent i = new Intent(this, ventanaPrincipal.class );
+                Intent i = new Intent(this, activity_menu_principal.class );
                 startActivity(i);
 
             }
