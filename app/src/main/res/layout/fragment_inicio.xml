@@ -120,7 +120,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imb5"
                     app:layout_constraintEnd_toStartOf="@id/imb5"
                     app:layout_constraintTop_toTopOf="@id/imb5"
-                    android:src="@drawable/FifthHarmony"
+                    android:src="@drawable/fifth_harmony"
                     tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton

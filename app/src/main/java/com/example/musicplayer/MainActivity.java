@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
 
-        gestor_imagen.crearTablaImagen(MainActivity.this);
+        //gestor_imagen.crearTablaImagen(MainActivity.this);
         gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1",null);
 
 
