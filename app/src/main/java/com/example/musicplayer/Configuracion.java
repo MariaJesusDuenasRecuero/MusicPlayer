@@ -40,6 +40,18 @@ public class Configuracion extends AppCompatActivity {
         this.txtPassword = findViewById(R.id.txtCambiar_Password);
 
 
+        Button btnBorrarCuenta = findViewById(R.id.btnBorrarCuenta);
+        btnBorrarCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                gestor_usuario_configuracion.eliminarUsuario(Configuracion.this, nombre_usuario_registrado);
+                Intent i = new Intent(Configuracion.this, MainActivity.class );
+                startActivity(i);
+
+            }
+        });
+
 
         Button btn_ModificarDatos = findViewById(R.id.btnModificarDatos);
         btn_ModificarDatos.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +115,9 @@ public class Configuracion extends AppCompatActivity {
                 }
             }
         });
+
+    }
+    public void oyente_eliminarUsuario(View view){
 
     }
 
