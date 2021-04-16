@@ -18,11 +18,21 @@ public class Constantes {
     public static final String CAMPO_USUARIO_CORREO = "CorreoElectronico";
     public static final String CAMPO_USUARIO_FECHA_NACIMIENTO = "FechaNacimiento";
 
+    //Constantes campos tabla Imagen (2)
+
+    public static final String NOMBRE_TABLA_IMAGEN = "Imagen";
+
+    public static final String CAMPO_PERFIL_NOMBRE_IMAGEN = "NombreImagen";
+    public static final String CAMPO_PERFIL_IMAGEN = "ContenidoImagen";
+
+
     //Constantes TABLAS
 
     public static final String CREAR_TABLA_USUARIO =
             "CREATE TABLE "+NOMBRE_TABLA_USUARIO+" ("+CAMPO_USUARIO_NOMBRE_USUARIO+"TEXT, "+CAMPO_USUARIO_NOMBRE+" TEXT, "+CAMPO_USUSARIO_PASSWORD+
                     " TEXT, "+CAMPO_USUARIO_TELEFONO+" TEXT, "+CAMPO_USUARIO_CORREO+" TEXT, "+CAMPO_USUARIO_FECHA_NACIMIENTO+" TEXT)";
 
+    public static final String CREAR_TABLA_IMAGEN =
+            "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";
 
 }
