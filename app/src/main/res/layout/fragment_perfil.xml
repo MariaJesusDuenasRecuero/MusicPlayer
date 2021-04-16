@@ -134,14 +134,13 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/nombre_perfil_BBDD"
+                android:id="@+id/lblNombre_perfil_BBDD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="280dp"
                 android:layout_marginEnd="255dp"
                 android:layout_marginBottom="450dp"
-                android:text="Nombre"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"

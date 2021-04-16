@@ -1,5 +1,7 @@
 package com.example.musicplayer;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,79 +13,44 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
+import com.example.musicplayer.Persistencia.UsuarioDAO;
+
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_perfil#newInstance} factory method to
- * create an instance of this fragment.
+ *
  */
 public class fragment_perfil extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBERY
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static String nombre_usuario_registrado;
+    //Variables para la BBDD
 
-    // TODO: Rename and change types of parameters
-    private String nombre_usuario_registrado_BBDD;
-    private String mParam2;
+    private Usuario usuario;
 
-    public fragment_perfil(String nombre_usuario_registrado) {
+    private TextView lblNombre_usuario_perfil_BBDD;
+    private TextView lblNombre_perfil_BBDD;
 
-        this.nombre_usuario_registrado_BBDD = nombre_usuario_registrado;
-        Log.d("Debug_bienvenido","Valor recibido:"+this.nombre_usuario_registrado_BBDD);
+    public fragment_perfil(Usuario usuario) {
 
-        //this.nombre_usuario_registrado = nombre_usuario_registrado;
-
-        //lblNombreUsuario = lblNombreUsuario.findViewById(R.id.NombreUsuarioPerfil);
+        this.usuario = usuario;
 
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_perfil.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_perfil newInstance(String param1, String param2) {
-        fragment_perfil fragment = new fragment_perfil(nombre_usuario_registrado);
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            nombre_usuario_registrado = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-
-        }
-    }
-
-    TextView lblNombreUsuario;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
+        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        lblNombreUsuario = (TextView) v.findViewById(R.id.lblNombreUsuario);
+        lblNombre_usuario_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombreUsuario);
+        lblNombre_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombre_perfil_BBDD);
 
-        lblNombreUsuario.setText(this.nombre_usuario_registrado_BBDD);
+        lblNombre_usuario_perfil_BBDD.setText(this.usuario.getNombreUsuario());
+        lblNombre_perfil_BBDD.setText(" "+this.usuario.getNombre());
 
         return v;
 
     }
 
-    public void setTitleText(String text) {
-        lblNombreUsuario.setText(text);
-    }
 }

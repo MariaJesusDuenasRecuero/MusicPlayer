@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.UsuarioDAO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,9 @@ public class activity_menu_principal extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private String nombre_usuario_registrado;
+
+    private UsuarioDAO gestor_perfil = new UsuarioDAO();
+    private Usuario usuario_sistema;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +78,36 @@ public class activity_menu_principal extends AppCompatActivity {
                             .replace(R.id.framgment_layout, new fragment_canciones()).commit();
                     break;
                 case R.id.perfil:
+
+                    usuario_sistema = inicializarDatosPerfil();
+
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_perfil(nombre_usuario_registrado)).commit();
+                            .replace(R.id.framgment_layout, new fragment_perfil(usuario_sistema)).commit();
                     break;
             }
             return false;
         }
     };
 
+    private Usuario inicializarDatosPerfil(){
+
+        Usuario usuario;
+
+        String nombre_usuario = nombre_usuario_registrado;
+
+        String nombre = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado, "Nombre");
+        String password = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado,"Password");
+        String telefono = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado,"Telefono");
+        String correo_electronico = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado,"CorreoElectronico");
+        String fecha_nacimiento = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado,"FechaNacimiento");
+
+        usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento);
+
+        return usuario;
+    }
 }
