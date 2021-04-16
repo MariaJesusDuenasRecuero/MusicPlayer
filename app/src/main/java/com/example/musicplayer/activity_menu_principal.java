@@ -1,7 +1,9 @@
 package com.example.musicplayer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -17,11 +19,20 @@ import androidx.navigation.ui.NavigationUI;
 public class activity_menu_principal extends AppCompatActivity {
 
     private BottomNavigationView navigation;
+    private String nombre_usuario_registrado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
+
+        Bundle bundle = getIntent().getExtras();
+        this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
+
+        Toast notification;
+        notification = Toast.makeText(this, "Bienvenido a Music Player BBDD Multimedia "
+                + this.nombre_usuario_registrado, Toast.LENGTH_LONG);
+        notification.show();
 
         //Inicializacion datos navegacion
 
@@ -63,7 +74,7 @@ public class activity_menu_principal extends AppCompatActivity {
                     break;
                 case R.id.perfil:
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_perfil()).commit();
+                            .replace(R.id.framgment_layout, new fragment_perfil(nombre_usuario_registrado)).commit();
                     break;
             }
             return false;

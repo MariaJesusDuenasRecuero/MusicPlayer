@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             if(comprobar_password == 0 && usuario_disponible == 0){
 
                 Intent i = new Intent(this, activity_menu_principal.class );
+                i.putExtra("nombre_usuario_registrado", txtNombreUsuarioLogin.getText().toString());
                 startActivity(i);
 
             }
