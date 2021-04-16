@@ -2,4 +2,6 @@
 <resources>
 
     <style name="BottomNavigation">BottomNavigation</style>
+
+    <style name="TextName">text_name_perfil</style>
 </resources>
