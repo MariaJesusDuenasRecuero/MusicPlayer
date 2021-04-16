@@ -1,64 +1,127 @@
 package com.example.musicplayer;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
+import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_perfil#newInstance} factory method to
- * create an instance of this fragment.
+ *
  */
 public class fragment_perfil extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    //Variables para la BBDD
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Usuario usuario;
 
-    public fragment_perfil() {
-        // Required empty public constructor
+    private TextView lblNombre_usuario_perfil_BBDD;
+    private TextView lblNombre_perfil_BBDD;
+    private TextView lblTelefono_perfil_BBDD;
+    private TextView lblCorreoElectronico_perfil_BBDD;
+    private TextView lblFechaNacimiento_perfil_BBDD;
+
+    public fragment_perfil(Usuario usuario) {
+
+        this.usuario = usuario;
+
+    }
+    /**
+     * Called when a fragment is first attached to its context.
+     * {@link #onCreate(Bundle)} will be called after this.
+     */
+
+    boolean mCalled;
+    android.app.Fragment mHost;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCalled = true;
+        final Activity hostActivity = mHost == null ? null : mHost.getActivity();
+        if (hostActivity != null) {
+            mCalled = false;
+            onAttach(hostActivity);
+        }
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_perfil.
+     * @deprecated Use {@link #onAttach(Context)} instead.
      */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_perfil newInstance(String param1, String param2) {
-        fragment_perfil fragment = new fragment_perfil();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Deprecated
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCalled = true;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onDetach() {
+        super.onDetach();
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_perfil, container, false);
+
+        lblNombre_usuario_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombreUsuario);
+
+        Button btn_Configuracion_Avanzada = v.findViewById(R.id.btn_Configuracion_Avanzada);
+        btn_Configuracion_Avanzada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getActivity(), Configuracion.class );
+                i.putExtra("nombre_usuario_registrado", lblNombre_usuario_perfil_BBDD.getText().toString());
+                startActivity(i);
+
+            }
+        });
+
+        Button btn_Cerrar_Sesion = v.findViewById(R.id.btn_Cerrar_Sesion);
+        btn_Cerrar_Sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getActivity(), MainActivity.class );
+                startActivity(i);
+
+            }
+        });
+
+
+
+
+        lblNombre_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombre_perfil_BBDD);
+        lblTelefono_perfil_BBDD = (TextView) v.findViewById(R.id.lblTelefono_perfil_BBDD);
+        lblCorreoElectronico_perfil_BBDD = (TextView) v.findViewById(R.id.lblCorreo_perfil_BBDD);
+        lblFechaNacimiento_perfil_BBDD = (TextView) v.findViewById(R.id.lblFechaNacimiento_perfil_BBDD);
+
+        lblNombre_usuario_perfil_BBDD.setText(this.usuario.getNombreUsuario());
+        lblNombre_perfil_BBDD.setText(" "+this.usuario.getNombre());
+        lblTelefono_perfil_BBDD.setText(" "+this.usuario.getTelefono());
+        lblCorreoElectronico_perfil_BBDD.setText(" "+this.usuario.getCorreo());
+        lblFechaNacimiento_perfil_BBDD.setText(" "+this.usuario.getFechaNacimiento());
+
+        return v;
+
     }
+
+
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.musicplayer" >
+    package="com.example.musicplayer">
 
     <application
         android:allowBackup="true"
@@ -8,11 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicPlayer" >
+        android:theme="@style/Theme.MusicPlayer">
+        <activity android:name=".Configuracion"></activity>
         <activity
             android:name=".activity_menu_principal"
-            android:label="@string/title_activity_menu_principal" >
-        </activity>
+            android:label="@string/title_activity_menu_principal"></activity>
         <activity android:name=".ventanaPrincipal" />
         <activity android:name=".ventanaRegistro" />
         <activity android:name=".MainActivity" />

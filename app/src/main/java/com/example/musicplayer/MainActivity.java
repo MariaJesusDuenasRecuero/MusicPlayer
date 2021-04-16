@@ -6,15 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.musicplayer.Constantes.Constantes;
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
+import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtPasswordLogin;
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
+    private ImagenDAO gestor_imagen = new ImagenDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
+
+        gestor_imagen.crearTablaImagen(MainActivity.this);
+        gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1",null);
+
 
     }
 
@@ -58,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             if(comprobar_password == 0 && usuario_disponible == 0){
 
                 Intent i = new Intent(this, activity_menu_principal.class );
+                i.putExtra("nombre_usuario_registrado", txtNombreUsuarioLogin.getText().toString());
                 startActivity(i);
 
             }
