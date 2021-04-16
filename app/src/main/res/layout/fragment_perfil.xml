@@ -48,6 +48,7 @@
             app:layout_constraintVertical_bias="0.59" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="415dp"
             android:layout_height="440dp"
             android:background="#0E0C0C"
@@ -192,6 +193,34 @@
                 app:layout_constraintHorizontal_bias="0.132"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/FechaNacimientoPerfilTitulo" />
+
+            <Button
+                android:id="@+id/btn_Configuracion_Avanzada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="297dp"
+                android:layout_marginTop="309dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="83dp"
+                android:text="Conf."
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_Cerrar_Sesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="239dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="22dp"
+                android:text="Cerrar."
+                app:layout_constraintBottom_toTopOf="@+id/btn_Configuracion_Avanzada"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/FechaNacimientoPerfilTitulo"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
