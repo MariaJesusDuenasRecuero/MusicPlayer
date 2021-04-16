@@ -2,24 +2,89 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Configuracion">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ventanaRegistro" >
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnBorrarCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="247dp"
-        android:layout_marginTop="534dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="149dp"
-        android:text="Button"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="571dp"
+        android:layout_marginEnd="205dp"
+        android:layout_marginBottom="112dp"
+        android:text="Eliminar Cuenta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <EditText
+            android:id="@+id/txtCambiar_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtCambiar_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtCambiar_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtCambiar_Telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txtCambiar_FechaNacimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:inputType="date" />
+
+        <Button
+            android:id="@+id/btnModificarDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modificar" />
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

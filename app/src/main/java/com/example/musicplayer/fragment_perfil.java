@@ -77,15 +77,18 @@ public class fragment_perfil extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
+
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
+
+        lblNombre_usuario_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombreUsuario);
 
         Button btn_Configuracion_Avanzada = v.findViewById(R.id.btn_Configuracion_Avanzada);
         btn_Configuracion_Avanzada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Debug_bienvenido","Se pulsó el botón");
 
                 Intent i = new Intent(getActivity(), Configuracion.class );
+                i.putExtra("nombre_usuario_registrado", lblNombre_usuario_perfil_BBDD.getText().toString());
                 startActivity(i);
 
             }
@@ -104,7 +107,7 @@ public class fragment_perfil extends Fragment {
 
 
 
-        lblNombre_usuario_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombreUsuario);
+
         lblNombre_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombre_perfil_BBDD);
         lblTelefono_perfil_BBDD = (TextView) v.findViewById(R.id.lblTelefono_perfil_BBDD);
         lblCorreoElectronico_perfil_BBDD = (TextView) v.findViewById(R.id.lblCorreo_perfil_BBDD);
