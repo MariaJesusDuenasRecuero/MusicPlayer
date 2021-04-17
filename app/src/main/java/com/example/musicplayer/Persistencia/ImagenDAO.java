@@ -71,7 +71,7 @@ public class ImagenDAO {
 
         String insertar_imagen_sql = "INSERT INTO "+Constantes.NOMBRE_TABLA_IMAGEN+
                 " ("+Constantes.CAMPO_PERFIL_NOMBRE_IMAGEN+", "+Constantes.CAMPO_PERFIL_IMAGEN+")" +
-                " VALUES ('"+nombre_imagen+"', '"+null+"')";
+                " VALUES ('"+nombre_imagen+"', '"+imagen+"')";
         try{
 
             db.execSQL(insertar_imagen_sql);
