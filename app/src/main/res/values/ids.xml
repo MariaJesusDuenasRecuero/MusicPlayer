@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="frame_container" type="id"></item>
-    <item name="Nombre" type="id">Nombre</item>
-    <item name="Description" type="id">Descripcion</item>
+    <item name="Nombre" type="id"></item>
+    <item name="Description" type="id"></item>
 </resources>

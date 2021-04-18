@@ -4,11 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:cardCornerRadius="3dp"
-    android:cardElevation="3dp"
-    android:cardUseCompatPadding="true"
-
-   >
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"

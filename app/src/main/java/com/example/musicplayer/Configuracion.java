@@ -31,6 +31,7 @@ public class Configuracion extends AppCompatActivity {
     private String nombre_usuario_registrado;
     private UsuarioDAO gestor_usuario_configuracion = new UsuarioDAO();
     private ImagenDAO gestor_imagenes_perfil = new ImagenDAO();
+    private ImagenDAO gestor_imagen = new ImagenDAO();
 
     private EditText txtNombre;
     private EditText txtCorreo;
@@ -85,12 +86,14 @@ public class Configuracion extends AppCompatActivity {
                 try{
 
                     gestor_imagenes_perfil.insertarDatosTablaImagen(Configuracion.this,
-                            "Imagen1", imageViewToByte(imageView));
+                            "Imagen3", imageViewToByte(imageView));
 
 
                     Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
 
                     imageView.setImageResource(R.mipmap.ic_launcher);
+                    //imageView.setImageBitmap(gestor_imagen.buscarImagen(Configuracion.this,"Imagen3", "ContenidoImagen"));
+
                 }
                 catch (Exception e){
                     e.printStackTrace();

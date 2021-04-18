@@ -6,13 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.musicplayer.Constantes.Constantes;
@@ -21,10 +25,13 @@ import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
 import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText txtNombreUsuarioLogin;
     private EditText txtPasswordLogin;
+    private ImageView i;
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
     private ImagenDAO gestor_imagen = new ImagenDAO();
@@ -39,12 +46,14 @@ public class MainActivity extends AppCompatActivity {
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
 
+        i = findViewById(R.id.imageView2);
+
         //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
         //gestor_imagen.crearTablaImagen(MainActivity.this);
 
+        //gestor_imagen.crearTablaImagen(MainActivity.this);
+
         //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1",null);
-
-
 
     }
 
@@ -55,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void oyente_btnIniciarAplicacion(View view){
+
+        //
+
+        //byte[] foodImage = gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen");
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
+
+
+        //i.setImageBitmap(bitmap);gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen")
+
+        i.setImageBitmap(gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen"));
+
+
+        //
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 
