@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:cardCornerRadius="3dp"
+    android:cardElevation="3dp"
+    android:cardUseCompatPadding="true"
+
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/imagenArtista"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+    </ImageView>
+
+
+    <TextView
+        android:id="@+id/nombreArtista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de la artista"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="10dp"
+
+
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/descripcionArtista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="des"
+        android:layout_marginTop="30dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="110dp"
+
+
+
+        >
+    </TextView>
+
+</androidx.cardview.widget.CardView>

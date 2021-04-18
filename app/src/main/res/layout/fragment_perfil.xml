@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#222020"
-    tools:context=".fragment_perfil">
+    tools:context=".fragment_perfil"
+    android:paddingTop="75dp">
 
 
     <!-- TODO: Update blank fragment layout -->

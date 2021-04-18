@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:cardCornerRadius="3dp"
+    android:cardElevation="3dp"
+    android:cardUseCompatPadding="true"
+
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/nombreCancion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/nombreAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </TextView>
+
+    <Button
+        android:id="@+id/aniadirPlaylist"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:text="Añadir playlist"
+        android:textStyle="bold">
+
+    </Button>
+</androidx.cardview.widget.CardView>
