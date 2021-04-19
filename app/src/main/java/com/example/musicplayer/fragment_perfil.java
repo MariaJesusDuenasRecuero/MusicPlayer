@@ -3,6 +3,7 @@ package com.example.musicplayer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.musicplayer.Dominio.Usuario;
@@ -27,6 +29,7 @@ public class fragment_perfil extends Fragment {
     //Variables para la BBDD
 
     private Usuario usuario;
+    private Bitmap bitmap;
 
     private TextView lblNombre_usuario_perfil_BBDD;
     private TextView lblNombre_perfil_BBDD;
@@ -34,9 +37,12 @@ public class fragment_perfil extends Fragment {
     private TextView lblCorreoElectronico_perfil_BBDD;
     private TextView lblFechaNacimiento_perfil_BBDD;
 
-    public fragment_perfil(Usuario usuario) {
+    private ImageView image_foto_perfil;
+
+    public fragment_perfil(Usuario usuario, Bitmap bitmap) {
 
         this.usuario = usuario;
+        this.bitmap = bitmap;
 
     }
     /**
@@ -106,18 +112,19 @@ public class fragment_perfil extends Fragment {
         });
 
 
-
-
         lblNombre_perfil_BBDD = (TextView) v.findViewById(R.id.lblNombre_perfil_BBDD);
         lblTelefono_perfil_BBDD = (TextView) v.findViewById(R.id.lblTelefono_perfil_BBDD);
         lblCorreoElectronico_perfil_BBDD = (TextView) v.findViewById(R.id.lblCorreo_perfil_BBDD);
         lblFechaNacimiento_perfil_BBDD = (TextView) v.findViewById(R.id.lblFechaNacimiento_perfil_BBDD);
+        image_foto_perfil =  (ImageView) v.findViewById(R.id.imageView6);
 
         lblNombre_usuario_perfil_BBDD.setText(this.usuario.getNombreUsuario());
         lblNombre_perfil_BBDD.setText(" "+this.usuario.getNombre());
         lblTelefono_perfil_BBDD.setText(" "+this.usuario.getTelefono());
         lblCorreoElectronico_perfil_BBDD.setText(" "+this.usuario.getCorreo());
         lblFechaNacimiento_perfil_BBDD.setText(" "+this.usuario.getFechaNacimiento());
+
+        image_foto_perfil.setImageBitmap(this.bitmap);
 
         return v;
 

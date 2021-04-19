@@ -1,11 +1,13 @@
 package com.example.musicplayer;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,6 +26,7 @@ public class activity_menu_principal extends AppCompatActivity {
     private String nombre_usuario_registrado;
 
     private UsuarioDAO gestor_perfil = new UsuarioDAO();
+    private ImagenDAO gestor_imagen = new ImagenDAO();
     private Usuario usuario_sistema;
 
     @Override
@@ -80,15 +83,29 @@ public class activity_menu_principal extends AppCompatActivity {
                 case R.id.perfil:
 
                     usuario_sistema = inicializarDatosPerfil();
+                    Bitmap imagen_perfil = inicializarImagenPerfil();
 
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_perfil(usuario_sistema)).commit();
+                            .replace(R.id.framgment_layout, new fragment_perfil(usuario_sistema, imagen_perfil)).commit();
                     break;
             }
             return false;
         }
     };
 
+    private Bitmap inicializarImagenPerfil(){
+
+
+
+        String n = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this, nombre_usuario_registrado,
+                "ImagenPerfil");
+
+        Bitmap bitmap = gestor_imagen.buscarImagen(activity_menu_principal.this,n,
+                "ContenidoImagen");
+
+        return bitmap;
+
+    }
     private Usuario inicializarDatosPerfil(){
 
         Usuario usuario;
@@ -105,8 +122,10 @@ public class activity_menu_principal extends AppCompatActivity {
                 nombre_usuario_registrado,"CorreoElectronico");
         String fecha_nacimiento = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
                 nombre_usuario_registrado,"FechaNacimiento");
+        String nombre_foto_perfil = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+                nombre_usuario_registrado, "ImagenPerfil");
 
-        usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento);
+        usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento, nombre_foto_perfil);
 
         return usuario;
     }

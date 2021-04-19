@@ -48,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
         i = findViewById(R.id.imageView2);
 
+        //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
+        //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
+
         //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
         //gestor_imagen.crearTablaImagen(MainActivity.this);
-
+        //gestor_imagen.eliminarTablaImagen(MainActivity.this);
         //gestor_imagen.crearTablaImagen(MainActivity.this);
 
         //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1",null);
@@ -73,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         //i.setImageBitmap(bitmap);gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen")
 
-        i.setImageBitmap(gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen"));
+        //String n = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
+
+        //i.setImageBitmap(gestor_imagen.buscarImagen(MainActivity.this,n, "ContenidoImagen"));
 
 
         //
@@ -189,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(txtNombreUsuarioLogin.getText().toString() != null){
 
-            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "NombreUsuario");
+            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this,
+                    txtNombreUsuarioLogin.getText().toString(), "NombreUsuario");
 
             if(cadena_comprobacion != null){
                 comprobacion = 0; //Usuario existe

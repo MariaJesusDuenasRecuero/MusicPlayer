@@ -7,7 +7,7 @@ package com.example.musicplayer.Constantes;
  */
 public class Constantes {
 
-    //Constantes campos tabla USUARIOS (6)
+    //Constantes campos tabla USUARIOS (7)
 
     public static final String NOMBRE_TABLA_USUARIO = "Usuarios";
 
@@ -17,6 +17,7 @@ public class Constantes {
     public static final String CAMPO_USUARIO_TELEFONO = "Telefono";
     public static final String CAMPO_USUARIO_CORREO = "CorreoElectronico";
     public static final String CAMPO_USUARIO_FECHA_NACIMIENTO = "FechaNacimiento";
+    public static final String CAMPO_USUARIO_NOMBRE_IMAGEN = "ImagenPerfil";
 
     //Constantes campos tabla Imagen (2)
 
@@ -30,7 +31,7 @@ public class Constantes {
 
     public static final String CREAR_TABLA_USUARIO =
             "CREATE TABLE "+NOMBRE_TABLA_USUARIO+" ("+CAMPO_USUARIO_NOMBRE_USUARIO+" TEXT, "+CAMPO_USUARIO_NOMBRE+" TEXT, "+CAMPO_USUSARIO_PASSWORD+
-                    " TEXT, "+CAMPO_USUARIO_TELEFONO+" TEXT, "+CAMPO_USUARIO_CORREO+" TEXT, "+CAMPO_USUARIO_FECHA_NACIMIENTO+" TEXT)";
+                    " TEXT, "+CAMPO_USUARIO_TELEFONO+" TEXT, "+CAMPO_USUARIO_CORREO+" TEXT, "+CAMPO_USUARIO_FECHA_NACIMIENTO+" TEXT, "+CAMPO_USUARIO_NOMBRE_IMAGEN+" TEXT)";
 
     public static final String CREAR_TABLA_IMAGEN =
             "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";

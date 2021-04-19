@@ -13,6 +13,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,7 @@ import com.example.musicplayer.Persistencia.UsuarioDAO;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Random;
 
 public class Configuracion extends AppCompatActivity {
 
@@ -38,6 +40,10 @@ public class Configuracion extends AppCompatActivity {
     private EditText txtPassword;
 
     private ImageView imageView;
+
+    private Random r = new Random();
+    private int valor = 0;
+    private String nombre_foto = "Imagen";
 
 
     final int REQUEST_CODE_GALLERY = 999;
@@ -62,7 +68,9 @@ public class Configuracion extends AppCompatActivity {
         this.txtPassword = findViewById(R.id.txtCambiar_Password);
         this.imageView = (ImageView) findViewById(R.id.imageView5);
 
+        this.valor = r.nextInt(500)+1;  //
 
+        this.nombre_foto = this.nombre_foto+this.valor;
 
         Button btnCambiarFoto = findViewById(R.id.btnCambiarFoto);
         btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
@@ -85,16 +93,42 @@ public class Configuracion extends AppCompatActivity {
             public void onClick(View view) {
                 try{
 
+                    //String comprobar_nombre_imagen = gestor_imagenes_perfil.buscarDatosImagen(Configuracion.this,nombre_foto, "NombreImagen");
+
+                    //Log.d("Nombre", comprobar_nombre_imagen);
+
+                    /**
+                    if(comprobar_nombre_imagen.equals(nombre_foto)){
+
+                        Random e = new Random();
+                        int v = r.nextInt(900)+1;
+
+                        nombre_foto = "Imagen"+v;
+
+                    }
+                     **/
+
+
+
+
                     gestor_imagenes_perfil.insertarDatosTablaImagen(Configuracion.this,
-                            "Imagen3", imageViewToByte(imageView));
+                            nombre_foto, imageViewToByte(imageView));
+
+                    //Log.d("Nombre", "Nombre foto"+nombre_foto);
+
+                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this, nombre_usuario_registrado,
+                            "ImagenPerfil", nombre_foto);
 
 
                     Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
 
                     imageView.setImageResource(R.mipmap.ic_launcher);
+
+
                     //imageView.setImageBitmap(gestor_imagen.buscarImagen(Configuracion.this,"Imagen3", "ContenidoImagen"));
 
                 }
+
                 catch (Exception e){
                     e.printStackTrace();
                 }

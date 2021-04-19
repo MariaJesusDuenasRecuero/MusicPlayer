@@ -131,7 +131,7 @@ public class ventanaRegistro extends AppCompatActivity {
         }
 
         usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
-                cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha);
+                cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha, "Imagen1");
 
         comprobacion =  gestor_usuario.insertarUsuario(ventanaRegistro.this, usuario);
 
@@ -153,7 +153,8 @@ public class ventanaRegistro extends AppCompatActivity {
 
         if(txtNombreUsuario.getText().toString() != null){
 
-            cadena_comprobacion = gestor_usuario.buscarDatosUsuarioRegistrado(ventanaRegistro.this, txtNombreUsuario.getText().toString(), "NombreUsuario");
+            cadena_comprobacion = gestor_usuario.buscarDatosUsuarioRegistrado(ventanaRegistro.this,
+                    txtNombreUsuario.getText().toString(), "NombreUsuario");
 
             if(cadena_comprobacion != null){
                 comprobacion = 0; //Usuario en uso

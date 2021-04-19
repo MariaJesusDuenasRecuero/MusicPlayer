@@ -25,7 +25,7 @@ public class ImagenDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 6);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         return db;
@@ -43,7 +43,7 @@ public class ImagenDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 6);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
         SQLiteDatabase db = conexion.getReadableDatabase();
 
         return db;
@@ -162,6 +162,35 @@ public class ImagenDAO {
         */
         db.close();
 
+    }
+
+    public String buscarDatosImagen(Context context, String nombre_imagen, String parametro){
+
+        String [] clave_primaria = new String[1];
+        String [] parametro_buscado = new String [1];
+
+        clave_primaria [0] = nombre_imagen;
+        parametro_buscado [0] = parametro;
+
+        String dato_buscado = null;
+        SQLiteDatabase db = this.getConnRead(context);
+
+        try {
+
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_IMAGEN, parametro_buscado,
+                    Constantes.CAMPO_PERFIL_NOMBRE_IMAGEN+"=?",clave_primaria, null,null,null);
+
+            cursor.moveToFirst();
+            dato_buscado = cursor.getString(0);
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+        return  dato_buscado;
     }
 
     /**

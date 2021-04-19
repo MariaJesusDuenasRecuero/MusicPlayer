@@ -22,7 +22,7 @@ public class UsuarioDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 6);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         return db;
@@ -40,7 +40,7 @@ public class UsuarioDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 6);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
         SQLiteDatabase db = conexion.getReadableDatabase();
 
         return db;
@@ -62,8 +62,8 @@ public class UsuarioDAO {
 
         String insertar_usuario_sql = "INSERT INTO "+Constantes.NOMBRE_TABLA_USUARIO+
                 " ("+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+", "+Constantes.CAMPO_USUARIO_NOMBRE+", "+Constantes.CAMPO_USUSARIO_PASSWORD+", "+Constantes.CAMPO_USUARIO_TELEFONO+", "+
-                    Constantes.CAMPO_USUARIO_CORREO+", "+Constantes.CAMPO_USUARIO_FECHA_NACIMIENTO+") VALUES ('"+usuario.getNombreUsuario()+"', '"+usuario.getNombre()+"', '"+usuario.getPassword()+
-                        "', '"+usuario.getTelefono()+"', '"+usuario.getCorreo()+"', '"+usuario.getFechaNacimiento()+"')";
+                    Constantes.CAMPO_USUARIO_CORREO+", "+Constantes.CAMPO_USUARIO_FECHA_NACIMIENTO+", "+Constantes.CAMPO_USUARIO_NOMBRE_IMAGEN+") VALUES ('"+usuario.getNombreUsuario()+"', '"+usuario.getNombre()+"', '"+usuario.getPassword()+
+                        "', '"+usuario.getTelefono()+"', '"+usuario.getCorreo()+"', '"+usuario.getFechaNacimiento()+"', '"+usuario.getNombreFotoPerfil()+"')";
         try{
 
             db.execSQL(insertar_usuario_sql);
@@ -173,6 +173,19 @@ public class UsuarioDAO {
         db.close();
 
         return  dato_buscado;
+    }
+
+    /**
+     *
+     * Descripcion: Permite crear la tabla Usuario
+     *
+     * @param context
+     */
+    public void crearTablaUsuario(Context context){
+
+        SQLiteDatabase db = this.getConnWrite(context);
+        db.execSQL(Constantes.CREAR_TABLA_USUARIO);
+
     }
 
     /**
