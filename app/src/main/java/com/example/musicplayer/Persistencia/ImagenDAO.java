@@ -91,7 +91,7 @@ public class ImagenDAO {
      * @param context
      * @param nombre_imagen clave primaria
      * @param parametro el contenido de la imagen
-     * @return
+     * @return Bitmat para visualizar la imagen
      */
     public Bitmap buscarImagen(Context context, String nombre_imagen, String parametro){
 
@@ -126,11 +126,11 @@ public class ImagenDAO {
     /**
      *
      * Descripcion: Metodo que permite insertar imagenes en la base de datos. Especial atencion a como
-     * se insertan los datos
+     * se insertan los datos ya que para que se almacenen en SQLite como BLOB se tiene que hacer de esta manera
      *
      * @param context
-     * @param nombre_imagen
-     * @param imagen
+     * @param nombre_imagen clave primaria y permite identificar la imagen
+     * @param imagen typo byte para almacenar como BLOB en la base de datos
      */
     public void insertarDatosTablaImagen(Context context, String nombre_imagen, byte [] imagen){
 
@@ -147,23 +147,21 @@ public class ImagenDAO {
         statement.bindBlob(2, imagen);
 
         statement.executeInsert();
-        /**
-        String insertar_imagen_sql = "INSERT INTO "+Constantes.NOMBRE_TABLA_IMAGEN+
-                " ("+Constantes.CAMPO_PERFIL_NOMBRE_IMAGEN+", "+Constantes.CAMPO_PERFIL_IMAGEN+")" +
-                " VALUES ('"+nombre_imagen+"', '"+imagen+"')";
-        try{
 
-            db.execSQL(insertar_imagen_sql);
-            //resultado_consulta = 1;
-
-        } catch (Exception e) {
-            Log.d("Debug_Excepcion","Se ha producido un error al realizar la consulta");
-        }
-        */
         db.close();
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite buscar el nombre de una imagen. Usado por ejemplo para comprobar
+     * si existe determinado nombre en la base de datos y no tener claves primarias repetidas
+     *
+     * @param context
+     * @param nombre_imagen clave primaria y permite identificar la imagen
+     * @param parametro typo byte para almacenar como BLOB en la base de datos
+     * @return
+     */
     public String buscarDatosImagen(Context context, String nombre_imagen, String parametro){
 
         String [] clave_primaria = new String[1];

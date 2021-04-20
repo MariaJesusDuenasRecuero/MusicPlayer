@@ -5,218 +5,123 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:backgroundTint="#222020"
+    android:backgroundTint="#FFFFFF"
     tools:context=".fragment_perfil"
-    android:paddingTop="75dp">
+    android:paddingTop="10dp">
 
 
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF">
 
         <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="130dp"
-            android:layout_height="105dp"
-            android:layout_marginStart="141dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="140dp"
-            android:layout_marginBottom="19dp"
+            android:id="@+id/imageView_foto_perfil"
+            android:layout_width="119dp"
+            android:layout_height="97dp"
+            android:layout_marginBottom="450dp"
             android:src="@drawable/icon_perfil"
-            app:layout_constraintBottom_toTopOf="@+id/lblNombreUsuario"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btn_Cerrar_Sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:text="Cerrar"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_Configuracion_Avanzada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:text="Confg."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_Cerrar_Sesion" />
 
         <TextView
             android:id="@+id/lblNombreUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="490dp"
+            android:layout_marginTop="30dp"
             android:text="Nombre_Usuario"
             android:textColor="#020202"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_foto_perfil" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="415dp"
-            android:layout_height="440dp"
+            android:layout_width="432dp"
+            android:layout_height="532dp"
+            android:layout_marginTop="200dp"
             android:background="#0E0C0C"
             android:backgroundTint="#151515"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/nombrePerfilTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="280dp"
-                android:layout_marginEnd="225dp"
-                android:layout_marginBottom="450dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="40dp"
                 android:text="Nombre:"
                 android:textColor="#F6F3F3"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.371"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.764" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/CorreoPerfilTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="400dp"
-                android:layout_marginEnd="225dp"
-                android:layout_marginBottom="400dp"
-                android:text="Correo electrónico:"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="124dp"
+                android:text="Correo:"
                 android:textColor="#F6F3F3"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.62"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.586" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/TelefonoPerfilTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="200dp"
-                android:layout_marginEnd="225dp"
-                android:layout_marginBottom="360dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="176dp"
                 android:text="Teléfono:"
                 android:textColor="#F6F3F3"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.397"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.551" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/FechaNacimientoPerfilTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="121dp"
-                android:layout_marginTop="300dp"
-                android:layout_marginEnd="225dp"
-                android:layout_marginBottom="320dp"
-                android:text="Fecha de Nacimiento:"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="228dp"
+                android:text="F. Nacimiento:"
                 android:textColor="#F6F3F3"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.573"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.178" />
-
-            <TextView
-                android:id="@+id/lblNombre_perfil_BBDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="280dp"
-                android:layout_marginEnd="255dp"
-                android:layout_marginBottom="450dp"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.194"
-                app:layout_constraintStart_toEndOf="@+id/nombrePerfilTitulo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.762" />
-
-            <TextView
-                android:id="@+id/lblTelefono_perfil_BBDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="280dp"
-                android:layout_marginEnd="255dp"
-                android:layout_marginBottom="450dp"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
-                app:layout_constraintStart_toEndOf="@+id/nombrePerfilTitulo"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.504" />
-
-            <TextView
-                android:id="@+id/lblCorreo_perfil_BBDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/FechaNacimientoPerfilTitulo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.129"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/CorreoPerfilTitulo"
-                app:layout_constraintVertical_bias="0.45" />
-
-            <TextView
-                android:id="@+id/lblFechaNacimiento_perfil_BBDD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="105dp"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.132"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/FechaNacimientoPerfilTitulo" />
-
-            <Button
-                android:id="@+id/btn_Configuracion_Avanzada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="297dp"
-                android:layout_marginTop="309dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="83dp"
-                android:text="Conf."
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btn_Cerrar_Sesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="239dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="22dp"
-                android:text="Cerrar."
-                app:layout_constraintBottom_toTopOf="@+id/btn_Configuracion_Avanzada"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/FechaNacimientoPerfilTitulo"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

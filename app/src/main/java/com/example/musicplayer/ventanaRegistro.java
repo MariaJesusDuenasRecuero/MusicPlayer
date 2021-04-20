@@ -117,14 +117,14 @@ public class ventanaRegistro extends AppCompatActivity {
         String cadena_formato_telefono = null;
 
         if(txtFechaNacimiento.getText().toString().equals("")){
-            cadena_formato_fecha = "Fecha Nacimiento no registrado";
+            cadena_formato_fecha = "Ninguno";
         }
         else{
             cadena_formato_fecha = txtFechaNacimiento.getText().toString();
         }
 
         if(txtTelefono.getText().toString().equals("")){
-            cadena_formato_telefono = "Telefono no registrado";
+            cadena_formato_telefono = "Ninguno";
         }
         else{
             cadena_formato_telefono = txtTelefono.getText().toString();

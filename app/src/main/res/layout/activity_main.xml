@@ -126,7 +126,7 @@
             android:layout_marginRight="20dp"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_facebook" />
+            android:src="@drawable/icon_facebook"/>
 
     </LinearLayout>
 

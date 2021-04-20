@@ -24,6 +24,7 @@ public class activity_menu_principal extends AppCompatActivity {
 
     private BottomNavigationView navigation;
     private String nombre_usuario_registrado;
+    private Toast notification;
 
     private UsuarioDAO gestor_perfil = new UsuarioDAO();
     private ImagenDAO gestor_imagen = new ImagenDAO();
@@ -34,18 +35,11 @@ public class activity_menu_principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
 
-        Bundle bundle = getIntent().getExtras();
-        this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
-
-        Toast notification;
-        notification = Toast.makeText(this, "Bienvenido a Music Player BBDD Multimedia "
-                + this.nombre_usuario_registrado, Toast.LENGTH_LONG);
-        notification.show();
+        inicializarPasoDatos();
 
         //Inicializacion datos navegacion
 
-        navigation = findViewById(R.id.bottomNavigationView);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        inicializarDatosNavegacion();
 
         //Muestra el Fragmento de inicio el primero
 
@@ -53,13 +47,55 @@ public class activity_menu_principal extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite identificar el usuario en el sistema gracias al parametro que
+     * se pasa de la ventana anterior
+     *
+     */
+    private void inicializarPasoDatos(){
+
+        Bundle bundle = getIntent().getExtras();
+        this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
+
+
+        notification = Toast.makeText(this, "Bienvenido a Music Player BBDD Multimedia "
+                + this.nombre_usuario_registrado, Toast.LENGTH_LONG);
+        notification.show();
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo para inicializar los datos respectivos a la navegacion del sistema
+     *
+     */
+    private void inicializarDatosNavegacion(){
+
+        navigation = findViewById(R.id.bottomNavigationView);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+    }
+
+    /**
+     *
+     * Descripcion: Inicializa con el fragmento inicial del sistema
+     *
+     */
     private void  openInitialFragment() {
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framgment_layout, new fragment_inicio()).commit();
 
     }
-    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+    /**
+     *
+     * Descripcion: Permite la navegacion entre paneles
+     *
+     */
+    private final BottomNavigationView.OnNavigationItemSelectedListener
+            mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -93,19 +129,30 @@ public class activity_menu_principal extends AppCompatActivity {
         }
     };
 
+    /**
+     *
+     * Descripcion: Obtener los datos tipo BLOB de la base de datos
+     *
+     * @return bitmap
+     */
     private Bitmap inicializarImagenPerfil(){
 
-
-
-        String n = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this, nombre_usuario_registrado,
+        String nomnre_imagen = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this, nombre_usuario_registrado,
                 "ImagenPerfil");
 
-        Bitmap bitmap = gestor_imagen.buscarImagen(activity_menu_principal.this,n,
-                "ContenidoImagen");
+        Bitmap bitmap = gestor_imagen.buscarImagen(activity_menu_principal.this, nomnre_imagen,
+             "ContenidoImagen");
 
         return bitmap;
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo para inicializar el usuario que ha iniciado sesion del sistema
+     *
+     * @return objeto tipo usuario
+     */
     private Usuario inicializarDatosPerfil(){
 
         Usuario usuario;

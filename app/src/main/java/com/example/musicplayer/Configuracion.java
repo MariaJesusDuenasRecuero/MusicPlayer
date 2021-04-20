@@ -38,7 +38,6 @@ public class Configuracion extends AppCompatActivity {
     private EditText txtNombre;
     private EditText txtCorreo;
     private EditText txtPassword;
-
     private ImageView imageView;
 
     private Random r = new Random();
@@ -56,19 +55,13 @@ public class Configuracion extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
 
-        /**
-         Toast notification;
-         notification = Toast.makeText(this, "Cambiar confi "
-         + this.nombre_usuario_registrado, Toast.LENGTH_LONG);
-         notification.show();
-         */
 
         this.txtNombre = findViewById(R.id.txtCambiar_nombre);
         this.txtCorreo = findViewById(R.id.txtCambiar_email);
         this.txtPassword = findViewById(R.id.txtCambiar_Password);
         this.imageView = (ImageView) findViewById(R.id.imageView5);
 
-        this.valor = r.nextInt(500)+1;  //
+        this.valor = r.nextInt(500)+1;
 
         this.nombre_foto = this.nombre_foto+this.valor;
 
@@ -107,8 +100,6 @@ public class Configuracion extends AppCompatActivity {
 
                     }
                      **/
-
-
 
 
                     gestor_imagenes_perfil.insertarDatosTablaImagen(Configuracion.this,
@@ -251,11 +242,21 @@ public class Configuracion extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
+    /**
+     *
+     * Descripcion: Metodo para obtener un arry de bits a partir de una imagen
+     *
+     * @param image
+     * @return
+     */
     public static byte[] imageViewToByte(ImageView image) {
+
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
+
         return byteArray;
     }
 }

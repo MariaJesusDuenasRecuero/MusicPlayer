@@ -60,6 +60,12 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icon_perfil_menu" />
+
         <EditText
             android:id="@+id/txtCambiar_Telefono"
             android:layout_width="match_parent"
@@ -68,6 +74,12 @@
             android:layout_marginBottom="25dp"
             android:ems="10"
             android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnCambiarFoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
         <EditText
             android:id="@+id/txtCambiar_FechaNacimiento"
@@ -79,28 +91,16 @@
             android:inputType="date" />
 
         <Button
-            android:id="@+id/btnModificarDatos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Modificar" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icon_perfil_menu" />
-
-        <Button
-            android:id="@+id/btnCambiarFoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <Button
             android:id="@+id/btnAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add" />
+
+        <Button
+            android:id="@+id/btnModificarDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modificar" />
 
 
     </LinearLayout>

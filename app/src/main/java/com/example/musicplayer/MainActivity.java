@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
 import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,21 +47,23 @@ public class MainActivity extends AppCompatActivity {
 
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
+        i = findViewById(R.id.imageView3);
 
-        i = findViewById(R.id.imageView2);
 
-        //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
-        //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
-
-        //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
-        //gestor_imagen.crearTablaImagen(MainActivity.this);
-        //gestor_imagen.eliminarTablaImagen(MainActivity.this);
-        //gestor_imagen.crearTablaImagen(MainActivity.this);
-
-        //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1",null);
+        //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1", imageViewToByte(i));
 
     }
+    /**
+    public static byte[] imageViewToByte(ImageView image) {
 
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        return byteArray;
+    }
+    */
     /**
      *
      * Descripcion: Oyente asociado al boton inicio sesion. Permite acceder al sistema si los datos son correctos
@@ -67,21 +71,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void oyente_btnIniciarAplicacion(View view){
-
-        //
-
-        //byte[] foodImage = gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen");
-        //Bitmap bitmap = BitmapFactory.decodeByteArray(foodImage, 0, foodImage.length);
-
-
-        //i.setImageBitmap(bitmap);gestor_imagen.buscarImagen(MainActivity.this,"Imagen3", "ContenidoImagen")
-
-        //String n = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
-
-        //i.setImageBitmap(gestor_imagen.buscarImagen(MainActivity.this,n, "ContenidoImagen"));
-
-
-        //
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 

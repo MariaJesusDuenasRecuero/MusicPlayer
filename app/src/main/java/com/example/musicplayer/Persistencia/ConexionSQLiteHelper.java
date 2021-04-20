@@ -10,17 +10,16 @@ import com.example.musicplayer.Constantes.Constantes;
 
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
-
-        /**
-         *
-         * Descripcion: Al llamar a este constructor creamos nuestra base de datos.
-         * Automaticamente llma al metodo onCreate()
-         *
-         * @param context Contexto de nuestra aplicacion
-         * @param name Nombre de nuestra base de datos
-         * @param factory
-         * @param version Version de nuestra base de datos
-         */
+    /**
+     *
+     * Descripcion: Al llamar a este constructor creamos nuestra base de datos.
+     * Automaticamente llma al metodo onCreate()
+     *
+     * @param context Contexto de nuestra aplicacion
+     * @param name Nombre de nuestra base de datos
+     * @param factory
+     * @param version Version de nuestra base de datos
+     */
     public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
