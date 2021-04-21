@@ -11,7 +11,7 @@
         android:id="@+id/imageView6"
         android:layout_width="337dp"
         android:layout_height="337dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,17 +19,16 @@
 
     <Button
         android:id="@+id/btnplay"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="152dp"
+        android:layout_width="55dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="132dp"
         android:background="@drawable/reproducir"
         android:backgroundTint="@color/white"
+        android:onClick="oyente_btnPlay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDetener"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintHorizontal_bias="0.857"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSiguiente"
@@ -37,6 +36,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="136dp"
         android:background="@drawable/siguiente"
+        android:onClick="oyente_btnSiguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.339"
@@ -49,6 +49,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="136dp"
         android:background="@drawable/anterior"
+        android:onClick="oyente_btnAnterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnplay" />
 
@@ -59,6 +60,7 @@
         android:layout_marginStart="260dp"
         android:layout_marginBottom="136dp"
         android:background="@drawable/detener"
+        android:onClick="oyente_btnDetener"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -66,10 +68,24 @@
         android:id="@+id/btnAleatorio"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="136dp"
         android:background="@drawable/no_repetir"
+        android:onClick="oyente_btnAleatorio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAnterior"
-        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblNombreCancion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
