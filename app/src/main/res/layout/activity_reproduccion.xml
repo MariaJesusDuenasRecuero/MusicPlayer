@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activity_reproduccion">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="337dp"
+        android:layout_height="337dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/portada1" />
+
+    <Button
+        android:id="@+id/btnplay"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/reproducir"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDetener"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.029" />
+
+    <Button
+        android:id="@+id/btnSiguiente"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toEndOf="@+id/btnDetener" />
+
+    <Button
+        android:id="@+id/btnAnterior"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/anterior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnplay" />
+
+    <Button
+        android:id="@+id/btnDetener"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/detener"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAleatorio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/no_repetir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAnterior"
+        app:layout_constraintHorizontal_bias="0.606"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
