@@ -1,8 +1,8 @@
 package com.example.musicplayer;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -13,12 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 public class activity_menu_principal extends AppCompatActivity {
 
@@ -113,8 +107,13 @@ public class activity_menu_principal extends AppCompatActivity {
                             .replace(R.id.framgment_layout, new fragment_albumes()).commit();
                     break;
                 case R.id.canciones:
+
+                     Intent i = new Intent(activity_menu_principal.this, ventanaCanciones.class );
+                     startActivity(i);
+                     /**
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.framgment_layout, new fragment_canciones()).commit();
+                    **/
                     break;
                 case R.id.perfil:
 

@@ -16,7 +16,7 @@
         <activity
             android:name=".activity_menu_principal"
             android:label="@string/title_activity_menu_principal" />
-        <activity android:name=".ventanaPrincipal" />
+        <activity android:name=".ventanaCanciones" />
         <activity android:name=".ventanaRegistro" />
         <activity android:name=".MainActivity" />
     </application>
