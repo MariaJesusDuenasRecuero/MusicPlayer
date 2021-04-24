@@ -75,7 +75,7 @@ public class activity_reproduccion extends AppCompatActivity {
                 } else if (posicion == 1) {
                     imgV.setImageResource(R.drawable.portada2);
                 } else if (posicion == 2) {
-                    imgV.setImageResource(R.drawable.portada3);
+                    //imgV.setImageResource(R.drawable.portada3);
 
                 }
                 vectormp[posicion].start();
@@ -86,7 +86,7 @@ public class activity_reproduccion extends AppCompatActivity {
                 } else if (posicion == 1) {
                     imgV.setImageResource(R.drawable.portada2);
                 } else if (posicion == 2) {
-                    imgV.setImageResource(R.drawable.portada3);
+                  //  imgV.setImageResource(R.drawable.portada3);
 
                 }
             }
@@ -108,7 +108,7 @@ public class activity_reproduccion extends AppCompatActivity {
                 } else if (posicion == 1) {
                     imgV.setImageResource(R.drawable.portada2);
                 } else if (posicion == 2) {
-                    imgV.setImageResource(R.drawable.portada3);
+                //   imgV.setImageResource(R.drawable.portada3);
 
                 }
 
