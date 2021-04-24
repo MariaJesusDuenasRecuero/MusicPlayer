@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtPasswordLogin;
     private ImageView i;
 
+    private Usuario usuario = null;
+
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
     private ImagenDAO gestor_imagen = new ImagenDAO();
 
@@ -50,10 +52,15 @@ public class MainActivity extends AppCompatActivity {
         i = findViewById(R.id.imageView3);
 
 
+        //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
+        //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
+
+        //gestor_usuario_login.insertarDatosTablaUsuario(MainActivity.this, usuario, imageViewToByte(i));
+
         //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1", imageViewToByte(i));
 
     }
-    /**
+
     public static byte[] imageViewToByte(ImageView image) {
 
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
@@ -63,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         return byteArray;
     }
-    */
+
     /**
      *
      * Descripcion: Oyente asociado al boton inicio sesion. Permite acceder al sistema si los datos son correctos

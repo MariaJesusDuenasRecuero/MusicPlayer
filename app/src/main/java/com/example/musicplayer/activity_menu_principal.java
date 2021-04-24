@@ -136,11 +136,8 @@ public class activity_menu_principal extends AppCompatActivity {
      */
     private Bitmap inicializarImagenPerfil(){
 
-        String nomnre_imagen = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this, nombre_usuario_registrado,
-                "ImagenPerfil");
-
-        Bitmap bitmap = gestor_imagen.buscarImagen(activity_menu_principal.this, nomnre_imagen,
-             "ContenidoImagen");
+        Bitmap bitmap = gestor_perfil.buscarImagen(activity_menu_principal.this, nombre_usuario_registrado,
+             "ImagenPerfil");
 
         return bitmap;
 

@@ -101,7 +101,7 @@ public class Configuracion extends AppCompatActivity {
                     }
                      **/
 
-
+                    /**
                     gestor_imagenes_perfil.insertarDatosTablaImagen(Configuracion.this,
                             nombre_foto, imageViewToByte(imageView));
 
@@ -109,6 +109,8 @@ public class Configuracion extends AppCompatActivity {
 
                     gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this, nombre_usuario_registrado,
                             "ImagenPerfil", nombre_foto);
+                    */
+                    gestor_usuario_configuracion.updateDataImagen(Configuracion.this, nombre_usuario_registrado, imageViewToByte(imageView));
 
 
                     Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();

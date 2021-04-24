@@ -7,8 +7,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
+
+import java.io.ByteArrayOutputStream;
 
 public class ventanaRegistro extends AppCompatActivity {
 
@@ -32,6 +36,7 @@ public class ventanaRegistro extends AppCompatActivity {
     private UsuarioDAO gestor_usuario = new UsuarioDAO();
     private Usuario usuario;
 
+    private ImageView i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,18 @@ public class ventanaRegistro extends AppCompatActivity {
         txtCorreoElectronico = findViewById(R.id.txtCorreoElectronico);
         txtFechaNacimiento = findViewById(R.id.txtFechaNacimiento);
 
+        i = findViewById(R.id.imageViewPerfil);
+
+    }
+
+    public static byte[] imageViewToByte(ImageView image) {
+
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        return byteArray;
     }
 
     /**
@@ -133,7 +150,9 @@ public class ventanaRegistro extends AppCompatActivity {
         usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
                 cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha, "Imagen1");
 
-        comprobacion =  gestor_usuario.insertarUsuario(ventanaRegistro.this, usuario);
+        gestor_usuario.insertarDatosTablaUsuario(ventanaRegistro.this, usuario, imageViewToByte(i));
+
+        comprobacion =  1;
 
         return comprobacion;
 

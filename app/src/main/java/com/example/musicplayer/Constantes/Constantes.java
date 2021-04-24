@@ -9,7 +9,7 @@ public class Constantes {
 
     //Constantes campos tabla USUARIOS (7)
 
-    public static final String NOMBRE_TABLA_USUARIO = "Usuarios";
+    public static final String NOMBRE_TABLA_USUARIO_SISTEMA = "Usuario";
 
     public static final String CAMPO_USUARIO_NOMBRE_USUARIO = "NombreUsuario";
     public static final String CAMPO_USUARIO_NOMBRE = "Nombre";
@@ -28,10 +28,10 @@ public class Constantes {
 
 
     //Constantes TABLAS
-
-    public static final String CREAR_TABLA_USUARIO =
-            "CREATE TABLE "+NOMBRE_TABLA_USUARIO+" ("+CAMPO_USUARIO_NOMBRE_USUARIO+" TEXT, "+CAMPO_USUARIO_NOMBRE+" TEXT, "+CAMPO_USUSARIO_PASSWORD+
-                    " TEXT, "+CAMPO_USUARIO_TELEFONO+" TEXT, "+CAMPO_USUARIO_CORREO+" TEXT, "+CAMPO_USUARIO_FECHA_NACIMIENTO+" TEXT, "+CAMPO_USUARIO_NOMBRE_IMAGEN+" TEXT)";
+    public static final String CREAR_TABLA_USUARIO_SISTEMA =
+            "CREATE TABLE "+NOMBRE_TABLA_USUARIO_SISTEMA+" ("+CAMPO_USUARIO_NOMBRE_USUARIO+" TEXT, "+CAMPO_USUARIO_NOMBRE+" TEXT, "+CAMPO_USUSARIO_PASSWORD+
+                    " TEXT, "+CAMPO_USUARIO_TELEFONO+" TEXT, "+CAMPO_USUARIO_CORREO+" TEXT, "+CAMPO_USUARIO_FECHA_NACIMIENTO+" TEXT, "+
+                    CAMPO_USUARIO_NOMBRE_IMAGEN+" BLOB)";
 
     public static final String CREAR_TABLA_IMAGEN =
             "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";

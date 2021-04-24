@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.musicplayer.Constantes.Constantes;
@@ -22,7 +25,7 @@ public class UsuarioDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 8);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         return db;
@@ -40,12 +43,43 @@ public class UsuarioDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 8);
         SQLiteDatabase db = conexion.getReadableDatabase();
 
         return db;
 
     }
+
+    public Bitmap buscarImagen(Context context, String nombre_usurio, String parametro){
+
+        String [] clave_primaria = new String[1];
+        String [] parametro_buscado = new String [1];
+
+        clave_primaria [0] = nombre_usurio;
+        parametro_buscado [0] = parametro;
+
+        byte [] image = null;
+        SQLiteDatabase db = this.getConnRead(context);
+
+        try {
+
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado,
+                    Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+
+            cursor.moveToFirst();
+            image = cursor.getBlob(0);
+            cursor.close();
+
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
 
     /**
      *
@@ -53,29 +87,46 @@ public class UsuarioDAO {
      *
      * @param context ventana
      * @param usuario contiene los datos de los campos
-     * @return resultado_consulta comprueba si la consulta se ha realizado correctamente
+     * @param imagen imagen asociada al perfil del usuario
      */
-    public int insertarUsuario(Context context, Usuario usuario){
+    public void insertarDatosTablaUsuario(Context context, Usuario usuario, byte [] imagen){
 
-        int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String insertar_usuario_sql = "INSERT INTO "+Constantes.NOMBRE_TABLA_USUARIO+
-                " ("+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+", "+Constantes.CAMPO_USUARIO_NOMBRE+", "+Constantes.CAMPO_USUSARIO_PASSWORD+", "+Constantes.CAMPO_USUARIO_TELEFONO+", "+
-                    Constantes.CAMPO_USUARIO_CORREO+", "+Constantes.CAMPO_USUARIO_FECHA_NACIMIENTO+", "+Constantes.CAMPO_USUARIO_NOMBRE_IMAGEN+") VALUES ('"+usuario.getNombreUsuario()+"', '"+usuario.getNombre()+"', '"+usuario.getPassword()+
-                        "', '"+usuario.getTelefono()+"', '"+usuario.getCorreo()+"', '"+usuario.getFechaNacimiento()+"', '"+usuario.getNombreFotoPerfil()+"')";
-        try{
+        byte[] data = imagen;
 
-            db.execSQL(insertar_usuario_sql);
-            resultado_consulta = 1;
+        String sql = "INSERT INTO Usuario VALUES (?,?,?,?,?,?,?)";
 
-        } catch (Exception e) {
-            Log.d("Debug_Excepcion","Se ha producido un error al realizar la consulta");
-        }
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, usuario.getNombreUsuario());
+        statement.bindString(2, usuario.getNombre());
+        statement.bindString(3, usuario.getPassword());
+        statement.bindString(4, usuario.getTelefono());
+        statement.bindString(5, usuario.getCorreo());
+        statement.bindString(6, usuario.getFechaNacimiento());
+        statement.bindBlob(7, imagen);
+
+        statement.executeInsert();
 
         db.close();
 
-        return  resultado_consulta;
+    }
+
+    public void updateDataImagen(Context context, String nombre_usuario, byte [] image) {
+
+        SQLiteDatabase db = this.getConnWrite(context);
+
+        String sql = "UPDATE Usuario SET ImagenPerfil = ? WHERE NombreUsuario='"+nombre_usuario+"'";
+
+        SQLiteStatement statement = db.compileStatement(sql);
+
+        statement.bindBlob(1, image);
+
+
+        statement.execute();
+        db.close();
     }
 
     /**
@@ -91,7 +142,7 @@ public class UsuarioDAO {
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String eliminar_usuario_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_USUARIO+" WHERE NombreUsuario='"+nombre_usuario+"'";
+        String eliminar_usuario_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_USUARIO_SISTEMA+" WHERE NombreUsuario='"+nombre_usuario+"'";
 
         try {
 
@@ -122,7 +173,7 @@ public class UsuarioDAO {
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String update_usuario_sql = "UPDATE "+Constantes.NOMBRE_TABLA_USUARIO+" SET "+nombre_campo_tabla+" = '"+parametro_nuevo+"' WHERE "+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"= '"+nombre_usuario+"'";
+        String update_usuario_sql = "UPDATE "+Constantes.NOMBRE_TABLA_USUARIO_SISTEMA+" SET "+nombre_campo_tabla+" = '"+parametro_nuevo+"' WHERE "+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"= '"+nombre_usuario+"'";
 
         try {
 
@@ -160,7 +211,7 @@ public class UsuarioDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO, parametro_buscado, Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado, Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
 
             cursor.moveToFirst();
             dato_buscado = cursor.getString(0);
@@ -184,7 +235,7 @@ public class UsuarioDAO {
     public void crearTablaUsuario(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
-        db.execSQL(Constantes.CREAR_TABLA_USUARIO);
+        db.execSQL(Constantes.CREAR_TABLA_USUARIO_SISTEMA);
 
     }
 
@@ -200,7 +251,7 @@ public class UsuarioDAO {
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String borrar_tabla_usuario_sql = "DROP TABLE Usuarios";
+        String borrar_tabla_usuario_sql = "DROP TABLE Usuario";
 
         try{
 
