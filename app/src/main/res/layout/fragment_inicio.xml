@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/avici"
+                    android:src="@drawable/artista_avicii"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     app:layout_constraintEnd_toEndOf="@id/imb2"
@@ -112,7 +112,7 @@
 
                 <ImageButton
                     android:id="@+id/imgb7"
-                    android:src="@drawable/alltimelow"
+                    android:src="@drawable/artista_all_time_low"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
                     android:adjustViewBounds="true"

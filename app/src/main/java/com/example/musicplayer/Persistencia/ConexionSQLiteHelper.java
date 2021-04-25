@@ -35,6 +35,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
         db.execSQL(Constantes.CREAR_TABLA_USUARIO_SISTEMA);;
         db.execSQL(Constantes.CREAR_TABLA_IMAGEN);
+        db.execSQL(Constantes.CREAR_TABLA_ARTISTA);
 
     }
     /**
@@ -51,6 +52,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         //Si instalamos la aplicacion que borre la tabla antigua y la vuelva a generar
         db.execSQL("DROP TABLE IF EXISTS Imagen");
         db.execSQL("DROP TABLE IF EXISTS Usuario");
+        db.execSQL("DROP TABLE IF EXISTS Artista");
         onCreate(db);
 
     }

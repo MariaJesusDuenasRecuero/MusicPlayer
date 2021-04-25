@@ -23,7 +23,7 @@ public class ventanaCanciones extends AppCompatActivity {
         setContentView(R.layout.activity_ventana_canciones);
 
         // Obtenemos una referencia a la lista grafica
-        lstCanciones = findViewById(R.id.lstCanciones);
+        lstCanciones = findViewById(R.id.lstArtistas);
 
         // Crear la lista de contactos y anadir algunos datos de prueba
         canciones = new ArrayList<Cancion>();

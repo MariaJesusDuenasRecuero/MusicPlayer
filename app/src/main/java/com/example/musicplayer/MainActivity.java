@@ -21,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.musicplayer.Constantes.Constantes;
+import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
 import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
     private ImagenDAO gestor_imagen = new ImagenDAO();
+    private ArtistaDAO gestor_artista = new ArtistaDAO();
+    private Artista artista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
         i = findViewById(R.id.imageView3);
+
+        //gestor_artista.borrarTablaArtista(MainActivity.this);
+        //gestor_artista.crearTablaArtista(MainActivity.this);
+
+        artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
+        //artista = new Artista("2", "Avicii","Electronic Dance Music");
+
+        //gestor_artista.insertarDatosTablaArtista(MainActivity.this, artista, imageViewToByte(i));
 
 
         //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);

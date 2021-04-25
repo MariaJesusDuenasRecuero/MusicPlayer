@@ -99,8 +99,14 @@ public class activity_menu_principal extends AppCompatActivity {
                             .replace(R.id.framgment_layout, new fragment_inicio()).commit();
                     break;
                 case R.id.artistas:
+
+                    Intent ventana_artistas = new Intent(activity_menu_principal.this, ventanaArtistas.class );
+                    startActivity(ventana_artistas);
+
+                    /**
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.framgment_layout, new fragment_artistas()).commit();
+                     */
                     break;
                 case R.id.albumes:
                     getSupportFragmentManager().beginTransaction()
@@ -108,8 +114,8 @@ public class activity_menu_principal extends AppCompatActivity {
                     break;
                 case R.id.canciones:
 
-                     Intent i = new Intent(activity_menu_principal.this, ventanaCanciones.class );
-                     startActivity(i);
+                     Intent ventana_canciones = new Intent(activity_menu_principal.this, ventanaCanciones.class );
+                     startActivity(ventana_canciones);
                      /**
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.framgment_layout, new fragment_canciones()).commit();
