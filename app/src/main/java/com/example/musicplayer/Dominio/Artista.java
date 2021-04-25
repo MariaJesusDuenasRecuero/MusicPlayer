@@ -1,18 +1,20 @@
 package com.example.musicplayer.Dominio;
 
+import android.graphics.Bitmap;
+
 public class Artista {
 
     private String id_artista;
     private String nombre_artista;
     private String tipo;
-    private byte [] imagen_artista;
+    private Bitmap imagen_artista;
 
-    public Artista(String id_artista, String nombre_artista, String tipo){
+    public Artista(String id_artista, String nombre_artista, String tipo, Bitmap imagen_artista){
 
         this.id_artista = id_artista;
         this.nombre_artista = nombre_artista;
         this.tipo = tipo;
-        //this.imagen_artista = imagen_artista;
+        this.imagen_artista = imagen_artista;
 
     }
 
@@ -40,11 +42,11 @@ public class Artista {
         this.tipo = t;
     }
 
-    public byte [] getImagenArtista(){
+    public Bitmap getImagenArtista(){
         return this.imagen_artista;
     }
 
-    public void setImagenArtista(byte [] ia){
+    public void setImagenArtista(Bitmap ia){
         this.imagen_artista = ia;
     }
 

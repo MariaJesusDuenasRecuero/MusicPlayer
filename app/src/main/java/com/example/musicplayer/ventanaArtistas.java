@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -46,28 +47,18 @@ public class ventanaArtistas extends AppCompatActivity {
 
     private void rellenarDatos(){
 
-        int max = 2;
+        int max = 3;
 
-        for(int i = 1; i<= max; i++){
+        for(int i = 2; i<= max; i++){
 
             String j = i+"";
             String id_artista = String.valueOf((int)i);
             String parametro_nombre_artista = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "NombreArtista");
             String parametro_genero = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "Tipo");
+            Bitmap bitmap =  gestor_artista.buscarImagenArtista(ventanaArtistas.this, id_artista,"ImagenArtista");
 
-            Log.d("Debug_Excepcion", parametro_nombre_artista+" "+parametro_genero);
-
-            artistas.add(new Artista(id_artista, parametro_nombre_artista, parametro_genero));
+            artistas.add(new Artista(id_artista, parametro_nombre_artista, parametro_genero, bitmap));
 
         }
-        /**
-        artistas.add(new Artista("1", gestor_artista.buscarDatosArtista(ventanaArtistas.this, "1", "NombreArtista"),
-                gestor_artista.buscarDatosArtista(ventanaArtistas.this, "1", "Tipo")));
-         /*
-        //artistas[0] = new Artista()
-
-        //artistas.add(new Artista("a","POP"));
-        */
-
     }
 }

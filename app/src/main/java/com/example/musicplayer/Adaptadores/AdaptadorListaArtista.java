@@ -8,9 +8,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicplayer.Configuracion;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Cancion;
+import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.R;
+import com.example.musicplayer.ventanaArtistas;
 
 import java.util.ArrayList;
 
@@ -54,19 +57,33 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
 
         Artista artista = artistas.get(position);
 
+        ArtistaDAO gestor_artista = new ArtistaDAO();
+
         holder.lblNombreArtista.setText(artistas.get(position).getNombreArtista());
         holder.lblGenero.setText(artistas.get(position).getTipo());
+        holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
 
         /**
-         switch (contactos.get(position).getTipo()){
-         case 0: //Cargar imagen de contactos tipo "familia"
-         holder.imagContacto.setImageResource(R.drawable.familia);
-         break;
+        switch (artistas.get(position).getIdArtista()){
+
+
+             case "1":
+
+                holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
+
+                break;
+
+             case "2":
+                 holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
+                 break;
+
+
          case 1: //Cargar imagen de los contactos tipo "amigos"
          holder.imagContacto.setImageResource(R.drawable.amigo);
          break;
          case 2: //Cargar imagen de los contactos tipo "trabajo"
          holder.imagContacto.setImageResource(R.drawable.trabajo);
+
          }
          */
     }

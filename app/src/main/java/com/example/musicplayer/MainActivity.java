@@ -58,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
         //gestor_artista.borrarTablaArtista(MainActivity.this);
         //gestor_artista.crearTablaArtista(MainActivity.this);
 
-        artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
-        //artista = new Artista("2", "Avicii","Electronic Dance Music");
+        //artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
+        //artista = new Artista("3", "BeckyG","Pop");
 
         //gestor_artista.insertarDatosTablaArtista(MainActivity.this, artista, imageViewToByte(i));
 
+        //gestor_artista.buscarImagen(MainActivity.this, "1", "ImagenArtista");
+        //i.setImageBitmap(gestor_artista.buscarImagenArtista(MainActivity.this, "3", "ImagenArtista"));
 
         //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
         //gestor_usuario_login.crearTablaUsuario(MainActivity.this);

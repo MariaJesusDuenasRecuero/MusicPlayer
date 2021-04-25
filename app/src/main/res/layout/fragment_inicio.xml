@@ -87,7 +87,7 @@
                     android:id="@+id/imb5"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:src="@drawable/beckyg"
+                    android:src="@drawable/artista_beckyg"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:layout_marginStart="5dp"

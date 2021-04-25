@@ -78,12 +78,12 @@ public class ArtistaDAO {
         return dato_buscado;
     }
 
-    public Bitmap buscarImagen(Context context, String id_artista, String parametro){
+    public Bitmap buscarImagenArtista(Context context, String nombre_artista, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = id_artista;
+        clave_primaria [0] = nombre_artista;
         parametro_buscado [0] = parametro;
 
         byte [] image = null;
