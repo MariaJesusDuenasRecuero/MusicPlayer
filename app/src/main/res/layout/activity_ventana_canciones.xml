@@ -13,11 +13,10 @@
         android:text="Seleccionar cancion:"
         android:textSize="18sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lstArtistas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_marginStart="5dp" />
+   <ListView
+       android:id="@+id/listViewSong"
+       android:dividerHeight="10.0sp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 </LinearLayout>
