@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         //gestor_artista.insertarDatosTablaArtista(MainActivity.this, artista, imageViewToByte(i));
 
-        //gestor_artista.buscarImagen(MainActivity.this, "1", "ImagenArtista");
-        //i.setImageBitmap(gestor_artista.buscarImagenArtista(MainActivity.this, "3", "ImagenArtista"));
+        //gestor_artista.buscarImagem(MainActivity.this, "2", "ImagenArtista");
+        //i.setImageBitmap(gestor_artista.buscarImagenArtista(MainActivity.this, "2", "ImagenArtista"));
 
         //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
         //gestor_usuario_login.crearTablaUsuario(MainActivity.this);

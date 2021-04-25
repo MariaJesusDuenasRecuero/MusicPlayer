@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
-import com.example.musicplayer.Adaptadores.AdaptadorListaCancion;
 import com.example.musicplayer.Dominio.Artista;
-import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 
 import java.util.ArrayList;
@@ -27,7 +25,7 @@ public class ventanaArtistas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ventana_canciones);
+        setContentView(R.layout.activity_ventana_artistas);
 
         // Obtenemos una referencia a la lista grafica
         lstArtistas = findViewById(R.id.lstArtistas);

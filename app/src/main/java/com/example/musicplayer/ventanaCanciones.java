@@ -47,7 +47,9 @@ public class ventanaCanciones extends AppCompatActivity {
 
         //ActivityCompat.requestPermissions(ventanaCanciones.this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE},111);
 
-        MediaPlayer mp = MediaPlayer.create(this,R.raw.avicii);
+        int a = R.raw.avicii;
+
+        MediaPlayer mp = MediaPlayer.create(this, a);
         mp.start();
         // Obtenemos una referencia a la lista grafica
         //lstCanciones = findViewById(R.id.lstArtistas);
