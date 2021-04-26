@@ -35,11 +35,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/queen"
+                    android:layout_marginLeft="5dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
+                    android:src="@drawable/queen"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginLeft="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,10 +49,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:background="@color/black"
-                    android:src="@drawable/edurne"
-                    android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
+                    android:background="@color/black"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/edurne"
 
                     app:layout_constraintEnd_toEndOf="@id/imb1"
                     app:layout_constraintEnd_toStartOf="@id/imb1"
@@ -64,9 +64,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/artista_avicii"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
+                    android:src="@drawable/artista_avicii"
                     app:layout_constraintEnd_toEndOf="@id/imb2"
                     app:layout_constraintEnd_toStartOf="@id/imb2"
                     app:layout_constraintTop_toTopOf="@id/imb2" />
@@ -76,9 +76,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/harrystyle"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
+                    android:src="@drawable/harrystyle"
                     app:layout_constraintEnd_toEndOf="@id/imb3"
                     app:layout_constraintEnd_toStartOf="@id/imb3"
                     app:layout_constraintTop_toTopOf="@id/imb3" />
@@ -87,11 +87,11 @@
                     android:id="@+id/imb5"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:src="@drawable/artista_beckyg"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/artista_beckyg"
                     app:layout_constraintEnd_toEndOf="@id/imb4"
                     app:layout_constraintEnd_toStartOf="@id/imb4"
                     app:layout_constraintTop_toTopOf="@id/imb4" />
@@ -100,52 +100,51 @@
                     android:id="@+id/imgb6"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/fifth_harmony"
                     app:layout_constraintEnd_toEndOf="@id/imb5"
                     app:layout_constraintEnd_toStartOf="@id/imb5"
                     app:layout_constraintTop_toTopOf="@id/imb5"
-                    android:src="@drawable/fifth_harmony"
                     tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb7"
-                    android:src="@drawable/artista_all_time_low"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/artista_all_time_low"
                     app:layout_constraintEnd_toEndOf="@id/imgb6"
                     app:layout_constraintEnd_toStartOf="@id/imgb6"
-                    app:layout_constraintTop_toTopOf="@id/imgb6"
-                    />
+                    app:layout_constraintTop_toTopOf="@id/imgb6" />
 
                 <ImageButton
                     android:id="@+id/imgb8"
-                    android:src="@drawable/rafael"
-                    tools:layout_editor_absoluteX="160dp"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/rafael"
                     app:layout_constraintEnd_toEndOf="@id/imgb7"
                     app:layout_constraintEnd_toStartOf="@id/imgb7"
-                    app:layout_constraintTop_toTopOf="@id/imgb7"/>
+                    app:layout_constraintTop_toTopOf="@id/imgb7"
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb9"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
                     android:src="@drawable/melendi"
                     app:layout_constraintEnd_toEndOf="@id/imgb8"
                     app:layout_constraintEnd_toStartOf="@id/imgb8"
@@ -157,13 +156,11 @@
         </HorizontalScrollView>
 
 
-
-
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="256dp"
             android:text="@string/albumes"
             android:textColor="@color/pink"
             android:textSize="26dp"
@@ -194,7 +191,7 @@
                     android:src="@drawable/atl2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb2a"
@@ -207,7 +204,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb1a"
                     app:layout_constraintEnd_toStartOf="@id/imgb1a"
                     app:layout_constraintTop_toTopOf="@id/imgb1a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb3a"
@@ -220,7 +217,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb2a"
                     app:layout_constraintEnd_toStartOf="@id/imgb2a"
                     app:layout_constraintTop_toTopOf="@id/imgb2a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb4a"
@@ -233,7 +230,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb3a"
                     app:layout_constraintEnd_toStartOf="@id/imgb3a"
                     app:layout_constraintTop_toTopOf="@id/imgb3a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb5a"
@@ -246,7 +243,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb4a"
                     app:layout_constraintEnd_toStartOf="@id/imgb4a"
                     app:layout_constraintTop_toTopOf="@id/imgb4a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb6a"
@@ -259,7 +256,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb5a"
                     app:layout_constraintEnd_toStartOf="@id/imgb5a"
                     app:layout_constraintTop_toTopOf="@id/imgb5a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb7a"
@@ -272,7 +269,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb6a"
                     app:layout_constraintEnd_toStartOf="@id/imgb6a"
                     app:layout_constraintTop_toTopOf="@id/imgb6a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb8a"
@@ -285,7 +282,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb7a"
                     app:layout_constraintEnd_toStartOf="@id/imgb7a"
                     app:layout_constraintTop_toTopOf="@id/imgb7a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
                 <ImageButton
                     android:id="@+id/imgb9a"
@@ -298,7 +295,7 @@
                     app:layout_constraintEnd_toEndOf="@id/imgb8a"
                     app:layout_constraintEnd_toStartOf="@id/imgb8a"
                     app:layout_constraintTop_toTopOf="@id/imgb8a"
-                    tools:layout_editor_absoluteX="160dp"/>
+                    tools:layout_editor_absoluteX="160dp" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -311,13 +308,13 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="44dp"
             android:text="@string/artistas"
             android:textColor="@color/pink"
             android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

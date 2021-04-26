@@ -25,28 +25,10 @@
             android:src="@drawable/icon_perfil"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/btn_Cerrar_Sesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:text="Cerrar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_Configuracion_Avanzada"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:text="Confg."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_Cerrar_Sesion" />
+            app:layout_constraintVertical_bias="0.162" />
 
         <TextView
             android:id="@+id/lblNombreUsuario"
@@ -89,8 +71,8 @@
                 android:id="@+id/CorreoPerfilTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="124dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="116dp"
                 android:text="Correo:"
                 android:textColor="#F6F3F3"
                 android:textSize="20sp"
@@ -123,6 +105,26 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_Cerrar_Sesion"
+                android:layout_width="296dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginBottom="180dp"
+                android:text="@string/btn_Cerrar_Sesion"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_Configuracion_Avanzada"
+                android:layout_width="296dp"
+                android:layout_height="43dp"
+                android:layout_marginEnd="68dp"
+                android:layout_marginBottom="124dp"
+                android:text="@string/btn_Configuracion_Avanzada"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
