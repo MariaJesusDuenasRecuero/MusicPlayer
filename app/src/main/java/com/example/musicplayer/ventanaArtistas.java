@@ -45,9 +45,9 @@ public class ventanaArtistas extends AppCompatActivity {
 
     private void rellenarDatos(){
 
-        int max = 3;
+        int max = 9;
 
-        for(int i = 2; i<= max; i++){
+        for(int i = 1; i<= max; i++){
 
             String j = i+"";
             String id_artista = String.valueOf((int)i);
