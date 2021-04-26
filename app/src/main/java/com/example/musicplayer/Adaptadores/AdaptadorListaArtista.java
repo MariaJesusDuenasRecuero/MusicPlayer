@@ -73,7 +73,7 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
-                intent.putExtra("aa", artistas);
+                intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
