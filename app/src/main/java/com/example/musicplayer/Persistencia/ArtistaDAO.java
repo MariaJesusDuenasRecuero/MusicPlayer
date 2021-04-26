@@ -12,6 +12,8 @@ import com.example.musicplayer.Constantes.Constantes;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Usuario;
 
+import java.sql.PreparedStatement;
+
 public class ArtistaDAO {
 
     /**
@@ -171,6 +173,17 @@ public class ArtistaDAO {
         db.close();
 
         return resultado_consulta;
+    }
+
+    public int getProfilesCount(Context context) {
+
+        String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ARTISTA;
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
     }
 
 }

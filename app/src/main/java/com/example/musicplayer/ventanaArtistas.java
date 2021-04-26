@@ -45,7 +45,7 @@ public class ventanaArtistas extends AppCompatActivity {
 
     private void rellenarDatos(){
 
-        int max = 9;
+        int max = gestor_artista.getProfilesCount(ventanaArtistas.this);
 
         for(int i = 1; i<= max; i++){
 
