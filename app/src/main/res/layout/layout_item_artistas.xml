@@ -21,7 +21,7 @@
             android:id="@+id/lblNombreArtista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Nombre_artista"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,8 @@
             android:id="@+id/lblGenero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Genero_artista"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

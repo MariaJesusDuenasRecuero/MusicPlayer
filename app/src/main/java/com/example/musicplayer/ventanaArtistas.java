@@ -1,15 +1,18 @@
 package com.example.musicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
 import com.example.musicplayer.Dominio.Artista;
+import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class ventanaArtistas extends AppCompatActivity {
         // Obtenemos una referencia a la lista grafica
         lstArtistas = findViewById(R.id.lstArtistas);
 
+
         // Crear la lista de contactos y anadir algunos datos de prueba
         artistas = new ArrayList<Artista>();
 
@@ -38,6 +42,8 @@ public class ventanaArtistas extends AppCompatActivity {
 
         adaptador_artistas = new AdaptadorListaArtista(artistas);
         lstArtistas.setAdapter(adaptador_artistas);
+
+        lstArtistas.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         // Metodo que rellena el array con datos de prueba
         rellenarDatos();

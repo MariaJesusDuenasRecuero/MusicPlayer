@@ -1,5 +1,6 @@
 package com.example.musicplayer.Adaptadores;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +10,22 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicplayer.Configuracion;
+import com.example.musicplayer.DetallesArtistaActivity;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Cancion;
+import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.R;
 import com.example.musicplayer.ventanaArtistas;
 
 import java.util.ArrayList;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaArtista.ViewHolder> {
 
     private ArrayList<Artista> artistas;
+    private OnItemSelectedListener itemSelectedListener;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -63,6 +69,14 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
         holder.lblGenero.setText(artistas.get(position).getTipo());
         holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
+                intent.putExtra("aa", artistas);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
         /**
         switch (artistas.get(position).getIdArtista()){
 
@@ -86,6 +100,10 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
 
          }
          */
+    }
+
+    public void setItemSelectedListener(OnItemSelectedListener itemSelectedListener) {
+        this.itemSelectedListener = itemSelectedListener;
     }
 
     @Override
