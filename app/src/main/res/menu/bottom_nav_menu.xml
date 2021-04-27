@@ -6,6 +6,7 @@
         android:id="@+id/inicio"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/inicio"
+
         android:enabled="true"/>
 
     <item

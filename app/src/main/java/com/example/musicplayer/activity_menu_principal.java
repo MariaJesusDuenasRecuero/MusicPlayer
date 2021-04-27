@@ -39,6 +39,7 @@ public class activity_menu_principal extends AppCompatActivity {
 
         openInitialFragment();
 
+
     }
 
     /**
@@ -88,6 +89,7 @@ public class activity_menu_principal extends AppCompatActivity {
      * Descripcion: Permite la navegacion entre paneles
      *
      */
+
     private final BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

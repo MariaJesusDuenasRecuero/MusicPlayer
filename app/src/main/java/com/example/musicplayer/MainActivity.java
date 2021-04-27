@@ -142,11 +142,13 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void oyente_btnIniciarAplicacion(View view){
-
+        Intent i = new Intent(this, activity_menu_principal.class );
+       // i.putExtra("nombre_usuario_registrado", txtNombreUsuarioLogin.getText().toString());
+        startActivity(i);
         //byte [] audio = gestor_usuario_login.buscarAudio(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
         //playMp3(audio);
 
-        if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
+        /*if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 
             dialogoAviso("Datos Imcompletos.",MainActivity.this);
             comprobarDatosFormalarioLogin(view);
@@ -170,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        }
+        }*/
 
     }
 

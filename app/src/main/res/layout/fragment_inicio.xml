@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:paddingTop="75dp"
-    tools:context=".fragment_inicio"
-    >
+    android:paddingTop="30dp"
+    tools:context=".fragment_inicio">
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/fondo"
-        android:alpha="0.5"/>
+        android:alpha="0.5"
+         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,309 +21,316 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
-
-        <HorizontalScrollView
-            android:layout_width="1500px"
-            android:layout_height="450px"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:id="@+id/imb1"
+                <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginEnd="292dp"
+                    android:text="@string/artistas"
+                    android:textColor="@color/pink"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="4dp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/queen"
+                    android:text="@string/albumes"
+                    android:textColor="@color/pink"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="300dp"
+                    tools:ignore="MissingConstraints" />
+
+                <HorizontalScrollView
+                    android:layout_width="1500px"
+                    android:layout_height="350dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="23dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageButton
+                            android:id="@+id/imb1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/queen"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/imb2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:adjustViewBounds="true"
+                            android:background="@color/black"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/edurne"
+
+                            app:layout_constraintEnd_toEndOf="@id/imb1"
+                            app:layout_constraintEnd_toStartOf="@id/imb1"
+                            app:layout_constraintTop_toTopOf="@id/imb1" />
+
+                        <ImageButton
+                            android:id="@+id/imb3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/artista_avicii"
+                            app:layout_constraintEnd_toEndOf="@id/imb2"
+                            app:layout_constraintEnd_toStartOf="@id/imb2"
+                            app:layout_constraintTop_toTopOf="@id/imb2" />
+
+                        <ImageButton
+                            android:id="@+id/imb4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/harrystyle"
+                            app:layout_constraintEnd_toEndOf="@id/imb3"
+                            app:layout_constraintEnd_toStartOf="@id/imb3"
+                            app:layout_constraintTop_toTopOf="@id/imb3" />
+
+                        <ImageButton
+                            android:id="@+id/imb5"
+                            android:layout_width="254dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="88dp"
+                            android:layout_marginEnd="3912dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/artista_beckyg"
+                            app:layout_constraintEnd_toEndOf="@id/imb4"
+                            app:layout_constraintEnd_toStartOf="@id/imb4"
+                            app:layout_constraintTop_toTopOf="@id/imb4" />
+
+                        <ImageButton
+                            android:id="@+id/imgb6"
+                            android:layout_width="254dp"
+                            android:layout_height="163dp"
+                            android:layout_marginEnd="8168dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/fifth_harmony"
+                            app:layout_constraintEnd_toEndOf="@id/imb5"
+                            app:layout_constraintEnd_toStartOf="@id/imb5"
+                            app:layout_constraintTop_toTopOf="@id/imb5" />
+
+                        <ImageButton
+                            android:id="@+id/imgb7"
+                            android:layout_width="254dp"
+                            android:layout_height="163dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/artista_all_time_low"
+                            app:layout_constraintEnd_toEndOf="@id/imgb6"
+                            app:layout_constraintEnd_toStartOf="@id/imgb6"
+                            app:layout_constraintTop_toTopOf="@id/imgb6" />
+
+                        <ImageButton
+                            android:id="@+id/imgb8"
+                            android:layout_width="254dp"
+                            android:layout_height="163dp"
+                            android:layout_marginEnd="2036dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/rafael"
+                            app:layout_constraintEnd_toEndOf="@id/imgb7"
+                            app:layout_constraintEnd_toStartOf="@id/imgb7"
+                            app:layout_constraintStart_toEndOf="@+id/imgb9"
+                            app:layout_constraintTop_toTopOf="@id/imgb7" />
+
+                        <ImageButton
+                            android:id="@+id/imgb9"
+                            android:layout_width="254dp"
+                            android:layout_height="163dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/melendi"
+                            app:layout_constraintEnd_toEndOf="@id/imgb8"
+                            app:layout_constraintEnd_toStartOf="@id/imgb8"
+                            app:layout_constraintTop_toTopOf="@id/imgb8"
+                            tools:layout_editor_absoluteX="160dp" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="2500px"
+                    android:layout_height="450px"
+                    android:layout_marginTop="316dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-                <ImageButton
-                    android:id="@+id/imb2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:background="@color/black"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/edurne"
-
-                    app:layout_constraintEnd_toEndOf="@id/imb1"
-                    app:layout_constraintEnd_toStartOf="@id/imb1"
-                    app:layout_constraintTop_toTopOf="@id/imb1" />
-
-                <ImageButton
-                    android:id="@+id/imb3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/artista_avicii"
-                    app:layout_constraintEnd_toEndOf="@id/imb2"
-                    app:layout_constraintEnd_toStartOf="@id/imb2"
-                    app:layout_constraintTop_toTopOf="@id/imb2" />
-
-                <ImageButton
-                    android:id="@+id/imb4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/harrystyle"
-                    app:layout_constraintEnd_toEndOf="@id/imb3"
-                    app:layout_constraintEnd_toStartOf="@id/imb3"
-                    app:layout_constraintTop_toTopOf="@id/imb3" />
-
-                <ImageButton
-                    android:id="@+id/imb5"
-                    android:layout_width="254dp"
-                    android:layout_height="163dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/artista_beckyg"
-                    app:layout_constraintEnd_toEndOf="@id/imb4"
-                    app:layout_constraintEnd_toStartOf="@id/imb4"
-                    app:layout_constraintTop_toTopOf="@id/imb4" />
-
-                <ImageButton
-                    android:id="@+id/imgb6"
-                    android:layout_width="254dp"
-                    android:layout_height="163dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/fifth_harmony"
-                    app:layout_constraintEnd_toEndOf="@id/imb5"
-                    app:layout_constraintEnd_toStartOf="@id/imb5"
-                    app:layout_constraintTop_toTopOf="@id/imb5"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb7"
-                    android:layout_width="254dp"
-                    android:layout_height="163dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/artista_all_time_low"
-                    app:layout_constraintEnd_toEndOf="@id/imgb6"
-                    app:layout_constraintEnd_toStartOf="@id/imgb6"
-                    app:layout_constraintTop_toTopOf="@id/imgb6" />
-
-                <ImageButton
-                    android:id="@+id/imgb8"
-                    android:layout_width="254dp"
-                    android:layout_height="163dp"
-                    android:layout_marginEnd="2036dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/rafael"
-                    app:layout_constraintEnd_toEndOf="@id/imgb7"
-                    app:layout_constraintEnd_toStartOf="@id/imgb7"
-                    app:layout_constraintTop_toTopOf="@id/imgb7" />
-
-                <ImageButton
-                    android:id="@+id/imgb9"
-                    android:layout_width="254dp"
-                    android:layout_height="163dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/melendi"
-                    app:layout_constraintEnd_toEndOf="@id/imgb8"
-                    app:layout_constraintEnd_toStartOf="@id/imgb8"
-                    app:layout_constraintTop_toTopOf="@id/imgb8"
-                    tools:layout_editor_absoluteX="160dp" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </HorizontalScrollView>
+                        <ImageButton
+                            android:id="@+id/imgb1a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/atl2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb2a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/avici4"
+                            app:layout_constraintEnd_toEndOf="@id/imgb1a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb1a"
+                            app:layout_constraintTop_toTopOf="@id/imgb1a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb3a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/beckyg2"
+                            app:layout_constraintEnd_toEndOf="@id/imgb2a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb2a"
+                            app:layout_constraintTop_toTopOf="@id/imgb2a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb4a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/edurne5"
+                            app:layout_constraintEnd_toEndOf="@id/imgb3a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb3a"
+                            app:layout_constraintTop_toTopOf="@id/imgb3a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb5a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/fh3"
+                            app:layout_constraintEnd_toEndOf="@id/imgb4a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb4a"
+                            app:layout_constraintTop_toTopOf="@id/imgb4a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb6a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/hs1"
+                            app:layout_constraintEnd_toEndOf="@id/imgb5a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb5a"
+                            app:layout_constraintTop_toTopOf="@id/imgb5a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb7a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/melendi5"
+                            app:layout_constraintEnd_toEndOf="@id/imgb6a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb6a"
+                            app:layout_constraintTop_toTopOf="@id/imgb6a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb8a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/rafael1"
+                            app:layout_constraintEnd_toEndOf="@id/imgb7a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb7a"
+                            app:layout_constraintTop_toTopOf="@id/imgb7a"
+                            tools:layout_editor_absoluteX="160dp" />
+
+                        <ImageButton
+                            android:id="@+id/imgb9a"
+                            android:layout_width="190dp"
+                            android:layout_height="163dp"
+                            android:layout_marginTop="2dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/queen4"
+                            app:layout_constraintEnd_toEndOf="@id/imgb8a"
+                            app:layout_constraintEnd_toStartOf="@id/imgb8a"
+                            app:layout_constraintTop_toTopOf="@id/imgb8a"
+                            tools:layout_editor_absoluteX="160dp" />
 
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="208dp"
-            android:text="@string/albumes"
-            android:textColor="@color/pink"
-            android:textSize="26dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <HorizontalScrollView
-            android:layout_width="2500px"
-            android:layout_height="450px"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <ImageButton
-                    android:id="@+id/imgb1a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/atl2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb2a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/avici4"
-                    app:layout_constraintEnd_toEndOf="@id/imgb1a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb1a"
-                    app:layout_constraintTop_toTopOf="@id/imgb1a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb3a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/beckyg2"
-                    app:layout_constraintEnd_toEndOf="@id/imgb2a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb2a"
-                    app:layout_constraintTop_toTopOf="@id/imgb2a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb4a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/edurne5"
-                    app:layout_constraintEnd_toEndOf="@id/imgb3a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb3a"
-                    app:layout_constraintTop_toTopOf="@id/imgb3a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb5a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/fh3"
-                    app:layout_constraintEnd_toEndOf="@id/imgb4a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb4a"
-                    app:layout_constraintTop_toTopOf="@id/imgb4a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb6a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/hs1"
-                    app:layout_constraintEnd_toEndOf="@id/imgb5a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb5a"
-                    app:layout_constraintTop_toTopOf="@id/imgb5a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb7a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/melendi5"
-                    app:layout_constraintEnd_toEndOf="@id/imgb6a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb6a"
-                    app:layout_constraintTop_toTopOf="@id/imgb6a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb8a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/rafael1"
-                    app:layout_constraintEnd_toEndOf="@id/imgb7a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb7a"
-                    app:layout_constraintTop_toTopOf="@id/imgb7a"
-                    tools:layout_editor_absoluteX="160dp" />
-
-                <ImageButton
-                    android:id="@+id/imgb9a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="4dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/queen4"
-                    app:layout_constraintEnd_toEndOf="@id/imgb8a"
-                    app:layout_constraintEnd_toStartOf="@id/imgb8a"
-                    app:layout_constraintTop_toTopOf="@id/imgb8a"
-                    tools:layout_editor_absoluteX="160dp" />
-
+                </HorizontalScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
-
-        </HorizontalScrollView>
-
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/artistas"
-            android:textColor="@color/pink"
-            android:textSize="26dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.081"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
