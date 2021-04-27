@@ -28,9 +28,9 @@ public class DetallesArtistaActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         this.identificador_artista = bundle.getString("identificador_artista");
 
-        nombre_artista = findViewById(R.id.lblTituloArtista);
-        image_artista = findViewById(R.id.ivArtista);
-        descripcion_artista = findViewById(R.id.lblDescripcion);
+        nombre_artista = findViewById(R.id.lblTituloAlbum);
+        image_artista = findViewById(R.id.ivAlbum);
+        descripcion_artista = findViewById(R.id.lblDescripcionAlbum);
 
         image_artista.setImageBitmap(gestor_artista.buscarImagenArtista(DetallesArtistaActivity.this, this.identificador_artista,
                 "ImagenArtista"));

@@ -14,6 +14,7 @@ import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.R;
+import com.example.musicplayer.detallesAlbumes;
 
 import java.util.ArrayList;
 
@@ -67,9 +68,9 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
-                //intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
-                //holder.itemView.getContext().startActivity(intent);
+                Intent intent = new Intent(holder.itemView.getContext(), detallesAlbumes.class);
+                intent.putExtra("identificador_album", albumes.get(position).getIdAlbum());
+                holder.itemView.getContext().startActivity(intent);
             }
         });
 
