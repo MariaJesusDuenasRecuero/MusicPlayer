@@ -110,21 +110,25 @@
                 android:id="@+id/btn_Cerrar_Sesion"
                 android:layout_width="296dp"
                 android:layout_height="42dp"
-                android:layout_marginStart="68dp"
-                android:layout_marginBottom="272dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="244dp"
                 android:text="@string/btn_Cerrar_Sesion"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/btn_Configuracion_Avanzada"
                 android:layout_width="296dp"
                 android:layout_height="43dp"
-                android:layout_marginEnd="68dp"
-                android:layout_marginBottom="216dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="164dp"
                 android:text="@string/btn_Configuracion_Avanzada"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

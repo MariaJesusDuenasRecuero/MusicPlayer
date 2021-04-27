@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="@color/white"
+        android:background="@drawable/fondo"
 
         android:id="@+id/framgment_layout"
 
@@ -50,7 +50,6 @@
         app:menu="@menu/bottom_nav_menu"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-
         app:labelVisibilityMode="labeled"
         style="@style/BottomNavigation"/>
 

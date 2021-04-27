@@ -20,6 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
         <HorizontalScrollView
             android:layout_width="1500px"
             android:layout_height="450px"
@@ -127,15 +137,13 @@
                     android:id="@+id/imgb8"
                     android:layout_width="254dp"
                     android:layout_height="163dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="2036dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
                     android:src="@drawable/rafael"
                     app:layout_constraintEnd_toEndOf="@id/imgb7"
                     app:layout_constraintEnd_toStartOf="@id/imgb7"
-                    app:layout_constraintTop_toTopOf="@id/imgb7"
-                    tools:layout_editor_absoluteX="160dp" />
+                    app:layout_constraintTop_toTopOf="@id/imgb7" />
 
                 <ImageButton
                     android:id="@+id/imgb9"
@@ -160,13 +168,13 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="256dp"
+            android:layout_marginTop="208dp"
             android:text="@string/albumes"
             android:textColor="@color/pink"
             android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintHorizontal_bias="0.051"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -308,13 +316,13 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="4dp"
             android:text="@string/artistas"
             android:textColor="@color/pink"
             android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintHorizontal_bias="0.081"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

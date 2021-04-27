@@ -9,17 +9,31 @@
         android:id="@+id/navigation_home"
         android:name="com.example.musicplayer.ui.home.HomeFragment"
         android:label="@string/inicio"
-        tools:layout="@layout/fragment_inicio" />
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_artistas"
+            app:destination="@id/navigation_artistas" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_artistas"
-        android:name="com.example.musicplayer.ui.dashboard.DashboardFragment"
+        android:name="com.example.musicplayer.ui.artistas.layout_item_artistas"
         android:label="@string/artistas"
-        tools:layout="@layout/fragment_artistas" />
+        tools:layout="@layout/fragment_artistas" >
+        <action
+            android:id="@+id/action_navigation_artistas_to_navigation_albumes"
+            app:destination="@id/navigation_albumes" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_albumes"
         android:name="com.example.musicplayer.ui.notifications.NotificationsFragment"
         android:label="@string/albumes"
         tools:layout="@layout/fragment_albumes" />
+
+    <fragment
+        android:id="@+id/navigation_perfil"
+        android:name="com.example.musicplayer.ui.notifications.NotificationsFragment"
+        android:label="@string/albumes"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>

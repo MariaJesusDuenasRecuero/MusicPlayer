@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/fondoinicio"
     android:orientation="vertical"
     android:paddingTop="50dp"
     tools:context=".MainActivity"
@@ -14,8 +14,8 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"
-        android:background="@color/white"
+        android:layout_weight="7"
+
         android:src="@drawable/logo" />
 
     <TextView
@@ -24,9 +24,8 @@
         android:layout_height="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_weight="3"
-        android:textColor="@color/pink"
-        android:text="@string/lblintroduzcaDatos"
+        android:layout_weight="2"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -42,13 +41,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="7dp"
         android:layout_marginRight="30dp"
-
+        android:textColor="@color/white"
         android:layout_weight="1"
         android:drawableStart="@drawable/icon_perfil"
         android:drawablePadding="15dp"
         android:ems="10"
         android:hint="@string/nombreUsuario"
-        android:textColor="#131313"
         android:textSize="16dp" />
 
     <EditText
@@ -76,6 +74,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="15dp"
         android:layout_weight="3"
+        android:textStyle="bold"
         android:backgroundTint="@color/pink"
         android:onClick="oyente_btnIniciarAplicacion"
         android:text="@string/IniciarSesión"
@@ -91,7 +90,7 @@
         android:layout_weight="3"
         android:backgroundTint="@color/pink"
         android:textSize="16dp"
-
+        android:textStyle="bold"
         android:onClick="oyente_btnRegristroAplicacion"
         android:text="@string/Registrarse" />
 
@@ -139,6 +138,7 @@
         android:layout_weight="2"
         android:layout_marginBottom="15dp"
         android:text="@string/lblDesarrolladores"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp" />
