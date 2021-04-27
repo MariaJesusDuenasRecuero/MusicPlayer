@@ -27,9 +27,9 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
 
             super(view);
 
-            lblNombre = view.findViewById(R.id.lblNombreArtista);
-            lblDuracion = view.findViewById(R.id.lblGenero);
-            imagCancion = view.findViewById(R.id.imgArtista);
+            lblNombre = view.findViewById(R.id.lblNombreAlbum);
+            lblDuracion = view.findViewById(R.id.lblNombreArtistaAlbum);
+            imagCancion = view.findViewById(R.id.imgAlbum);
 
         }
     }

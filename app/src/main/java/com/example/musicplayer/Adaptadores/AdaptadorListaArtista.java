@@ -9,18 +9,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicplayer.Configuracion;
 import com.example.musicplayer.DetallesArtistaActivity;
 import com.example.musicplayer.Dominio.Artista;
-import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.ventanaArtistas;
 
 import java.util.ArrayList;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaArtista.ViewHolder> {
 
@@ -37,9 +32,9 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
 
             super(view);
 
-            lblNombreArtista = view.findViewById(R.id.lblNombreArtista);
-            lblGenero = view.findViewById(R.id.lblGenero);
-            imgArtista = view.findViewById(R.id.imgArtista);
+            lblNombreArtista = view.findViewById(R.id.lblNombreAlbum);
+            lblGenero = view.findViewById(R.id.lblNombreArtistaAlbum);
+            imgArtista = view.findViewById(R.id.imgAlbum);
 
         }
     }

@@ -21,8 +21,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.musicplayer.Constantes.Constantes;
+import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Usuario;
+import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
 import com.example.musicplayer.Persistencia.ImagenDAO;
@@ -42,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
     private ImagenDAO gestor_imagen = new ImagenDAO();
     private ArtistaDAO gestor_artista = new ArtistaDAO();
+    private AlbumDAO gestor_album = new AlbumDAO();
     private Artista artista;
+    private Album album;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +62,19 @@ public class MainActivity extends AppCompatActivity {
         //gestor_artista.borrarTablaArtista(MainActivity.this);
         //gestor_artista.crearTablaArtista(MainActivity.this);
 
+        //gestor_album.crearTablaAlbum(MainActivity.this);
         //artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
         //artista = new Artista("3", "BeckyG","Pop");
 
+        //album = new Album("22", "1","Nothing Personal","41:00");
+
+        //gestor_album.insertarDatosTablaArtista(MainActivity.this, album, imageViewToByte(i));
         //gestor_artista.insertarDatosTablaArtista(MainActivity.this, artista, imageViewToByte(i));
 
+
+
         //gestor_artista.buscarImagem(MainActivity.this, "2", "ImagenArtista");
-        //i.setImageBitmap(gestor_artista.buscarImagenArtista(MainActivity.this, "2", "ImagenArtista"));
+        //i.setImageBitmap(gestor_album.buscarImagenAlbum(MainActivity.this, "33", "ImagenAlbum"));
 
         //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
         //gestor_usuario_login.crearTablaUsuario(MainActivity.this);

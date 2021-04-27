@@ -9,12 +9,10 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.musicplayer.Constantes.Constantes;
+import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Dominio.Artista;
-import com.example.musicplayer.Dominio.Usuario;
 
-import java.sql.PreparedStatement;
-
-public class ArtistaDAO {
+public class AlbumDAO {
 
     /**
      *
@@ -52,12 +50,19 @@ public class ArtistaDAO {
 
     }
 
-    public String buscarDatosArtista(Context context, String id_usuario, String parametro){
+    /**
+     *
+     * @param context
+     * @param id_album
+     * @param parametro
+     * @return
+     */
+    public String buscarDatosArtista(Context context, String id_album, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = id_usuario;
+        clave_primaria [0] = id_album;
         parametro_buscado [0] = parametro;
 
         String dato_buscado = null;
@@ -65,7 +70,8 @@ public class ArtistaDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_ARTISTA, parametro_buscado, Constantes.CAMPO_ARTISTA_ID+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_ALBUM, parametro_buscado, Constantes.CAMPO_ALBUM_ID+"=?",
+                    clave_primaria, null,null,null);
 
             cursor.moveToFirst();
             dato_buscado = cursor.getString(0);
@@ -80,12 +86,19 @@ public class ArtistaDAO {
         return dato_buscado;
     }
 
-    public Bitmap buscarImagenArtista(Context context, String id_artista, String parametro){
+    /**
+     *
+     * @param context
+     * @param id_album
+     * @param parametro
+     * @return
+     */
+    public Bitmap buscarImagenAlbum(Context context, String id_album, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = id_artista;
+        clave_primaria [0] = id_album;
         parametro_buscado [0] = parametro;
 
         byte [] image = null;
@@ -93,8 +106,8 @@ public class ArtistaDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_ARTISTA, parametro_buscado,
-                    Constantes.CAMPO_ARTISTA_ID+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_ALBUM, parametro_buscado,
+                    Constantes.CAMPO_ALBUM_ID+"=?",clave_primaria, null,null,null);
 
             cursor.moveToFirst();
             image = cursor.getBlob(0);
@@ -110,21 +123,28 @@ public class ArtistaDAO {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
-    public void insertarDatosTablaArtista(Context context, Artista artista, byte [] imagen){
+    /**
+     *
+     * @param context
+     * @param album
+     * @param imagen
+     */
+    public void insertarDatosTablaArtista(Context context, Album album, byte [] imagen){
 
         SQLiteDatabase db = this.getConnWrite(context);
 
         byte[] data = imagen;
 
-        String sql = "INSERT INTO Artista VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Album VALUES (?,?,?,?,?)";
 
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();
 
-        statement.bindString(1, artista.getIdArtista());
-        statement.bindString(2, artista.getNombreArtista());
-        statement.bindString(3, artista.getTipo());
-        statement.bindBlob(4, imagen);
+        statement.bindString(1, album.getIdAlbum());
+        statement.bindString(2, album.getIdArtista());
+        statement.bindString(3, album.getNombreAlbum());
+        statement.bindString(4, album.getDuracionAlbum());
+        statement.bindBlob(5, imagen);
 
         statement.executeInsert();
 
@@ -132,11 +152,17 @@ public class ArtistaDAO {
 
     }
 
-    public void updateDataImagen(Context context, String id_artista, byte [] image) {
+    /**
+     *
+     * @param context
+     * @param id_album
+     * @param image
+     */
+    public void updateDataImagenAlbum(Context context, String id_album, byte [] image) {
 
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String sql = "UPDATE Artista SET ImagenArtista = ? WHERE IdArtista='"+id_artista+"'";
+        String sql = "UPDATE Album SET ImagenAlbum = ? WHERE IdAlbum='"+id_album+"'";
 
         SQLiteStatement statement = db.compileStatement(sql);
 
@@ -147,19 +173,28 @@ public class ArtistaDAO {
         db.close();
     }
 
-    public void crearTablaArtista(Context context){
+    /**
+     *
+     * @param context
+     */
+    public void crearTablaAlbum(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
-        db.execSQL(Constantes.CREAR_TABLA_ARTISTA);
+        db.execSQL(Constantes.CREAR_TABLA_ALBUM);
 
     }
 
-    public int borrarTablaArtista(Context context){
+    /**
+     *
+     * @param context
+     * @return
+     */
+    public int borrarTablaAlbum(Context context){
 
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String borrar_tabla_artista_sql = "DROP TABLE Artista";
+        String borrar_tabla_artista_sql = "DROP TABLE Album";
 
         try{
 
@@ -175,9 +210,14 @@ public class ArtistaDAO {
         return resultado_consulta;
     }
 
-    public int getProfilesCount(Context context) {
+    /**
+     *
+     * @param context
+     * @return
+     */
+    public int getProfilesCountAlbum(Context context) {
 
-        String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ARTISTA;
+        String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ALBUM;
         SQLiteDatabase db = this.getConnRead(context);
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();
@@ -185,5 +225,4 @@ public class ArtistaDAO {
 
         return count;
     }
-
 }

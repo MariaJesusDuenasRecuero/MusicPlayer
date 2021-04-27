@@ -109,8 +109,14 @@ public class activity_menu_principal extends AppCompatActivity {
                      */
                     break;
                 case R.id.albumes:
+
+                    Intent ventana_album = new Intent(activity_menu_principal.this, ventanaAlbum.class );
+                    startActivity(ventana_album);
+
+                    /**
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.framgment_layout, new fragment_albumes()).commit();
+                     */
                     break;
                 case R.id.canciones:
 

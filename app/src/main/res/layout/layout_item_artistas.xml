@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imgArtista"
+        android:id="@+id/imgAlbum"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:minWidth="50dp"
@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lblNombreArtista"
+            android:id="@+id/lblNombreAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre_artista"
@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lblGenero"
+            android:id="@+id/lblNombreArtistaAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Genero_artista"

@@ -5,14 +5,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
 import com.example.musicplayer.Dominio.Artista;
-import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 
 import java.util.ArrayList;
@@ -31,7 +28,7 @@ public class ventanaArtistas extends AppCompatActivity {
         setContentView(R.layout.activity_ventana_artistas);
 
         // Obtenemos una referencia a la lista grafica
-        lstArtistas = findViewById(R.id.lstArtistas);
+        lstArtistas = findViewById(R.id.lstAlbum);
 
 
         // Crear la lista de contactos y anadir algunos datos de prueba

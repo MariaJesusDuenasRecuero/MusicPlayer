@@ -28,6 +28,16 @@ public class Constantes {
     public static final String CAMPO_ARTISTA_TIPO = "Tipo";
     public static final String CAMPO_USUARIO_IMAGEN_ARTISTA = "ImagenArtista";
 
+    //Constantes campos tabla ALBUM (5)
+
+    public static final String NOMBRE_TABLA_ALBUM = "Album";
+
+    public static final String CAMPO_ALBUM_ID = "IdAlbum";
+    public static final String CAMPO_ALBUM_ARTISTA_ID = "idAutor";
+    public static final String CAMPO_ALBUM_NOMBRE = "NombreAlbum";
+    public static final String CAMPO_ALBUM_DURACION = "DuracionAlbum";
+    public static final String CAMPO_ALBUM_IMAGEN_PORTADA = "ImagenAlbum";
+
     //Constantes campos tabla Imagen (2)
 
     public static final String NOMBRE_TABLA_IMAGEN = "Imagen";
@@ -46,6 +56,10 @@ public class Constantes {
     public static final String CREAR_TABLA_ARTISTA =
             "CREATE TABLE "+NOMBRE_TABLA_ARTISTA+" ("+CAMPO_ARTISTA_ID+" TEXT, "+CAMPO_ARTISTA_NOMBRE+" TEXT, "+CAMPO_ARTISTA_TIPO+" TEXT, "+
                     CAMPO_USUARIO_IMAGEN_ARTISTA+" BLOB)";
+
+    public static final String CREAR_TABLA_ALBUM =
+            "CREATE TABLE "+NOMBRE_TABLA_ALBUM+" ("+CAMPO_ALBUM_ID+" TEXT, "+CAMPO_ALBUM_ARTISTA_ID+" TEXT, "+CAMPO_ALBUM_NOMBRE+" TEXT, "
+                    +CAMPO_ALBUM_DURACION+" TEXT, "+ CAMPO_ALBUM_IMAGEN_PORTADA+" BLOB)";
 
     public static final String CREAR_TABLA_IMAGEN =
             "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";

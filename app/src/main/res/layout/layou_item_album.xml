@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/imgAlbum"
-        android:layout_width="96dp"
-        android:layout_height="90dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:minWidth="50dp"
         android:minHeight="50dp"
         app:srcCompat="@drawable/ic_launcher_background" />
@@ -21,14 +21,16 @@
             android:id="@+id/lblNombreAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="20sp" />
+            android:text="Nombre_album"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lblNombreArtistaAlbum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Nombre_artista"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>
