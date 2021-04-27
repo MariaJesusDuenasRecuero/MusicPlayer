@@ -3,15 +3,12 @@ package com.example.musicplayer;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -46,12 +43,12 @@ public class ventanaRegistro extends AppCompatActivity {
         //Obtenemos las referencias a los elementos graficos de la GUI
 
         txtNombreUsuario = findViewById(R.id.txtNombreUsuario);
-        txtNombre = findViewById(R.id.txtNombre);
-        txtPassword = findViewById(R.id.txtPassword);
+        txtNombre = findViewById(R.id.txtCambiar_nombre);
+        txtPassword = findViewById(R.id.txtCambiar_Password);
         txtConfirmarPassword = findViewById(R.id.txtConfirmarPassword);
-        txtTelefono = findViewById(R.id.txtTelefono);
-        txtCorreoElectronico = findViewById(R.id.txtCorreoElectronico);
-        txtFechaNacimiento = findViewById(R.id.txtFechaNacimiento);
+        txtTelefono = findViewById(R.id.txtCambiar_Telefono);
+        txtCorreoElectronico = findViewById(R.id.txtCambiar_email);
+        txtFechaNacimiento = findViewById(R.id.txtCambiar_FechaNacimiento);
 
         i = findViewById(R.id.imageViewPerfil);
 

@@ -13,10 +13,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +39,10 @@ public class Configuracion extends AppCompatActivity {
     private EditText txtNombre;
     private EditText txtCorreo;
     private EditText txtPassword;
+
+    private EditText txtTelefono;
+    private EditText txtFechaNacimiento;
+
     private ImageView imageView;
 
     private Random r = new Random();
@@ -62,7 +64,11 @@ public class Configuracion extends AppCompatActivity {
         this.txtNombre = findViewById(R.id.txtCambiar_nombre);
         this.txtCorreo = findViewById(R.id.txtCambiar_email);
         this.txtPassword = findViewById(R.id.txtCambiar_Password);
-        this.imageView = (ImageView) findViewById(R.id.imageView5);
+
+        this.txtTelefono = findViewById(R.id.txtCambiar_Telefono);
+        this.txtFechaNacimiento = findViewById(R.id.txtCambiar_FechaNacimiento);
+
+        this.imageView = (ImageView) findViewById(R.id.imageViewConfiguracion);
 
         this.valor = r.nextInt(500)+1;
 
@@ -158,7 +164,7 @@ public class Configuracion extends AppCompatActivity {
                             nombre_usuario_registrado, "Nombre", txtNombre.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato"
+                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
                             + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado, "Nombre"), Toast.LENGTH_LONG);
                     notification.show();
 
@@ -175,13 +181,12 @@ public class Configuracion extends AppCompatActivity {
                             nombre_usuario_registrado, "CorreoElectronico", txtCorreo.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato"
+                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
                             + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado, "CorreoElectronico"), Toast.LENGTH_LONG);
                     notification.show();
 
 
                 }
-
                 if (txtPassword.getText().toString().equals("")) {
 
                     Toast notification;
@@ -193,11 +198,48 @@ public class Configuracion extends AppCompatActivity {
                             nombre_usuario_registrado, "Password", txtPassword.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato"
+                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
                             + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
                             "Password"), Toast.LENGTH_LONG);
                     notification.show();
 
+
+                }
+                if(txtTelefono.getText().toString().equals("")){
+
+                    Toast notification;
+                    notification = Toast.makeText(Configuracion.this, "Telefono no cambiado", Toast.LENGTH_LONG);
+                    notification.show();
+
+                }
+                else {
+                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                            nombre_usuario_registrado, "Telefono", txtTelefono.getText().toString());
+
+                    Toast notification;
+                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
+                            "Telefono"), Toast.LENGTH_LONG);
+                    notification.show();
+
+                }
+
+                if(txtFechaNacimiento.getText().toString().equals("")){
+
+                    Toast notification;
+                    notification = Toast.makeText(Configuracion.this, "Fecha Nacimeinto no cambiado", Toast.LENGTH_LONG);
+                    notification.show();
+
+                }
+                else {
+                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                            nombre_usuario_registrado, "FechaNacimiento", txtFechaNacimiento.getText().toString());
+
+                    Toast notification;
+                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
+                            "FechaNacimiento"), Toast.LENGTH_LONG);
+                    notification.show();
 
                 }
             }

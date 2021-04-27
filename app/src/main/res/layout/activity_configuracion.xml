@@ -1,108 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".ventanaRegistro">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btnBorrarCuenta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="571dp"
-        android:layout_marginEnd="205dp"
-        android:layout_marginBottom="112dp"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
         android:text="Eliminar Cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_FechaNacimiento" />
+
+    <Button
+        android:id="@+id/btnModificarDatos"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Modificar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_FechaNacimiento" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:text="Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewConfiguracion" />
+
+    <Button
+        android:id="@+id/btnCambiarFoto"
+        android:layout_width="135dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="Seleccionar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewConfiguracion" />
+
+    <ImageView
+        android:id="@+id/imageViewConfiguracion"
+        android:layout_width="77dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_perfil_menu" />
+
+    <EditText
+        android:id="@+id/txtCambiar_nombre"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="476dp"
+        android:layout_weight="2"
+        android:backgroundTintMode="add"
+        android:drawableLeft="@drawable/usuario"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="@string/Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <EditText
+        android:id="@+id/txtCambiar_email"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="@string/Correo_electrónico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_nombre" />
 
-        <EditText
-            android:id="@+id/txtCambiar_nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="25dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/txtCambiar_Password"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:drawableLeft="@drawable/icon_contrasena"
+        android:drawablePadding="8dp"
+        android:hint="@string/Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_email" />
 
-        <EditText
-            android:id="@+id/txtCambiar_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/txtCambiar_Telefono"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:drawableLeft="@drawable/icon_telefono"
+        android:drawablePadding="8dp"
+        android:hint="@string/numeroTelefono"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_Password" />
 
-        <EditText
-            android:id="@+id/txtCambiar_Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icon_perfil_menu" />
-
-        <EditText
-            android:id="@+id/txtCambiar_Telefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/btnCambiarFoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-
-        <EditText
-            android:id="@+id/txtCambiar_FechaNacimiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="25dp"
-            android:ems="10"
-            android:inputType="date" />
-
-        <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add" />
-
-        <Button
-            android:id="@+id/btnModificarDatos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Modificar" />
-
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/txtCambiar_FechaNacimiento"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
+        android:drawableLeft="@drawable/icon_calendario"
+        android:drawablePadding="8dp"
+        android:hint="@string/FechaNacimiento"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCambiar_Telefono" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
