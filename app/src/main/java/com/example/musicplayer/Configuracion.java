@@ -1,10 +1,13 @@
 package com.example.musicplayer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -43,7 +46,7 @@ public class Configuracion extends AppCompatActivity {
     private Random r = new Random();
     private int valor = 0;
     private String nombre_foto = "Imagen";
-
+    private Toast notification;
 
     final int REQUEST_CODE_GALLERY = 999;
 
@@ -90,26 +93,7 @@ public class Configuracion extends AppCompatActivity {
 
                     //Log.d("Nombre", comprobar_nombre_imagen);
 
-                    /**
-                    if(comprobar_nombre_imagen.equals(nombre_foto)){
 
-                        Random e = new Random();
-                        int v = r.nextInt(900)+1;
-
-                        nombre_foto = "Imagen"+v;
-
-                    }
-                     **/
-
-                    /**
-                    gestor_imagenes_perfil.insertarDatosTablaImagen(Configuracion.this,
-                            nombre_foto, imageViewToByte(imageView));
-
-                    //Log.d("Nombre", "Nombre foto"+nombre_foto);
-
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this, nombre_usuario_registrado,
-                            "ImagenPerfil", nombre_foto);
-                    */
                     gestor_usuario_configuracion.updateDataImagen(Configuracion.this, nombre_usuario_registrado, imageViewToByte(imageView));
 
 
@@ -133,9 +117,27 @@ public class Configuracion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                gestor_usuario_configuracion.eliminarUsuario(Configuracion.this, nombre_usuario_registrado);
-                Intent i = new Intent(Configuracion.this, MainActivity.class);
-                startActivity(i);
+                new AlertDialog.Builder(Configuracion.this)
+                        .setTitle("¿Está seguro que desea elimar su cuenta?")
+                        .setMessage("Si elima la cuenta se perderan todos sus datos.")
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                gestor_usuario_configuracion.eliminarUsuario(Configuracion.this, nombre_usuario_registrado);
+                                Intent i = new Intent(Configuracion.this, MainActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .show();
+
+
 
             }
         });
@@ -242,6 +244,32 @@ public class Configuracion extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+
+    }
+    /**
+     *
+     * Descripcion: Metodo que muestra un aviso al usuario dependiendo de las acciones que este realice
+     *
+     * @param aviso Mensaje personalizado dependiendo del mensaje del aviso
+     * @param context contexto en este caso es ventanaRegistro.this
+     */
+    private void dialogoAviso(String aviso, Context context){
+
+        AlertDialog.Builder dialogo_builder = new AlertDialog.Builder(context);
+        dialogo_builder .setMessage(aviso);
+        dialogo_builder.setCancelable(true);
+
+        dialogo_builder.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+
+        AlertDialog dialogo_alert = dialogo_builder.create();
+        dialogo_alert.show();
 
     }
 
