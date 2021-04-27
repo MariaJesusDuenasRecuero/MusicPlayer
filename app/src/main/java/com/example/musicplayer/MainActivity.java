@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,10 @@ import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private Artista artista;
     private Album album;
 
+    private MediaPlayer mediaPlayer = new MediaPlayer();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +66,16 @@ public class MainActivity extends AppCompatActivity {
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
         i = findViewById(R.id.imageView3);
 
+
+
         //gestor_artista.borrarTablaArtista(MainActivity.this);
         //gestor_artista.crearTablaArtista(MainActivity.this);
 
         //gestor_album.crearTablaAlbum(MainActivity.this);
         //artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
         //artista = new Artista("3", "BeckyG","Pop");
+
+
 
         //album = new Album("22", "1","Nothing Personal","41:00");
 
@@ -83,6 +94,35 @@ public class MainActivity extends AppCompatActivity {
 
         //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1", imageViewToByte(i));
 
+    }
+
+    private void playMp3(byte[] mp3SoundByteArray) {
+        try {
+            // create temp file that will hold byte array
+            File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());
+            tempMp3.deleteOnExit();
+            FileOutputStream fos = new FileOutputStream(tempMp3);
+            fos.write(mp3SoundByteArray);
+            fos.close();
+
+            // resetting mediaplayer instance to evade problems
+            mediaPlayer.reset();
+
+            // In case you run into issues with threading consider new instance like:
+            // MediaPlayer mediaPlayer = new MediaPlayer();
+
+            // Tried passing path directly, but kept getting
+            // "Prepare failed.: status=0x1"
+            // so using file descriptor instead
+            FileInputStream fis = new FileInputStream(tempMp3);
+            mediaPlayer.setDataSource(fis.getFD());
+
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException ex) {
+            String s = ex.toString();
+            ex.printStackTrace();
+        }
     }
 
     public static byte[] imageViewToByte(ImageView image) {
@@ -105,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
         //Intent i = new Intent(this, activity_menu_principal.class );
         //i.putExtra("nombre_usuario_registrado", txtNombreUsuarioLogin.getText().toString());
         //startActivity(i);
+
+        byte [] audio = gestor_usuario_login.buscarAudio(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
+        playMp3(audio);
+
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 

@@ -266,4 +266,34 @@ public class UsuarioDAO {
 
         return resultado_consulta;
     }
+
+    public byte [] buscarAudio(Context context, String nombre_usurio, String parametro){
+
+        String [] clave_primaria = new String[1];
+        String [] parametro_buscado = new String [1];
+
+        clave_primaria [0] = nombre_usurio;
+        parametro_buscado [0] = parametro;
+
+        byte [] image = null;
+        SQLiteDatabase db = this.getConnRead(context);
+
+        try {
+
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado,
+                    Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+
+            cursor.moveToFirst();
+            image = cursor.getBlob(0);
+            cursor.close();
+
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+        return image;
+    }
 }
