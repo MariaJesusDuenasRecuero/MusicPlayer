@@ -32,8 +32,8 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
 
             super(view);
 
-            lblNombreArtista = view.findViewById(R.id.lblNombreAlbum);
-            lblGenero = view.findViewById(R.id.lblNombreArtistaAlbum);
+            lblNombreArtista = view.findViewById(R.id.lblNombreCancionLista);
+            lblGenero = view.findViewById(R.id.lblDuracionCancion);
             imgArtista = view.findViewById(R.id.imgAlbum);
 
         }
@@ -67,9 +67,15 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
-                intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
-                holder.itemView.getContext().startActivity(intent);
+
+                if(holder.lblNombreArtista.getText().toString() != "No disponible"){
+
+                    Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
+                    intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
+                    holder.itemView.getContext().startActivity(intent);
+
+                }
+
             }
         });
         /**

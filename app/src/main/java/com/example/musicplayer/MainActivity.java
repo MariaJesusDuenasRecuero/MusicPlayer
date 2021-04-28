@@ -24,9 +24,11 @@ import android.widget.Toast;
 import com.example.musicplayer.Constantes.Constantes;
 import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Dominio.Artista;
+import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
+import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
 import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private Artista artista;
     private Album album;
 
+    private CancionDAO gestor_cancion = new CancionDAO();
+
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
@@ -66,33 +70,13 @@ public class MainActivity extends AppCompatActivity {
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
         i = findViewById(R.id.imageView3);
 
-
-
-        //gestor_artista.borrarTablaArtista(MainActivity.this);
-        //gestor_artista.crearTablaArtista(MainActivity.this);
-
-        //gestor_album.crearTablaAlbum(MainActivity.this);
-        //artista = new Artista("1", "All Time Low","Pop-Punk-Rock");
-        //artista = new Artista("3", "BeckyG","Pop");
-
-
-
-        //album = new Album("22", "1","Nothing Personal","41:00");
-
-        //gestor_album.insertarDatosTablaArtista(MainActivity.this, album, imageViewToByte(i));
-        //gestor_artista.insertarDatosTablaArtista(MainActivity.this, artista, imageViewToByte(i));
-
-
-
-        //gestor_artista.buscarImagem(MainActivity.this, "2", "ImagenArtista");
-        //i.setImageBitmap(gestor_album.buscarImagenAlbum(MainActivity.this, "33", "ImagenAlbum"));
-
-        //gestor_usuario_login.borrarTablaUsuario(MainActivity.this);
-        //gestor_usuario_login.crearTablaUsuario(MainActivity.this);
-
-        //gestor_usuario_login.insertarDatosTablaUsuario(MainActivity.this, usuario, imageViewToByte(i));
-
-        //gestor_imagen.insertarDatosTablaImagen(MainActivity.this, "Imagen1", imageViewToByte(i));
+        //gestor_cancion.borrarTablaCancion(MainActivity.this);
+        //gestor_cancion.crearTablaCancion(MainActivity.this);
+        //Cancion cancion = new Cancion("111","11","1", "a","a","kl");
+        //gestor_cancion.insertarDatosTablaUsuario(MainActivity.this, cancion, imageViewToByte(i));
+        //i.setImageBitmap(gestor_cancion.buscarImagenCancion(MainActivity.this, "a","AudioCancion"));
+        //byte [] audio = gestor_usuario_login.buscarAudio(MainActivity.this,"User1", "AudioCancion");
+        //playMp3(audio);
 
     }
 
@@ -102,14 +86,14 @@ public class MainActivity extends AppCompatActivity {
             File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());
             tempMp3.deleteOnExit();
             FileOutputStream fos = new FileOutputStream(tempMp3);
-            fos.write(mp3SoundByteArray);
+            fos.write(gestor_usuario_login.buscarAudio(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil"));
             fos.close();
 
             // resetting mediaplayer instance to evade problems
             mediaPlayer.reset();
 
             // In case you run into issues with threading consider new instance like:
-            // MediaPlayer mediaPlayer = new MediaPlayer();
+            //MediaPlayer mediaPlayer = new MediaPlayer();
 
             // Tried passing path directly, but kept getting
             // "Prepare failed.: status=0x1"

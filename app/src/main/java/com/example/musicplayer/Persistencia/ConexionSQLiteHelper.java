@@ -37,6 +37,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(Constantes.CREAR_TABLA_IMAGEN);
         db.execSQL(Constantes.CREAR_TABLA_ARTISTA);
         db.execSQL(Constantes.CREAR_TABLA_ALBUM);
+        db.execSQL(Constantes.CREAR_TABLA_CANCION);
 
     }
     /**
@@ -55,6 +56,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Usuario");
         db.execSQL("DROP TABLE IF EXISTS Artista");
         db.execSQL("DROP TABLE IF EXISTS Album");
+        db.execSQL("DROP TABLE IF EXISTS Cancion");
         onCreate(db);
 
     }

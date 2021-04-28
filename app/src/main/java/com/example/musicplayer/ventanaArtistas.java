@@ -28,7 +28,7 @@ public class ventanaArtistas extends AppCompatActivity {
         setContentView(R.layout.activity_ventana_artistas);
 
         // Obtenemos una referencia a la lista grafica
-        lstArtistas = findViewById(R.id.lstAlbum);
+        lstArtistas = findViewById(R.id.lstCancion);
 
 
         // Crear la lista de contactos y anadir algunos datos de prueba
@@ -50,16 +50,24 @@ public class ventanaArtistas extends AppCompatActivity {
 
         int max = gestor_artista.getProfilesCount(ventanaArtistas.this);
 
-        for(int i = 1; i<= max; i++){
+        if(max != 0){
 
-            String j = i+"";
-            String id_artista = String.valueOf((int)i);
-            String parametro_nombre_artista = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "NombreArtista");
-            String parametro_genero = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "Tipo");
-            Bitmap bitmap =  gestor_artista.buscarImagenArtista(ventanaArtistas.this, id_artista,"ImagenArtista");
+            for(int i = 1; i<= max; i++){
 
-            artistas.add(new Artista(id_artista, parametro_nombre_artista, parametro_genero, bitmap));
+                String j = i+"";
+                String id_artista = String.valueOf((int)i);
+                String parametro_nombre_artista = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "NombreArtista");
+                String parametro_genero = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "Tipo");
+                Bitmap bitmap =  gestor_artista.buscarImagenArtista(ventanaArtistas.this, id_artista,"ImagenArtista");
+
+                artistas.add(new Artista(id_artista, parametro_nombre_artista, parametro_genero, bitmap));
+
+            }
 
         }
+        else{
+            artistas.add(new Artista("No disponible", "No disponible", "No disponible", null));
+        }
+
     }
 }

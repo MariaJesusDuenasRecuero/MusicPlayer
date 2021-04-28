@@ -1,5 +1,7 @@
 package com.example.musicplayer.Constantes;
 
+import android.graphics.Bitmap;
+
 /**
  *
  * Descripcion: Clase con las constante que representran los campos o registro de las tablas de la base de datos
@@ -38,6 +40,18 @@ public class Constantes {
     public static final String CAMPO_ALBUM_DURACION = "DuracionAlbum";
     public static final String CAMPO_ALBUM_IMAGEN_PORTADA = "ImagenAlbum";
 
+    //Constantes campos tabla CANCION (7)
+
+    public static final String NOMBRE_TABLA_CANCION = "Cancion";
+
+    public static final String CAMPO_CANCION_ID = "IdCancion";
+    public static final String CAMPO_CANCION_ALBUM_ID = "IdAlbumCancion";
+    public static final String CAMPO_CANCION_ARTISTA_ID = "IdArtistaCancion";
+    public static final String CAMPO_CANCION_NOMBRE = "NombreCancion";
+    public static final String CAMPO_CANCION_DURACION = "DuracioCancion";
+    public static final String CAMPO_CANCION_IMAGEN = "ImagenCancion";
+    public static final String CAMPO_CANCION_AUDIO = "AudioCancion";
+
     //Constantes campos tabla Imagen (2)
 
     public static final String NOMBRE_TABLA_IMAGEN = "Imagen";
@@ -60,6 +74,11 @@ public class Constantes {
     public static final String CREAR_TABLA_ALBUM =
             "CREATE TABLE "+NOMBRE_TABLA_ALBUM+" ("+CAMPO_ALBUM_ID+" TEXT, "+CAMPO_ALBUM_ARTISTA_ID+" TEXT, "+CAMPO_ALBUM_NOMBRE+" TEXT, "
                     +CAMPO_ALBUM_DURACION+" TEXT, "+ CAMPO_ALBUM_IMAGEN_PORTADA+" BLOB)";
+
+    public static final String CREAR_TABLA_CANCION =
+            "CREATE TABLE "+NOMBRE_TABLA_CANCION+" ("+CAMPO_CANCION_ID+" TEXT, "+CAMPO_CANCION_ALBUM_ID+" TEXT, "+CAMPO_CANCION_ARTISTA_ID+" TEXT, "
+                    +CAMPO_CANCION_NOMBRE+" TEXT, "+CAMPO_CANCION_DURACION+" TEXT, "+CAMPO_CANCION_AUDIO+" TEXT, "
+                    +CAMPO_CANCION_IMAGEN+" BLOB)";
 
     public static final String CREAR_TABLA_IMAGEN =
             "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";

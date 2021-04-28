@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/fondoinicio">
+        android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/imageView_foto_perfil"
@@ -112,7 +112,7 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
-                android:layout_marginBottom="244dp"
+                android:layout_marginBottom="264dp"
                 android:text="@string/btn_Cerrar_Sesion"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +124,7 @@
                 android:layout_height="43dp"
                 android:layout_marginStart="60dp"
                 android:layout_marginEnd="60dp"
-                android:layout_marginBottom="164dp"
+                android:layout_marginBottom="208dp"
                 android:text="@string/btn_Configuracion_Avanzada"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

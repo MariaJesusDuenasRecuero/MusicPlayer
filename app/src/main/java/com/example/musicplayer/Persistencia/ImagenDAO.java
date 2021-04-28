@@ -25,7 +25,7 @@ public class ImagenDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 9);
         SQLiteDatabase db = conexion.getWritableDatabase();
 
         return db;
@@ -43,7 +43,7 @@ public class ImagenDAO {
 
         //Cada vez que se borre una tabla se cambia la version
 
-        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 7);
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(context, "dbProyectoGSI", null, 9);
         SQLiteDatabase db = conexion.getReadableDatabase();
 
         return db;

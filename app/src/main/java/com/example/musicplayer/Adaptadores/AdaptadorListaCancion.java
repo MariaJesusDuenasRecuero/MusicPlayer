@@ -27,8 +27,8 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
 
             super(view);
 
-            lblNombre = view.findViewById(R.id.lblNombreAlbum);
-            lblDuracion = view.findViewById(R.id.lblNombreArtistaAlbum);
+            lblNombre = view.findViewById(R.id.lblNombreCancionLista);
+            lblDuracion = view.findViewById(R.id.lblDuracionCancion);
             imagCancion = view.findViewById(R.id.imgAlbum);
 
         }
@@ -55,6 +55,8 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
 
         holder.lblNombre.setText(canciones.get(position).getNombreCancion());
         holder.lblDuracion.setText(canciones.get(position).getDuracionCancion());
+        holder.imagCancion.setImageBitmap(canciones.get(position).getImagenCancion());
+
 
         /**
         switch (contactos.get(position).getTipo()){

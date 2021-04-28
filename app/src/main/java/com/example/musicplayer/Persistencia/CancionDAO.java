@@ -1,6 +1,5 @@
 package com.example.musicplayer.Persistencia;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,9 +9,10 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.musicplayer.Constantes.Constantes;
+import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Dominio.Usuario;
 
-public class UsuarioDAO {
+public class CancionDAO {
 
     /**
      *
@@ -50,12 +50,12 @@ public class UsuarioDAO {
 
     }
 
-    public Bitmap buscarImagen(Context context, String nombre_usurio, String parametro){
+    public Bitmap buscarImagenCancion(Context context, String cancion_id, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = nombre_usurio;
+        clave_primaria [0] = cancion_id;
         parametro_buscado [0] = parametro;
 
         byte [] image = null;
@@ -63,8 +63,8 @@ public class UsuarioDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado,
-                    Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_CANCION, parametro_buscado,
+                    Constantes.CAMPO_CANCION_ID+"=?",clave_primaria, null,null,null);
 
             cursor.moveToFirst();
             image = cursor.getBlob(0);
@@ -78,34 +78,25 @@ public class UsuarioDAO {
         db.close();
 
         return BitmapFactory.decodeByteArray(image, 0, image.length);
+
     }
 
 
-    /**
-     *
-     * Descripcion: Metodo para insertar un usuario registrado en la base de datos de la aplicacion
-     *
-     * @param context ventana
-     * @param usuario contiene los datos de los campos
-     * @param imagen imagen asociada al perfil del usuario
-     */
-    public void insertarDatosTablaUsuario(Context context, Usuario usuario, byte [] imagen){
+    public void insertarDatosTablaUsuario(Context context, Cancion cancion, byte [] imagen){
 
         SQLiteDatabase db = this.getConnWrite(context);
 
-        byte[] data = imagen;
-
-        String sql = "INSERT INTO Usuario VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Cancion VALUES (?,?,?,?,?,?,?)";
 
         SQLiteStatement statement = db.compileStatement(sql);
         statement.clearBindings();
 
-        statement.bindString(1, usuario.getNombreUsuario());
-        statement.bindString(2, usuario.getNombre());
-        statement.bindString(3, usuario.getPassword());
-        statement.bindString(4, usuario.getTelefono());
-        statement.bindString(5, usuario.getCorreo());
-        statement.bindString(6, usuario.getFechaNacimiento());
+        statement.bindString(1, cancion.getIdCancion());
+        statement.bindString(2, cancion.getIdAlbum());
+        statement.bindString(3, cancion.getIdArtista());
+        statement.bindString(4, cancion.getNombreCancion());
+        statement.bindString(5, cancion.getDuracionCancion());
+        statement.bindString(6, cancion.getAudioCancion());
         statement.bindBlob(7, imagen);
 
         statement.executeInsert();
@@ -114,39 +105,31 @@ public class UsuarioDAO {
 
     }
 
-    public void updateDataImagen(Context context, String nombre_usuario, byte [] image) {
+    public void updateDataMultimedia(Context context, String id_cancion, String campo_modificado, byte [] multimedia) {
 
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String sql = "UPDATE Usuario SET ImagenPerfil = ? WHERE NombreUsuario='"+nombre_usuario+"'";
+        String sql = "UPDATE Cancion SET "+campo_modificado+" = ? WHERE NombreCancion='"+id_cancion+"'";
 
         SQLiteStatement statement = db.compileStatement(sql);
 
-        statement.bindBlob(1, image);
+        statement.bindBlob(1, multimedia);
 
 
         statement.execute();
         db.close();
     }
 
-    /**
-     *
-     * Descripcion: Metodo que permite eliminar un usuario de la base de datos
-     *
-     * @param context ventana
-     * @param nombre_usuario clave primaria
-     * @return resultado_consulta comprueba si la consulta se ha realizado correctamente
-     */
-    public int eliminarUsuario(Context context, String nombre_usuario){
+    public int eliminarCancion(Context context, String id_cancion){
 
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String eliminar_usuario_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_USUARIO_SISTEMA+" WHERE NombreUsuario='"+nombre_usuario+"'";
+        String eliminar_cancion_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_CANCION+" WHERE IdCancion='"+id_cancion+"'";
 
         try {
 
-            db.execSQL(eliminar_usuario_sql);
+            db.execSQL(eliminar_cancion_sql);
             resultado_consulta = 1;
 
         } catch (Exception e) {
@@ -158,22 +141,13 @@ public class UsuarioDAO {
         return resultado_consulta;
     }
 
-    /**
-     *
-     * Descripcion: Metodo que permite modificar los campos de la tabla Usuario en la base de datos
-     *
-     * @param context ventana
-     * @param nombre_usuario nombre del usuario del que se quiere modificar el parametro (clave primaria)
-     * @param nombre_campo_tabla nombre del campo de la tabla que se quiere modificar
-     * @param parametro_nuevo nuevo valor para ese campo
-     * @return resultado_consulta comprueba si la consulta se ha realizado correctamente
-     */
-    public int updateParametroUsuario(Context context, String nombre_usuario, String nombre_campo_tabla, String parametro_nuevo){
+    public int updateParametroCancion(Context context, String nombre_cancion, String nombre_campo_tabla, String parametro_nuevo){
 
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String update_usuario_sql = "UPDATE "+Constantes.NOMBRE_TABLA_USUARIO_SISTEMA+" SET "+nombre_campo_tabla+" = '"+parametro_nuevo+"' WHERE "+Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"= '"+nombre_usuario+"'";
+        String update_usuario_sql = "UPDATE "+Constantes.NOMBRE_TABLA_CANCION+" SET "+nombre_campo_tabla+" = '"+parametro_nuevo+"' WHERE "+
+                Constantes.CAMPO_CANCION_NOMBRE+"= '"+nombre_cancion+"'";
 
         try {
 
@@ -189,21 +163,12 @@ public class UsuarioDAO {
         return resultado_consulta;
     }
 
-    /**
-     *
-     * Descripcion: Metodo para conocer datos de los usuarios. Se utiliza por ejemplo para saber si el usuario esta registrado en el sistema
-     *
-     * @param context ventana
-     * @param nombre_usuario nombre del usuario del que se quiere comprobar algun dato si esta en el sistema (clave primaria)
-     * @param parametro nombre del campo del dato que se quiere buscar
-     * @return el dato del campo que queremos conocer
-     */
-    public String buscarDatosUsuarioRegistrado(Context context, String nombre_usuario, String parametro){
+    public String buscarDatosCancion(Context context, String id_cancion, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = nombre_usuario;
+        clave_primaria [0] = id_cancion;
         parametro_buscado [0] = parametro;
 
         String dato_buscado = null;
@@ -211,7 +176,8 @@ public class UsuarioDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado, Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_CANCION, parametro_buscado,
+                    Constantes.CAMPO_CANCION_ID+"=?",clave_primaria, null,null,null);
 
             cursor.moveToFirst();
             dato_buscado = cursor.getString(0);
@@ -226,32 +192,19 @@ public class UsuarioDAO {
         return  dato_buscado;
     }
 
-    /**
-     *
-     * Descripcion: Permite crear la tabla Usuario
-     *
-     * @param context
-     */
-    public void crearTablaUsuario(Context context){
+    public void crearTablaCancion(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
-        db.execSQL(Constantes.CREAR_TABLA_USUARIO_SISTEMA);
+        db.execSQL(Constantes.CREAR_TABLA_CANCION);
 
     }
 
-    /**
-     *
-     * Descripcion: Metodo que permite borrar la tabla de usuarios entera
-     *
-     * @param context ventana
-     * @return resultado_resultado_consulta comprueba si la consulta se ha realizado correctamente
-     */
-    public int borrarTablaUsuario(Context context){
+    public int borrarTablaCancion(Context context){
 
         int resultado_consulta = -1;
         SQLiteDatabase db = this.getConnWrite(context);
 
-        String borrar_tabla_usuario_sql = "DROP TABLE Usuario";
+        String borrar_tabla_usuario_sql = "DROP TABLE Cancion";
 
         try{
 
@@ -267,12 +220,12 @@ public class UsuarioDAO {
         return resultado_consulta;
     }
 
-    public byte [] buscarAudio(Context context, String nombre_usurio, String parametro){
+    public byte [] buscarAudio(Context context, String nombre_cancion, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
 
-        clave_primaria [0] = nombre_usurio;
+        clave_primaria [0] = nombre_cancion;
         parametro_buscado [0] = parametro;
 
         byte [] image = null;
@@ -280,11 +233,11 @@ public class UsuarioDAO {
 
         try {
 
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_USUARIO_SISTEMA, parametro_buscado,
-                    Constantes.CAMPO_USUARIO_NOMBRE_USUARIO+"=?",clave_primaria, null,null,null);
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_CANCION, parametro_buscado,
+                    Constantes.CAMPO_CANCION_NOMBRE+"=?",clave_primaria, null,null,null);
 
             cursor.moveToFirst();
-            image = cursor.getBlob(cursor.getColumnIndex("ImagenPerfil"));
+            image = cursor.getBlob(cursor.getColumnIndex("AudioCancion"));
             cursor.close();
 
 
@@ -295,5 +248,16 @@ public class UsuarioDAO {
         db.close();
 
         return image;
+    }
+
+    public int getProfilesCount(Context context) {
+
+        String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_CANCION;
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
     }
 }

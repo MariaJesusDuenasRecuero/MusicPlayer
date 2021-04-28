@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicplayer.DetallesArtistaActivity;
 import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.AlbumDAO;
@@ -33,8 +32,8 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
 
             super(view);
 
-            lblNombreAlbum = view.findViewById(R.id.lblNombreAlbum);
-            lblNombreArtistaAlbum = view.findViewById(R.id.lblNombreArtistaAlbum);
+            lblNombreAlbum = view.findViewById(R.id.lblNombreCancionLista);
+            lblNombreArtistaAlbum = view.findViewById(R.id.lblDuracionCancion);
             imgAlbum = view.findViewById(R.id.imgAlbum);
 
         }
@@ -68,9 +67,13 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), detallesAlbumes.class);
-                intent.putExtra("identificador_album", albumes.get(position).getIdAlbum());
-                holder.itemView.getContext().startActivity(intent);
+
+                if(holder.lblNombreAlbum.getText().toString() != "No disponible"){
+                    Intent intent = new Intent(holder.itemView.getContext(), detallesAlbumes.class);
+                    intent.putExtra("identificador_album", albumes.get(position).getIdAlbum());
+                    holder.itemView.getContext().startActivity(intent);
+                }
+
             }
         });
 

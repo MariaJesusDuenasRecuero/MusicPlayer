@@ -18,17 +18,19 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lblNombreAlbum"
+            android:id="@+id/lblNombreCancionLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="20sp" />
+            android:text="Nombre_cancion"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lblNombreArtistaAlbum"
+            android:id="@+id/lblDuracionCancion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Duracion_cancion"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

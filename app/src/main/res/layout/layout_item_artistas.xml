@@ -20,7 +20,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lblNombreAlbum"
+            android:id="@+id/lblNombreCancionLista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre_artista"
@@ -28,7 +28,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lblNombreArtistaAlbum"
+            android:id="@+id/lblDuracionCancion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Genero_artista"

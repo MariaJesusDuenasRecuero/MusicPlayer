@@ -9,11 +9,9 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.example.musicplayer.Adaptadores.AdaptadorListaAlbum;
-import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
 import com.example.musicplayer.Dominio.Album;
-import com.example.musicplayer.Dominio.Artista;
+import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Persistencia.AlbumDAO;
-import com.example.musicplayer.Persistencia.ArtistaDAO;
 
 import java.util.ArrayList;
 
@@ -31,7 +29,7 @@ public class ventanaAlbum extends AppCompatActivity {
         setContentView(R.layout.ventana_album);
 
         // Obtenemos una referencia a la lista grafica
-        lstAlbum = findViewById(R.id.lstAlbum);
+        lstAlbum = findViewById(R.id.lstCancion);
 
 
         // Crear la lista de contactos y anadir algunos datos de prueba
@@ -53,17 +51,25 @@ public class ventanaAlbum extends AppCompatActivity {
 
         int max = gestor_album.getProfilesCountAlbum(ventanaAlbum.this);
 
-        for(int i = 1; i<= max; i++){
+        if(max != 0){
 
-            String j = i+""+i;
-            String id_album = i+""+i;
-            String parametro_nombre_album = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "NombreAlbum");
-            String parametro_id_artista = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "idAutor");
-            String parametro_duracion_album = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "DuracionAlbum");
-            Bitmap bitmap =  gestor_album.buscarImagenAlbum(ventanaAlbum.this, id_album,"ImagenAlbum");
+            for(int i = 1; i<= max; i++){
 
-            albumes.add(new Album(id_album, parametro_id_artista, parametro_nombre_album, parametro_duracion_album, bitmap));
+                String j = i+""+i;
+                String id_album = i+""+i;
+                String parametro_nombre_album = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "NombreAlbum");
+                String parametro_id_artista = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "idAutor");
+                String parametro_duracion_album = gestor_album.buscarDatosArtista(ventanaAlbum.this, id_album, "DuracionAlbum");
+                Bitmap bitmap =  gestor_album.buscarImagenAlbum(ventanaAlbum.this, id_album,"ImagenAlbum");
 
+                albumes.add(new Album(id_album, parametro_id_artista, parametro_nombre_album, parametro_duracion_album, bitmap));
+
+            }
+
+        }
+
+        else{
+            albumes.add(new Album("No disponible","No disponible", "No disponible","No disponible", null));
         }
     }
 }
