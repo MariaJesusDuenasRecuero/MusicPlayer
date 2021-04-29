@@ -1,5 +1,6 @@
 package com.example.musicplayer.Adaptadores;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +10,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicplayer.Dominio.Cancion;
+import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.R;
+import com.example.musicplayer.ventanaReproducir;
 
 import java.util.ArrayList;
 
 public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCancion.ViewHolder> {
 
     private ArrayList<Cancion> canciones;
+    private OnItemSelectedListener itemSelectedListener;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -57,7 +61,18 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
         holder.lblDuracion.setText(canciones.get(position).getDuracionCancion());
         holder.imagCancion.setImageBitmap(canciones.get(position).getImagenCancion());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if(holder.lblNombre.getText().toString() != "No disponible"){
+                    Intent intent = new Intent(holder.itemView.getContext(), ventanaReproducir.class);
+                    intent.putExtra("identificador_cancion", canciones.get(position).getIdCancion());
+                    holder.itemView.getContext().startActivity(intent);
+                }
+
+            }
+        });
         /**
         switch (contactos.get(position).getTipo()){
             case 0: //Cargar imagen de contactos tipo "familia"
@@ -70,6 +85,10 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
                 holder.imagContacto.setImageResource(R.drawable.trabajo);
         }
          */
+    }
+
+    public void setItemSelectedListener(OnItemSelectedListener itemSelectedListener) {
+        this.itemSelectedListener = itemSelectedListener;
     }
 
     @Override

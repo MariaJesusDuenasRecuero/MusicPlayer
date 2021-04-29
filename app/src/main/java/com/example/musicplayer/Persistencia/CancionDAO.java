@@ -189,7 +189,7 @@ public class CancionDAO {
 
         db.close();
 
-        return  dato_buscado;
+        return dato_buscado;
     }
 
     public String buscarIdentificadoCancion(Context context, String id_album, String parametro){

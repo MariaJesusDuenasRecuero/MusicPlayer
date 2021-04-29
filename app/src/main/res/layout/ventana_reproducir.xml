@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E0C0C"
+    tools:context=".activity_reproduccion">
+
+    <ImageView
+        android:id="@+id/imageViewCover"
+        android:layout_width="337dp"
+        android:layout_height="337dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/reproducir"
+        android:backgroundTint="@color/white"
+        android:onClick="oyente_btnPlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDetener"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreCancionMusica" />
+
+    <Button
+        android:id="@+id/btnDetener"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/detener"
+        android:onClick="oyente_btnDetener"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreCancionMusica" />
+
+    <TextView
+        android:id="@+id/txtNombreCancionMusica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="nombre_cancion"
+        android:textColor="#F6F0F0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCover" />
+
+    <!--seria el length de la canción-->
+    android:paddingTop="40dp"
+    android:progress="150"
+    tools:layout_editor_absoluteX="55dp"
+    tools:layout_editor_absoluteY="458dp" /> <!-- set  20dp padding from the top of the seek bar-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

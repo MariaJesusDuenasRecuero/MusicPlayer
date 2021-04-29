@@ -49,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private Usuario usuario = null;
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
-    private ImagenDAO gestor_imagen = new ImagenDAO();
-    private ArtistaDAO gestor_artista = new ArtistaDAO();
-    private AlbumDAO gestor_album = new AlbumDAO();
-    private Artista artista;
     private Album album;
 
     private CancionDAO gestor_cancion = new CancionDAO();
