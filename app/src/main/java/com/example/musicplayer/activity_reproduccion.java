@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class activity_reproduccion extends AppCompatActivity {
     Button play_pause, btnRepetir;
     MediaPlayer mp;
     ImageView imgV;
+    SeekBar simpleSeekBar;
 
     MediaPlayer vectormp[] = new MediaPlayer[3];
     int repetir = 2, posicion = 0;
@@ -25,13 +27,40 @@ public class activity_reproduccion extends AppCompatActivity {
         play_pause = (Button) findViewById(R.id.btnplay);
         btnRepetir = (Button) findViewById(R.id.btnAleatorio);
         imgV = (ImageView) findViewById(R.id.imageView6);
+        simpleSeekBar = (SeekBar) findViewById(R.id.simpleSeekBar);
 
         //Lista de canciones a reproducir esta implementado sin bbdd aqui seria donde poner las canciones
        // vectormp[0] = MediaPlayer.create(this, R.cancion.race);
        // vectormp[1] = MediaPlayer.create(this, R.cancion.sound);
         //vectormp[2] = MediaPlayer.create(this, R.cancion.race);
 
+
+        // initiate  views
+        simpleSeekBar=(SeekBar)findViewById(R.id.simpleSeekBar);
+        // perform seek bar change listener event used for getting the progress value
+        //We we should adapt to the length of the songs
+        simpleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(activity_reproduccion.this, "Seek bar progress is :" + progressChangedValue,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+
+
+
 
     //Metodo para el boton PlayPause
     public void oyente_btnPlay(View view) {

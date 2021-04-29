@@ -80,12 +80,26 @@
         android:id="@+id/lblNombreCancion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:textColor="@color/white"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <SeekBar
+        android:id="@+id/simpleSeekBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="#fffffff"
+        android:max="200"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="485dp"
+        tools:ignore="MissingConstraints" /> <!--seria el length de la canción-->
+        android:paddingTop="40dp"
+        android:progress="150"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="458dp" /> <!-- set  20dp padding from the top of the seek bar-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

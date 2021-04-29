@@ -13,7 +13,8 @@
         android:id="@+id/artistas"
         android:icon="@drawable/cantante"
         android:title="Artistas"
-        android:enabled="true"/>
+        android:enabled="true"
+        />
 
     <item
         android:id="@+id/albumes"

@@ -11,29 +11,31 @@
         android:label="@string/inicio"
         tools:layout="@layout/fragment_inicio" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_artistas"
-            app:destination="@id/navigation_artistas" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_artistas"
-        android:name="com.example.musicplayer.ui.artistas.layout_item_artistas"
-        android:label="@string/artistas"
-        tools:layout="@layout/fragment_artistas" >
-        <action
-            android:id="@+id/action_navigation_artistas_to_navigation_albumes"
-            app:destination="@id/navigation_albumes" />
+            android:id="@+id/action_navigation_home_to_ventanaArtistas"
+            app:destination="@id/ventanaArtistas" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_albumes"
         android:name="com.example.musicplayer.ui.notifications.NotificationsFragment"
         android:label="@string/albumes"
-        tools:layout="@layout/fragment_albumes" />
+        tools:layout="@layout/fragment_albumes" >
+        <action
+            android:id="@+id/action_navigation_albumes_to_ventanaCanciones"
+            app:destination="@id/ventanaCanciones" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_perfil"
         android:name="com.example.musicplayer.ui.notifications.NotificationsFragment"
         android:label="@string/albumes"
         tools:layout="@layout/fragment_perfil" />
+    <activity
+        android:id="@+id/ventanaArtistas"
+        android:name="com.example.musicplayer.ventanaArtistas"
+        android:label="ventanaArtistas" />
+    <activity
+        android:id="@+id/ventanaCanciones"
+        android:name="com.example.musicplayer.ventanaCanciones"
+        android:label="ventanaCanciones" />
 </navigation>
