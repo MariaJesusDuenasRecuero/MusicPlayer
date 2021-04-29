@@ -92,11 +92,11 @@
         android:id="@+id/simpleSeekBar"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="#fffffff"
+        android:background="@color/black"
         android:max="200"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="485dp"
-        tools:ignore="MissingConstraints" /> <!--seria el length de la canción-->
+        tools:layout_editor_absoluteY="485dp" /> <!--seria el length de la canción-->
         android:paddingTop="40dp"
         android:progress="150"
         tools:layout_editor_absoluteX="55dp"
