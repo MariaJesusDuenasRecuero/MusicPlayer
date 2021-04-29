@@ -14,6 +14,7 @@ import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.R;
 import com.example.musicplayer.detallesAlbumes;
+import com.example.musicplayer.ventanaCanciones;
 
 import java.util.ArrayList;
 
@@ -69,7 +70,7 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
             public void onClick(View v) {
 
                 if(holder.lblNombreAlbum.getText().toString() != "No disponible"){
-                    Intent intent = new Intent(holder.itemView.getContext(), detallesAlbumes.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), ventanaCanciones.class);
                     intent.putExtra("identificador_album", albumes.get(position).getIdAlbum());
                     holder.itemView.getContext().startActivity(intent);
                 }

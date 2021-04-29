@@ -16,11 +16,13 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
 import com.example.musicplayer.Adaptadores.AdaptadorListaCancion;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Cancion;
+import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.Persistencia.CancionDAO;
 import com.karumi.dexter.Dexter;
@@ -43,12 +45,19 @@ public class ventanaCanciones extends AppCompatActivity {
     private RecyclerView lstCanciones;
     private AdaptadorListaCancion adaptador_canciones;
 
+    private String identificador_album;
+    private Toast notification;
+
     private CancionDAO gestor_cancion = new CancionDAO();
+    private AlbumDAO gestor_album = new AlbumDAO();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_canciones);
+
+        Bundle bundle = getIntent().getExtras();
+        this.identificador_album = bundle.getString("identificador_album");
 
         //IMPORTANTE
         /**
@@ -88,43 +97,98 @@ public class ventanaCanciones extends AppCompatActivity {
 
         int max = gestor_cancion.getProfilesCount(ventanaCanciones.this);
 
-        if(max != 0){
+        if(this.identificador_album.equals("")){
 
-            for(int i = 1; i<= max; i++){
+            if(max != 0){
 
-                String id_cancion = i+"";
+                for(int i = 1; i<= max; i++){
 
-                String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
-                        "IdAlbumCancion");
+                    String id_cancion = i+"";
 
-                String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
-                        "IdArtistaCancion");
+                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                            "IdAlbumCancion");
 
-                String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
-                        "NombreCancion");
+                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                            "IdArtistaCancion");
 
-                String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
-                        "DuracioCancion");
+                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                            "NombreCancion");
 
-                String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
-                        "AudioCancion");
+                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                            "DuracioCancion");
 
-                Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventanaCanciones.this, id_cancion,
-                        "ImagenCancion");
+                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                            "AudioCancion");
 
-                canciones.add(new Cancion(id_cancion, parametro_id_album, parametro_id_cancion, parametro_nombre_cancion,
-                        parametro_duracion_cancion, parametro_audio_cancion, bitmap));
+                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventanaCanciones.this, id_cancion,
+                            "ImagenCancion");
 
+                    canciones.add(new Cancion(id_cancion, parametro_id_album, parametro_id_cancion, parametro_nombre_cancion,
+                            parametro_duracion_cancion, parametro_audio_cancion, bitmap));
+
+                }
             }
-
+            else{
+                canciones.add(new Cancion("No disponible","No disponible", "No disponible",
+                        "No disponible","No disponible","No disponible",
+                        null));
+            }
         }
 
         else{
-            canciones.add(new Cancion("No disponible","No disponible", "No disponible",
-                    "No disponible","No disponible","No disponible",
-                    null));
+
+            notification = Toast.makeText(this, "Album seleccionado: "
+                        + gestor_album.buscarDatosArtista(ventanaCanciones.this, this.identificador_album,
+                        "NombreAlbum"), Toast.LENGTH_LONG);
+
+            notification.show();
+
+            String id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, identificador_album,
+                        "IdCancion");
+
+            int c = gestor_cancion.getNumeroCanciones(ventanaCanciones.this, identificador_album);
+
+            if(c != 0){
+
+                String [] lista_id = gestor_cancion.getListaCanciones(ventanaCanciones.this, identificador_album, c);
+
+                //if lista_id !null
+
+                for(int i = 0; i< lista_id.length; i++){
+
+                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                            "IdAlbumCancion");
+
+                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                            "IdArtistaCancion");
+
+                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                            "NombreCancion");
+
+                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                            "DuracioCancion");
+
+                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                            "AudioCancion");
+
+                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventanaCanciones.this, lista_id[i],
+                            "ImagenCancion");
+
+                    canciones.add(new Cancion(lista_id[i], parametro_id_album, parametro_id_cancion, parametro_nombre_cancion,
+                            parametro_duracion_cancion, parametro_audio_cancion, bitmap));
+
+                }
+
+            }
+            else{
+                canciones.add(new Cancion("No disponible","No disponible", "No disponible",
+                        "No disponible","No disponible","No disponible",
+                        null));
+            }
+
         }
 
     }
 
 }
+

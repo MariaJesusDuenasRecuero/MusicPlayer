@@ -123,6 +123,7 @@ public class activity_menu_principal extends AppCompatActivity {
                 case R.id.canciones:
 
                      Intent ventana_canciones = new Intent(activity_menu_principal.this, ventanaCanciones.class );
+                     ventana_canciones.putExtra("identificador_album", "");
                      startActivity(ventana_canciones);
                      /**
                     getSupportFragmentManager().beginTransaction()

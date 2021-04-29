@@ -192,6 +192,35 @@ public class CancionDAO {
         return  dato_buscado;
     }
 
+    public String buscarIdentificadoCancion(Context context, String id_album, String parametro){
+
+        String [] clave_primaria = new String[1];
+        String [] parametro_buscado = new String [1];
+
+        clave_primaria [0] = id_album;
+        parametro_buscado [0] = parametro;
+
+        String dato_buscado = null;
+        SQLiteDatabase db = this.getConnRead(context);
+
+        try {
+
+            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_CANCION, parametro_buscado,
+                    Constantes.CAMPO_CANCION_ALBUM_ID+"=?",clave_primaria, null,null,null);
+
+            cursor.moveToFirst();
+            dato_buscado = cursor.getString(0);
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+        return  dato_buscado;
+    }
+
     public void crearTablaCancion(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -253,6 +282,39 @@ public class CancionDAO {
     public int getProfilesCount(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_CANCION;
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+    }
+
+    public String [] getListaCanciones(Context context, String id_album, int index){
+
+        String [] id_canciones = new String[index];
+        int i = 0;
+
+        String countQuery = "SELECT IdCancion FROM " + Constantes.NOMBRE_TABLA_CANCION+ " WHERE IdAlbumCancion='"+id_album+"'";
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()){
+
+            id_canciones[i] = cursor.getString(cursor.getColumnIndex("IdCancion"));
+            i = i + 1;
+
+            cursor.moveToNext();
+        }
+        db.close();
+
+        return id_canciones;
+    }
+
+    public int getNumeroCanciones(Context context, String id_album) {
+
+        String countQuery = "SELECT IdCancion FROM " + Constantes.NOMBRE_TABLA_CANCION+ " WHERE IdAlbumCancion='"+id_album+"'";
         SQLiteDatabase db = this.getConnRead(context);
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();
