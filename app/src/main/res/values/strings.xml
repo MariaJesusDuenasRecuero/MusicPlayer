@@ -27,4 +27,6 @@
     <string name="perfil_nombre_principal">perfil_nombre</string>
     <string name="btn_Configuracion_Avanzada">Configuración</string>
     <string name="btn_Cerrar_Sesion">Cerrar sesión</string>
+    <string name="btn_favsong" />
+    <string name="btn_favSong">Canciones favoritas</string>
 </resources>
