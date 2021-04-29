@@ -51,14 +51,14 @@ public class ventanaCanciones extends AppCompatActivity {
         setContentView(R.layout.activity_ventana_canciones);
 
         //IMPORTANTE
-
+        /**
         Log.d("Debug_Excepcion", "INTEGER"+R.raw.avicii);
 
         String codigo = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, "111","AudioCancion");
         int codigo_bueno = Integer.parseInt(codigo);
         MediaPlayer mp = MediaPlayer.create(this, codigo_bueno);
         mp.start();
-
+            */
         /**IMPORTANTE
          *
         MediaPlayer mp = MediaPlayer.create(this, R.raw.avicii);
@@ -92,7 +92,7 @@ public class ventanaCanciones extends AppCompatActivity {
 
             for(int i = 1; i<= max; i++){
 
-                String id_cancion = i+""+i+""+i;
+                String id_cancion = i+"";
 
                 String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
                         "IdAlbumCancion");
