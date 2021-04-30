@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#0E0C0C"
     tools:context=".activity_reproduccion">
 
     <ImageView
@@ -60,12 +60,12 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewCover" />
 
     <Button
-        android:id="@+id/btnFavoritos"
-        android:layout_width="84dp"
-        android:layout_height="68dp"
+        android:id="@+id/button3"
+        android:layout_width="92dp"
+        android:layout_height="87dp"
         android:layout_marginStart="79dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="164dp"
         android:backgroundTint="@color/black"
         app:icon="@drawable/anadirfav"
         app:iconTint="@color/pink"

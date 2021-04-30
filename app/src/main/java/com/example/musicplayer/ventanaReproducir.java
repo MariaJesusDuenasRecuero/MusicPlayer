@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Persistencia.CancionDAO;
 
 public class ventanaReproducir extends AppCompatActivity {
@@ -24,6 +27,9 @@ public class ventanaReproducir extends AppCompatActivity {
     private CancionDAO gestor_cancion = new CancionDAO();
 
     private String identificador_cancion;
+
+    //public Cancion[] cancion = new Cancion[];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,4 +77,16 @@ public class ventanaReproducir extends AppCompatActivity {
 
          */
     }
+
+    /*public void oyente_guardarCancion(View view) {
+
+
+        String songID= view.getContentDescription().toString();
+
+        Cancion cancion = cancionFavCollection.searchById(songID);
+        favList.add(cancion);
+        //Toast.makeText(this, "Canción añadida a favoritos", Toast.LENGTH_SHORT).show();
+
+    }*/
+
 }

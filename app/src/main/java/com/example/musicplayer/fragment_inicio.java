@@ -1,5 +1,6 @@
 package com.example.musicplayer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -60,5 +61,11 @@ public class fragment_inicio extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_inicio, container, false);
+    }
+    public void oyente_btnFavCancion(View v) {
+
+        Intent ventana_FavCanciones = new Intent(String.valueOf(ventanaFavCancion.class));
+        startActivity(ventana_FavCanciones);
+
     }
 }
