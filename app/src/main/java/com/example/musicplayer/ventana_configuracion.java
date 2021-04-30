@@ -21,7 +21,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.musicplayer.Dominio.Cancion;
+import com.example.musicplayer.Persistencia.CancionDAO;
+import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
+import com.example.musicplayer.Presentacion.ventana_playlist_favoritos;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -32,6 +36,9 @@ public class ventana_configuracion extends AppCompatActivity {
 
     private String nombre_usuario_registrado;
     private UsuarioDAO gestor_usuario_configuracion = new UsuarioDAO();
+    private PlayListDAO gestor_play_list = new PlayListDAO();
+    private String [] id_canciones;
+    private CancionDAO gestor_cancion = new CancionDAO();
 
     private EditText txtNombre;
     private EditText txtCorreo;
@@ -126,6 +133,8 @@ public class ventana_configuracion extends AppCompatActivity {
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
+                                borrarDatosAsociados();
 
                                 gestor_usuario_configuracion.eliminarUsuario(ventana_configuracion.this, nombre_usuario_registrado);
                                 Intent i = new Intent(ventana_configuracion.this, main_activity.class);
@@ -285,6 +294,31 @@ public class ventana_configuracion extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
+    private void borrarDatosAsociados(){
+
+        int numero_canciones_usuario = obtenerNumeroCancionesUsuario();
+
+        if(numero_canciones_usuario != 0) {
+
+            this.id_canciones = gestor_play_list.getListaCancionesFavoritas(ventana_configuracion.this,
+                    menu_principal.usuario_sesion_iniciada, numero_canciones_usuario);
+
+            for(int i = 0; i< this.id_canciones.length; i++) {
+
+                gestor_play_list.eliminarCancionFavoritos(ventana_configuracion.this,
+                        menu_principal.usuario_sesion_iniciada, id_canciones[i]);
+
+            }
+        }
+        else{
+
+            mostrarNotificacion("Ninguna cancion asociada que eliminar");
+
+        }
+
+    }
+
     /**
      *
      * Descripcion: Metodo que muestra un aviso al usuario dependiendo de las acciones que este realice
@@ -327,5 +361,21 @@ public class ventana_configuracion extends AppCompatActivity {
         byte[] byteArray = stream.toByteArray();
 
         return byteArray;
+    }
+
+    private int obtenerNumeroCancionesUsuario(){
+
+        return this.gestor_play_list.getNumeroCancionesUsuario(ventana_configuracion.this,
+                menu_principal.usuario_sesion_iniciada);
+
+    }
+
+    private void mostrarNotificacion(String cadena){
+
+        this.notification = Toast.makeText(ventana_configuracion.this, cadena,
+                Toast.LENGTH_LONG);
+
+        this.notification.show();
+
     }
 }
