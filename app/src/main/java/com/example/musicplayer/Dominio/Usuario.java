@@ -1,5 +1,7 @@
 package com.example.musicplayer.Dominio;
 
+import android.graphics.Bitmap;
+
 public class Usuario {
 
     private String nombre_usuario; //Identificador unico clave primaria
@@ -8,7 +10,7 @@ public class Usuario {
     private String telefono;
     private String correo_electronico;
     private String fecha_nacimiento;
-    private String nombre_foto_perfil;
+    private Bitmap foto_perfil;
 
     /**
      *
@@ -22,7 +24,7 @@ public class Usuario {
      * @param fecha_nacimiento
      */
     public Usuario(String nombre_usuario, String nombre, String password, String telefono,
-                   String correo_electronico, String fecha_nacimiento, String nombre_foto_perfil){
+                   String correo_electronico, String fecha_nacimiento, Bitmap foto_perfil){
 
         this.nombre_usuario = nombre_usuario;
         this.nombre = nombre;
@@ -30,7 +32,7 @@ public class Usuario {
         this.telefono = telefono;
         this.correo_electronico = correo_electronico;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.nombre_foto_perfil = nombre_foto_perfil;
+        this.foto_perfil = foto_perfil;
 
     }
 
@@ -134,15 +136,15 @@ public class Usuario {
      *
      * @return nombre foto perfil asociada a su cuenta
      */
-    public String getNombreFotoPerfil(){
-        return this.nombre_foto_perfil;
+    public Bitmap getFotoPerfil(){
+        return this.foto_perfil;
     }
 
     /**
      *
      * @param nfp modificacion y asignacion del parametro nueva_foto_perfil
      */
-    public void setNombre_foto_perfil(String nfp){
-        this.nombre_foto_perfil = nfp;
+    public void setFotoPerfil(Bitmap nfp){
+        this.foto_perfil = nfp;
     }
 }

@@ -23,7 +23,6 @@ import com.example.musicplayer.Dominio.Usuario;
 public class fragment_perfil extends Fragment {
 
     private Usuario usuario;
-    private Bitmap bitmap;
 
     private TextView lblNombre_usuario_perfil_BBDD;
     private TextView nombrePerfilTitulo;
@@ -32,10 +31,9 @@ public class fragment_perfil extends Fragment {
     private TextView FechaNacimientoPerfilTitulo;
     private ImageView image_foto_perfil;
 
-    public fragment_perfil(Usuario usuario, Bitmap bitmap) {
+    public fragment_perfil(Usuario usuario) {
 
         this.usuario = usuario;
-        this.bitmap = bitmap;
 
     }
     /**
@@ -117,7 +115,7 @@ public class fragment_perfil extends Fragment {
         CorreoPerfilTitulo.setText("Correo: "+this.usuario.getCorreo());
         FechaNacimientoPerfilTitulo.setText("F. Nacimiento: "+this.usuario.getFechaNacimiento());
 
-        image_foto_perfil.setImageBitmap(this.bitmap);
+        image_foto_perfil.setImageBitmap(this.usuario.getFotoPerfil());
 
         return v;
 

@@ -133,10 +133,10 @@ public class activity_menu_principal extends AppCompatActivity {
                 case R.id.perfil:
 
                     usuario_sistema = inicializarDatosPerfil();
-                    Bitmap imagen_perfil = inicializarImagenPerfil();
+                    //Bitmap imagen_perfil = inicializarImagenPerfil();
 
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_perfil(usuario_sistema, imagen_perfil)).commit();
+                            .replace(R.id.framgment_layout, new fragment_perfil(usuario_sistema)).commit();
                     break;
             }
             return false;
@@ -180,10 +180,10 @@ public class activity_menu_principal extends AppCompatActivity {
                 nombre_usuario_registrado,"CorreoElectronico");
         String fecha_nacimiento = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
                 nombre_usuario_registrado,"FechaNacimiento");
-        String nombre_foto_perfil = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        Bitmap foto_perfil = gestor_perfil.buscarImagen(activity_menu_principal.this,
                 nombre_usuario_registrado, "ImagenPerfil");
 
-        usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento, nombre_foto_perfil);
+        usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento, foto_perfil);
 
         return usuario;
     }

@@ -2,7 +2,7 @@ package com.example.musicplayer.Dominio;
 
 import android.graphics.Bitmap;
 
-public class FavCancion {
+public class PlayList_Favorita {
     private String id_FavCancion;
     private String id_album;
     private String id_artista;
@@ -10,7 +10,7 @@ public class FavCancion {
     private String duracion;
     private String audio_FavCancion;
 
-    public FavCancion(String id_FavCancion, String id_album, String id_artista, String nombre_FavCancion, String duracion, String audio_FavCancion, Bitmap imagen_FavCancion) {
+    public PlayList_Favorita(String id_FavCancion, String id_album, String id_artista, String nombre_FavCancion, String duracion, String audio_FavCancion, Bitmap imagen_FavCancion) {
         this.id_FavCancion = id_FavCancion;
         this.id_album = id_album;
         this.id_artista = id_artista;

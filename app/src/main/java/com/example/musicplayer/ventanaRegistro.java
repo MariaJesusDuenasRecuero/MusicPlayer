@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -54,6 +55,11 @@ public class ventanaRegistro extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param image
+     * @return
+     */
     public static byte[] imageViewToByte(ImageView image) {
 
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
@@ -144,10 +150,13 @@ public class ventanaRegistro extends AppCompatActivity {
             cadena_formato_telefono = txtTelefono.getText().toString();
         }
 
-        usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
-                cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha, "Imagen1");
+        byte [] data = imageViewToByte(i);
 
-        gestor_usuario.insertarDatosTablaUsuario(ventanaRegistro.this, usuario, imageViewToByte(i));
+        usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
+                cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha,
+                BitmapFactory.decodeByteArray(data, 0, data.length));
+
+        gestor_usuario.insertarDatosTablaUsuario(ventanaRegistro.this, usuario, data);
 
         comprobacion =  1;
 
