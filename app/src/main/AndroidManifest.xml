@@ -16,7 +16,7 @@
         <activity android:name=".ventana_album" />
         <activity android:name=".Presentacion.ventana_detalles_artistas" />
         <activity android:name=".Presentacion.ventana_artistas" />
-        <activity android:name=".ventana_configuracion" />
+        <activity android:name=".Presentacion.ventana_configuracion" />
         <activity
             android:name=".menu_principal"
             android:label="@string/title_activity_menu_principal" />

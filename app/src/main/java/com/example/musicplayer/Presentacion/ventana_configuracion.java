@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -21,37 +21,33 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.musicplayer.Dominio.Cancion;
-import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
-import com.example.musicplayer.Presentacion.ventana_playlist_favoritos;
+import com.example.musicplayer.R;
+import com.example.musicplayer.main_activity;
+import com.example.musicplayer.menu_principal;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Random;
 
 public class ventana_configuracion extends AppCompatActivity {
 
     private String nombre_usuario_registrado;
+    private String [] id_canciones;
     private UsuarioDAO gestor_usuario_configuracion = new UsuarioDAO();
     private PlayListDAO gestor_play_list = new PlayListDAO();
-    private String [] id_canciones;
-    private CancionDAO gestor_cancion = new CancionDAO();
 
     private EditText txtNombre;
     private EditText txtCorreo;
     private EditText txtPassword;
-
     private EditText txtTelefono;
     private EditText txtFechaNacimiento;
-
+    private Button btn_ModificarDatos;
+    private Button btnBorrarCuenta;
+    private Button btnCambiarFoto;
+    private Button btnAdd;
     private ImageView imageView;
-
-    private Random r = new Random();
-    private int valor = 0;
-    private String nombre_foto = "Imagen";
     private Toast notification;
 
     final int REQUEST_CODE_GALLERY = 999;
@@ -61,25 +57,46 @@ public class ventana_configuracion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
 
-        Bundle bundle = getIntent().getExtras();
-        this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
+        inicializarDatos();
+        oyentesBotones();
 
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar los datos de la ventana configuracion
+     *
+     */
+    private void inicializarDatos(){
 
         this.txtNombre = findViewById(R.id.txtCambiar_nombre);
         this.txtCorreo = findViewById(R.id.txtCambiar_email);
         this.txtPassword = findViewById(R.id.txtCambiar_Password);
-
         this.txtTelefono = findViewById(R.id.txtCambiar_Telefono);
         this.txtFechaNacimiento = findViewById(R.id.txtCambiar_FechaNacimiento);
-
         this.imageView = (ImageView) findViewById(R.id.imageViewConfiguracion);
+        this.btnCambiarFoto = findViewById(R.id.btnCambiarFoto);
+        this.btnAdd = findViewById(R.id.btnAdd);
+        this.btnBorrarCuenta = findViewById(R.id.btnBorrarCuenta);
+        this.btn_ModificarDatos = findViewById(R.id.btnModificarDatos);
 
-        this.valor = r.nextInt(500)+1;
+        Bundle bundle = getIntent().getExtras();
+        this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
 
-        this.nombre_foto = this.nombre_foto+this.valor;
+    }
 
-        Button btnCambiarFoto = findViewById(R.id.btnCambiarFoto);
-        btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
+    /**
+     *
+     * Descripcion: Metodo que contiene los oyentes de los botones asociados a esta ventana
+     *
+     */
+    private void oyentesBotones(){
+
+        /**
+         * Descripcion: Oyente que permite acceder a las la fotos de la galeria
+         *
+         */
+        this.btnCambiarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -88,45 +105,43 @@ public class ventana_configuracion extends AppCompatActivity {
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY
                 );
-
-
             }
         });
 
-        Button btnAdd = findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        /**
+         *
+         * Descripcion: Oyente que permite aniadir dicha foto a la base de datos y asociarla al
+         * usuario
+         *
+         */
+        this.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try{
 
-                    //String comprobar_nombre_imagen = gestor_imagenes_perfil.buscarDatosImagen(ventana_configuracion.this,nombre_foto, "NombreImagen");
+                    gestor_usuario_configuracion.updateDataImagen(ventana_configuracion.this,
+                            nombre_usuario_registrado, imageViewToByte(imageView));
 
-                    //Log.d("Nombre", comprobar_nombre_imagen);
-
-
-                    gestor_usuario_configuracion.updateDataImagen(ventana_configuracion.this, nombre_usuario_registrado, imageViewToByte(imageView));
-
-
-                    Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
-
+                    mostrarNotificacion("Nueva foto de perfil");
                     imageView.setImageResource(R.mipmap.ic_launcher);
 
-
-                    //imageView.setImageBitmap(gestor_imagen.buscarImagen(ventana_configuracion.this,"Imagen3", "ContenidoImagen"));
-
                 }
-
                 catch (Exception e){
+
                     e.printStackTrace();
+
                 }
             }
         });
 
-        Button btnBorrarCuenta = findViewById(R.id.btnBorrarCuenta);
-        btnBorrarCuenta.setOnClickListener(new View.OnClickListener() {
+        /**
+         *
+         * Descripcion: Oyente que permite elimianar un usuario y sus canciones asociadas
+         *
+         */
+        this.btnBorrarCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new AlertDialog.Builder(ventana_configuracion.this)
                         .setTitle("¿Está seguro que desea elimar su cuenta?")
                         .setMessage("Si elima la cuenta se perderan todos sus datos.")
@@ -137,8 +152,9 @@ public class ventana_configuracion extends AppCompatActivity {
                                 borrarDatosAsociados();
 
                                 gestor_usuario_configuracion.eliminarUsuario(ventana_configuracion.this, nombre_usuario_registrado);
-                                Intent i = new Intent(ventana_configuracion.this, main_activity.class);
-                                startActivity(i);
+                                Intent ventana_login = new Intent(ventana_configuracion.this, main_activity.class);
+                                startActivity(ventana_login );
+
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -148,104 +164,85 @@ public class ventana_configuracion extends AppCompatActivity {
                             }
                         })
                         .show();
-
-
-
             }
         });
 
-
-        Button btn_ModificarDatos = findViewById(R.id.btnModificarDatos);
+        /**
+         *
+         * Descripcion: Oyente que modifica los datos de un usario registrado en el sistema
+         *
+         */
         btn_ModificarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (txtNombre.getText().toString().equals("")) {
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nombre no cambiado", Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Nombre no cambiado");
 
-                } else {
+                }
+                else {
+
                     gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Nombre", txtNombre.getText().toString());
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado, "Nombre"), Toast.LENGTH_LONG);
-                    notification.show();
-
+                    mostrarNotificacion("Nuevo dato: " + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(
+                            ventana_configuracion.this, nombre_usuario_registrado, "Nombre"));
 
                 }
                 if (txtCorreo.getText().toString().equals("")) {
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Correo no cambiado", Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Correo no cambiado");
+
 
                 } else {
+
                     gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "CorreoElectronico", txtCorreo.getText().toString());
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado, "CorreoElectronico"), Toast.LENGTH_LONG);
-                    notification.show();
-
+                    mostrarNotificacion("Nuevo dato: "+ gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(
+                            ventana_configuracion.this, nombre_usuario_registrado, "CorreoElectronico"));
 
                 }
                 if (txtPassword.getText().toString().equals("")) {
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Password no cambiado", Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Contrasena no cambiada");
 
-                } else {
+                }
+                else {
+
                     gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Password", txtPassword.getText().toString());
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
-                            "Password"), Toast.LENGTH_LONG);
-                    notification.show();
-
+                    mostrarNotificacion("Nuevo dato: "+ gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(
+                            ventana_configuracion.this, nombre_usuario_registrado, "Password"));
 
                 }
                 if(txtTelefono.getText().toString().equals("")){
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Telefono no cambiado", Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Telefono no cambiado");
 
                 }
                 else {
+
                     gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Telefono", txtTelefono.getText().toString());
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
-                            "Telefono"), Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Nuevo dato: "+ gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(
+                            ventana_configuracion.this, nombre_usuario_registrado, "Telefono"));
 
                 }
-
                 if(txtFechaNacimiento.getText().toString().equals("")){
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Fecha Nacimeinto no cambiado", Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Fecha de nacimiento no cambiado");
 
                 }
                 else {
+
                     gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "FechaNacimiento", txtFechaNacimiento.getText().toString());
 
-                    Toast notification;
-                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
-                            "FechaNacimiento"), Toast.LENGTH_LONG);
-                    notification.show();
+                    mostrarNotificacion("Nuevo dato: "+ gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(
+                            ventana_configuracion.this, nombre_usuario_registrado, "FechaNacimiento"));
 
                 }
             }
@@ -253,10 +250,14 @@ public class ventana_configuracion extends AppCompatActivity {
 
     }
 
-    public void oyente_eliminarUsuario(View view) {
-
-    }
-
+    /**
+     *
+     * Descripcion: Solicitar permisos de galeria Android
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
@@ -266,7 +267,8 @@ public class ventana_configuracion extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
             } else {
-                Toast.makeText(getApplicationContext(), "You don't have permission to access file location!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "You don't have permission to access file location!",
+                        Toast.LENGTH_SHORT).show();
             }
             return;
         }
@@ -274,6 +276,14 @@ public class ventana_configuracion extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    /**
+     *
+     * Descripcion: Obtener datos galeria
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -295,6 +305,12 @@ public class ventana_configuracion extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que obtiene las canciones asociadas al usaurio que quiere eliminar su
+     * cuenta en el sistema y borra dichas canciones
+     *
+     */
     private void borrarDatosAsociados(){
 
         int numero_canciones_usuario = obtenerNumeroCancionesUsuario();
@@ -304,7 +320,7 @@ public class ventana_configuracion extends AppCompatActivity {
             this.id_canciones = gestor_play_list.getListaCancionesFavoritas(ventana_configuracion.this,
                     menu_principal.usuario_sesion_iniciada, numero_canciones_usuario);
 
-            for(int i = 0; i< this.id_canciones.length; i++) {
+            for(int i = 0; i < this.id_canciones.length; i++) {
 
                 gestor_play_list.eliminarCancionFavoritos(ventana_configuracion.this,
                         menu_principal.usuario_sesion_iniciada, id_canciones[i]);
@@ -316,7 +332,6 @@ public class ventana_configuracion extends AppCompatActivity {
             mostrarNotificacion("Ninguna cancion asociada que eliminar");
 
         }
-
     }
 
     /**
@@ -363,6 +378,13 @@ public class ventana_configuracion extends AppCompatActivity {
         return byteArray;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener el numero total de canciones favoritas de un
+     * determinado usuario
+     *
+     * @return entero con la cantidad de canciones favoritas dado un nombre de usuario
+     */
     private int obtenerNumeroCancionesUsuario(){
 
         return this.gestor_play_list.getNumeroCancionesUsuario(ventana_configuracion.this,
@@ -370,6 +392,12 @@ public class ventana_configuracion extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que notifica al usuario de una accion
+     *
+     * @param cadena con el mensaje personaliszado dependiendo de la situacion
+     */
     private void mostrarNotificacion(String cadena){
 
         this.notification = Toast.makeText(ventana_configuracion.this, cadena,
