@@ -6,31 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.musicplayer.Constantes.Constantes;
 import com.example.musicplayer.Dominio.Album;
-import com.example.musicplayer.Dominio.Artista;
-import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Dominio.Usuario;
-import com.example.musicplayer.Persistencia.AlbumDAO;
-import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.Persistencia.CancionDAO;
-import com.example.musicplayer.Persistencia.ConexionSQLiteHelper;
-import com.example.musicplayer.Persistencia.ImagenDAO;
+import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 import java.io.ByteArrayOutputStream;
@@ -38,9 +26,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class main_activity extends AppCompatActivity {
 
     private EditText txtNombreUsuarioLogin;
     private EditText txtPasswordLogin;
@@ -52,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Album album;
 
     private CancionDAO gestor_cancion = new CancionDAO();
-
+    //private PlayListDAO p = new PlayListDAO();
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
@@ -66,12 +53,13 @@ public class MainActivity extends AppCompatActivity {
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
         i = findViewById(R.id.imageView3);
 
-        //gestor_cancion.borrarTablaCancion(MainActivity.this);
-        //gestor_cancion.crearTablaCancion(MainActivity.this);
+        //p.crearTablaPlayList(main_activity.this);
+        //gestor_cancion.borrarTablaCancion(main_activity.this);
+        //gestor_cancion.crearTablaCancion(main_activity.this);
         //Cancion cancion = new Cancion("111","11","1", "a","a","kl");
-        //gestor_cancion.insertarDatosTablaUsuario(MainActivity.this, cancion, imageViewToByte(i));
-        //i.setImageBitmap(gestor_cancion.buscarImagenCancion(MainActivity.this, "a","AudioCancion"));
-        //byte [] audio = gestor_usuario_login.buscarAudio(MainActivity.this,"User1", "AudioCancion");
+        //gestor_cancion.insertarDatosTablaUsuario(main_activity.this, cancion, imageViewToByte(i));
+        //i.setImageBitmap(gestor_cancion.buscarImagenCancion(main_activity.this, "a","AudioCancion"));
+        //byte [] audio = gestor_usuario_login.buscarAudio(main_activity.this,"User1", "AudioCancion");
         //playMp3(audio);
 
     }
@@ -82,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());
             tempMp3.deleteOnExit();
             FileOutputStream fos = new FileOutputStream(tempMp3);
-            fos.write(gestor_usuario_login.buscarAudio(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil"));
+            fos.write(gestor_usuario_login.buscarAudio(main_activity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil"));
             fos.close();
 
             // resetting mediaplayer instance to evade problems
@@ -123,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
      */
     public void oyente_btnIniciarAplicacion(View view){
 
-        //byte [] audio = gestor_usuario_login.buscarAudio(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
+        //byte [] audio = gestor_usuario_login.buscarAudio(main_activity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
         //playMp3(audio);
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 
-            dialogoAviso("Datos Imcompletos.",MainActivity.this);
+            dialogoAviso("Datos Imcompletos.", main_activity.this);
             comprobarDatosFormalarioLogin(view);
 
         }
@@ -139,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(comprobar_password == 0 && usuario_disponible == 0){
 
-                Intent actividad_principal = new Intent(this, activity_menu_principal.class );
+                Intent actividad_principal = new Intent(this, menu_principal.class );
                 actividad_principal.putExtra("nombre_usuario_registrado", txtNombreUsuarioLogin.getText().toString());
                 startActivity(actividad_principal);
 
             }
             else{
-                dialogoAviso("Este usuario no existe en el sistema",MainActivity.this);
+                dialogoAviso("Este usuario no existe en el sistema", main_activity.this);
                 txtNombreUsuarioLogin.setError("Introduzca un usuario existente" );
 
             }
@@ -173,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             if(usuario_disponible == 1){
                 txtNombreUsuarioLogin.setError("Nombre usuario no existe" );
-                dialogoAviso("Nombre de Usuario no existe.",MainActivity.this);
+                dialogoAviso("Nombre de Usuario no existe.", main_activity.this);
             }
             else{
                 txtNombreUsuarioLogin.setBackgroundColor(Color.rgb(0,255,0));
@@ -212,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(txtPasswordLogin.getText().toString() != null){
 
-            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this, txtNombreUsuarioLogin.getText().toString(), "Password");
+            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(main_activity.this, txtNombreUsuarioLogin.getText().toString(), "Password");
 
             if(cadena_comprobacion != null){
                 if(txtPasswordLogin.getText().toString().equals(cadena_comprobacion.toString())){
@@ -239,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(txtNombreUsuarioLogin.getText().toString() != null){
 
-            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(MainActivity.this,
+            cadena_comprobacion = gestor_usuario_login.buscarDatosUsuarioRegistrado(main_activity.this,
                     txtNombreUsuarioLogin.getText().toString(), "NombreUsuario");
 
             if(cadena_comprobacion != null){
@@ -258,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
      * Descripcion: Metodo que muestra un aviso al usuario dependiendo de las acciones que este realice
      *
      * @param aviso Mensaje personalizado dependiendo del mensaje del aviso
-     * @param context contexto en este caso es ventanaRegistro.this
+     * @param context contexto en este caso es ventana_registro.this
      */
     private void dialogoAviso(String aviso, Context context){
 
@@ -288,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void oyente_btnRegristroAplicacion(View view){
 
-        Intent i = new Intent(this, ventanaRegistro.class );
+        Intent i = new Intent(this, ventana_registro.class );
         startActivity(i);
 
     }

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.musicplayer.Persistencia.ArtistaDAO;
 
-public class DetallesArtistaActivity extends AppCompatActivity {
+public class ventana_detalles_artistas extends AppCompatActivity {
 
     private String identificador_artista;
     private Toast notification;
@@ -23,7 +23,7 @@ public class DetallesArtistaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detalles_artista);
+        setContentView(R.layout.activity_detalles_artista);
 
         Bundle bundle = getIntent().getExtras();
         this.identificador_artista = bundle.getString("identificador_artista");
@@ -32,10 +32,10 @@ public class DetallesArtistaActivity extends AppCompatActivity {
         image_artista = findViewById(R.id.ivAlbum);
         descripcion_artista = findViewById(R.id.lblDescripcionAlbum);
 
-        image_artista.setImageBitmap(gestor_artista.buscarImagenArtista(DetallesArtistaActivity.this, this.identificador_artista,
+        image_artista.setImageBitmap(gestor_artista.buscarImagenArtista(ventana_detalles_artistas.this, this.identificador_artista,
                 "ImagenArtista"));
 
-        nombre_artista.setText(gestor_artista.buscarDatosArtista(DetallesArtistaActivity.this, this.identificador_artista,
+        nombre_artista.setText(gestor_artista.buscarDatosArtista(ventana_detalles_artistas.this, this.identificador_artista,
                 "NombreArtista"));
 
         inicializarDatos();
@@ -102,7 +102,7 @@ public class DetallesArtistaActivity extends AppCompatActivity {
     private void mostarNotificacion(){
 
         notification = Toast.makeText(this, "Artista seleccionado: "
-                + gestor_artista.buscarDatosArtista(DetallesArtistaActivity.this, this.identificador_artista,
+                + gestor_artista.buscarDatosArtista(ventana_detalles_artistas.this, this.identificador_artista,
                 "NombreArtista"), Toast.LENGTH_LONG);
         notification.show();
 

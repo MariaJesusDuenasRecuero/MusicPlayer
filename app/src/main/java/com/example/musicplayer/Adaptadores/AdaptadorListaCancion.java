@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.R;
-import com.example.musicplayer.ventanaReproducir;
+import com.example.musicplayer.ventana_reproducir;
 
 import java.util.ArrayList;
 
@@ -66,7 +66,7 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
             public void onClick(View v) {
 
                 if(holder.lblNombre.getText().toString() != "No disponible"){
-                    Intent intent = new Intent(holder.itemView.getContext(), ventanaReproducir.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), ventana_reproducir.class);
                     intent.putExtra("identificador_cancion", canciones.get(position).getIdCancion());
                     holder.itemView.getContext().startActivity(intent);
                 }

@@ -7,21 +7,21 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.musicplayer.Dominio.Usuario;
-import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class activity_menu_principal extends AppCompatActivity {
+public class menu_principal extends AppCompatActivity {
+
+    public static String usuario_sesion_iniciada;
 
     private BottomNavigationView navigation;
     private String nombre_usuario_registrado;
     private Toast notification;
 
     private UsuarioDAO gestor_perfil = new UsuarioDAO();
-    private ImagenDAO gestor_imagen = new ImagenDAO();
     private Usuario usuario_sistema;
 
     @Override
@@ -52,7 +52,7 @@ public class activity_menu_principal extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         this.nombre_usuario_registrado = bundle.getString("nombre_usuario_registrado");
-
+        usuario_sesion_iniciada = bundle.getString("nombre_usuario_registrado");
 
         notification = Toast.makeText(this, "Bienvenido a Music Player BBDD Multimedia "
                 + this.nombre_usuario_registrado, Toast.LENGTH_LONG);
@@ -102,33 +102,22 @@ public class activity_menu_principal extends AppCompatActivity {
                     break;
                 case R.id.artistas:
 
-                    Intent ventana_artistas = new Intent(activity_menu_principal.this, ventanaArtistas.class );
+                    Intent ventana_artistas = new Intent(menu_principal.this, com.example.musicplayer.ventana_artistas.class );
                     startActivity(ventana_artistas);
 
-                    /**
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_artistas()).commit();
-                     */
                     break;
                 case R.id.albumes:
 
-                    Intent ventana_album = new Intent(activity_menu_principal.this, ventanaAlbum.class );
+                    Intent ventana_album = new Intent(menu_principal.this, com.example.musicplayer.ventana_album.class );
                     startActivity(ventana_album);
 
-                    /**
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_albumes()).commit();
-                     */
                     break;
                 case R.id.canciones:
 
-                     Intent ventana_canciones = new Intent(activity_menu_principal.this, ventanaCanciones.class );
+                     Intent ventana_canciones = new Intent(menu_principal.this, com.example.musicplayer.ventana_canciones.class );
                      ventana_canciones.putExtra("identificador_album", "");
                      startActivity(ventana_canciones);
-                     /**
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.framgment_layout, new fragment_canciones()).commit();
-                    **/
+
                     break;
                 case R.id.perfil:
 
@@ -151,7 +140,7 @@ public class activity_menu_principal extends AppCompatActivity {
      */
     private Bitmap inicializarImagenPerfil(){
 
-        Bitmap bitmap = gestor_perfil.buscarImagen(activity_menu_principal.this, nombre_usuario_registrado,
+        Bitmap bitmap = gestor_perfil.buscarImagen(menu_principal.this, nombre_usuario_registrado,
              "ImagenPerfil");
 
         return bitmap;
@@ -170,17 +159,17 @@ public class activity_menu_principal extends AppCompatActivity {
 
         String nombre_usuario = nombre_usuario_registrado;
 
-        String nombre = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        String nombre = gestor_perfil.buscarDatosUsuarioRegistrado(menu_principal.this,
                 nombre_usuario_registrado, "Nombre");
-        String password = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        String password = gestor_perfil.buscarDatosUsuarioRegistrado(menu_principal.this,
                 nombre_usuario_registrado,"Password");
-        String telefono = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        String telefono = gestor_perfil.buscarDatosUsuarioRegistrado(menu_principal.this,
                 nombre_usuario_registrado,"Telefono");
-        String correo_electronico = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        String correo_electronico = gestor_perfil.buscarDatosUsuarioRegistrado(menu_principal.this,
                 nombre_usuario_registrado,"CorreoElectronico");
-        String fecha_nacimiento = gestor_perfil.buscarDatosUsuarioRegistrado(activity_menu_principal.this,
+        String fecha_nacimiento = gestor_perfil.buscarDatosUsuarioRegistrado(menu_principal.this,
                 nombre_usuario_registrado,"FechaNacimiento");
-        Bitmap foto_perfil = gestor_perfil.buscarImagen(activity_menu_principal.this,
+        Bitmap foto_perfil = gestor_perfil.buscarImagen(menu_principal.this,
                 nombre_usuario_registrado, "ImagenPerfil");
 
         usuario = new Usuario(nombre_usuario, nombre, password, telefono, correo_electronico, fecha_nacimiento, foto_perfil);

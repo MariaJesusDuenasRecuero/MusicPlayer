@@ -52,12 +52,13 @@ public class Constantes {
     public static final String CAMPO_CANCION_IMAGEN = "ImagenCancion";
     public static final String CAMPO_CANCION_AUDIO = "AudioCancion";
 
-    //Constantes campos tabla Imagen (2)
+    //Constantes campos tabla PlayListFavorita (3)
 
-    public static final String NOMBRE_TABLA_IMAGEN = "Imagen";
+    public static final String NOMBRE_TABLA_PLAYLIST = "PlayListFavorita";
 
-    public static final String CAMPO_PERFIL_NOMBRE_IMAGEN = "NombreImagen";
-    public static final String CAMPO_PERFIL_IMAGEN = "ContenidoImagen";
+    public static final String CAMPO_PLAYLIST_ID = "IdCancionFavorita"; //Siempre sera 1 si el sistema tuviese mas playlist autoincremental
+    public static final String CAMPO_PLAYLIST_NOMBRE_USUARIO ="PlayListNombreUsuario";
+    public static final String CAMPO_PLAYLIST_ID_CANCION = "IdCancionPlayList";
 
 
     //Constantes TABLAS
@@ -80,7 +81,8 @@ public class Constantes {
                     +CAMPO_CANCION_NOMBRE+" TEXT, "+CAMPO_CANCION_DURACION+" TEXT, "+CAMPO_CANCION_AUDIO+" TEXT, "
                     +CAMPO_CANCION_IMAGEN+" BLOB)";
 
-    public static final String CREAR_TABLA_IMAGEN =
-            "CREATE TABLE "+NOMBRE_TABLA_IMAGEN+" ("+CAMPO_PERFIL_NOMBRE_IMAGEN+" TEXT, "+CAMPO_PERFIL_IMAGEN+" BLOB)";
+    public static final String CREAR_TABLA_PLAYLIST =
+            "CREATE TABLE "+NOMBRE_TABLA_PLAYLIST+" ("+CAMPO_PLAYLIST_ID+" TEXT, "+CAMPO_PLAYLIST_NOMBRE_USUARIO+" TEXT, "
+                    + CAMPO_PLAYLIST_ID_CANCION+" TEXT)";
 
 }

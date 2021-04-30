@@ -21,7 +21,7 @@ import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 import java.io.ByteArrayOutputStream;
 
-public class ventanaRegistro extends AppCompatActivity {
+public class ventana_registro extends AppCompatActivity {
 
     private EditText txtNombreUsuario;
     private EditText txtNombre;
@@ -85,7 +85,7 @@ public class ventanaRegistro extends AppCompatActivity {
         if(txtNombre.getText().toString().equals("") || txtNombreUsuario.getText().toString().equals("") || comprobar_usuario_registrado_sistema == 0
                 ||  txtPassword.toString().equals("")  || txtConfirmarPassword.toString().equals("") || comprobar_correo == false ){
 
-            dialogoAviso("Registo Incompleto. Por favor rellene los campos que faltan.",ventanaRegistro.this);
+            dialogoAviso("Registo Incompleto. Por favor rellene los campos que faltan.", ventana_registro.this);
 
             comprobarDatosFormalarioRegistro(view);
 
@@ -106,13 +106,13 @@ public class ventanaRegistro extends AppCompatActivity {
 
 
                 if(validacion_registro_datos == 1){
-                    //Toast.makeText(ventanaRegistro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-                    dialogoAviso("El usuario ha sido registrado con exito.",ventanaRegistro.this);
-                    Intent i = new Intent(this, MainActivity.class );
+                    //Toast.makeText(ventana_registro.this, "OK Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                    dialogoAviso("El usuario ha sido registrado con exito.", ventana_registro.this);
+                    Intent i = new Intent(this, main_activity.class );
                     startActivity(i);
                 }
                 else {
-                    Toast.makeText(ventanaRegistro.this, "NO OK", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ventana_registro.this, "NO OK", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -156,7 +156,7 @@ public class ventanaRegistro extends AppCompatActivity {
                 cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha,
                 BitmapFactory.decodeByteArray(data, 0, data.length));
 
-        gestor_usuario.insertarDatosTablaUsuario(ventanaRegistro.this, usuario, data);
+        gestor_usuario.insertarDatosTablaUsuario(ventana_registro.this, usuario, data);
 
         comprobacion =  1;
 
@@ -178,7 +178,7 @@ public class ventanaRegistro extends AppCompatActivity {
 
         if(txtNombreUsuario.getText().toString() != null){
 
-            cadena_comprobacion = gestor_usuario.buscarDatosUsuarioRegistrado(ventanaRegistro.this,
+            cadena_comprobacion = gestor_usuario.buscarDatosUsuarioRegistrado(ventana_registro.this,
                     txtNombreUsuario.getText().toString(), "NombreUsuario");
 
             if(cadena_comprobacion != null){
@@ -239,7 +239,7 @@ public class ventanaRegistro extends AppCompatActivity {
             if(usuario_disponible == 0){
                 txtNombreUsuario.setError("Nombre no disponible" );
                 txtNombreUsuario.setTextColor(Color.RED);
-                dialogoAviso("Registo Incompleto. Nombre de Usuario no disponible.",ventanaRegistro.this);
+                dialogoAviso("Registo Incompleto. Nombre de Usuario no disponible.", ventana_registro.this);
             }
             else{
                 txtNombreUsuario.setTextColor(Color.rgb(0,143,57));
@@ -272,7 +272,7 @@ public class ventanaRegistro extends AppCompatActivity {
                 txtConfirmarPassword.setError("Las contraseñas no coinciden" );
                 txtConfirmarPassword.setTextColor(Color.RED);
                // txtConfirmarPassword.setBackgroundColor(Color.rgb(200,0,0));
-                dialogoAviso("Las contraseñas no coinciden.",ventanaRegistro.this);
+                dialogoAviso("Las contraseñas no coinciden.", ventana_registro.this);
             }
         }
 
@@ -296,7 +296,7 @@ public class ventanaRegistro extends AppCompatActivity {
      * Descripcion: Metodo que muestra un aviso al usuario dependiendo de las acciones que este realice
      *
      * @param aviso Mensaje personalizado dependiendo del mensaje del aviso
-     * @param context contexto en este caso es ventanaRegistro.this
+     * @param context contexto en este caso es ventana_registro.this
      */
     private void dialogoAviso(String aviso, Context context){
 
@@ -325,7 +325,7 @@ public class ventanaRegistro extends AppCompatActivity {
      * @param view
      */
     public void oyente_btnVolver(View view){
-        Intent i = new Intent(this, MainActivity.class );
+        Intent i = new Intent(this, main_activity.class );
         startActivity(i);
     }
 }

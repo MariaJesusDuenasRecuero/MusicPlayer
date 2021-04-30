@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicPlayer">
-        <activity android:name=".ventanaReproducir"></activity>
-        <activity android:name=".detallesAlbumes" />
-        <activity android:name=".ventanaAlbum" />
-        <activity android:name=".DetallesArtistaActivity" />
-        <activity android:name=".ventanaArtistas" />
-        <activity android:name=".Configuracion" />
+        <activity android:name=".ventana_reproducir"></activity>
+        <activity android:name=".ventana_detalles_albumes" />
+        <activity android:name=".ventana_album" />
+        <activity android:name=".ventana_detalles_artistas" />
+        <activity android:name=".ventana_artistas" />
+        <activity android:name=".ventana_configuracion" />
         <activity
-            android:name=".activity_menu_principal"
+            android:name=".menu_principal"
             android:label="@string/title_activity_menu_principal" />
-        <activity android:name=".ventanaCanciones" />
-        <activity android:name=".ventanaRegistro" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ventana_canciones" />
+        <activity android:name=".ventana_registro" />
+        <activity android:name=".main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

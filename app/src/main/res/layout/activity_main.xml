@@ -7,7 +7,7 @@
     android:background="@drawable/fondoinicio"
     android:orientation="vertical"
     android:paddingTop="50dp"
-    tools:context=".MainActivity"
+    tools:context=".main_activity"
     >
 
     <ImageView

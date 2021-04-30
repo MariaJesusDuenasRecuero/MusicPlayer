@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicplayer.DetallesArtistaActivity;
+import com.example.musicplayer.ventana_detalles_artistas;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
@@ -70,7 +70,7 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
 
                 if(holder.lblNombreArtista.getText().toString() != "No disponible"){
 
-                    Intent intent = new Intent(holder.itemView.getContext(), DetallesArtistaActivity.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), ventana_detalles_artistas.class);
                     intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
                     holder.itemView.getContext().startActivity(intent);
 

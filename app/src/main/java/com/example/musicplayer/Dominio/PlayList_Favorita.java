@@ -3,85 +3,72 @@ package com.example.musicplayer.Dominio;
 import android.graphics.Bitmap;
 
 public class PlayList_Favorita {
-    private String id_FavCancion;
-    private String id_album;
-    private String id_artista;
-    private String nombre_FavCancion;
-    private String duracion;
-    private String audio_FavCancion;
 
-    public PlayList_Favorita(String id_FavCancion, String id_album, String id_artista, String nombre_FavCancion, String duracion, String audio_FavCancion, Bitmap imagen_FavCancion) {
-        this.id_FavCancion = id_FavCancion;
-        this.id_album = id_album;
-        this.id_artista = id_artista;
-        this.nombre_FavCancion = nombre_FavCancion;
-        this.duracion = duracion;
-        this.audio_FavCancion = audio_FavCancion;
-        this.imagen_FavCancion = imagen_FavCancion;
-    }
-
-    public String getId_FavCancion() {
-        return id_FavCancion;
-    }
-
-    public void setId_FavCancion(String id_FavCancion) {
-        this.id_FavCancion = id_FavCancion;
-    }
-
-    public String getId_album() {
-        return id_album;
-    }
-
-    public void setId_album(String id_album) {
-        this.id_album = id_album;
-    }
-
-    public String getId_artista() {
-        return id_artista;
-    }
-
-    public void setId_artista(String id_artista) {
-        this.id_artista = id_artista;
-    }
-
-    public String getNombre_FavCancion() {
-        return nombre_FavCancion;
-    }
-
-    public void setNombre_FavCancion(String nombre_FavCancion) {
-        this.nombre_FavCancion = nombre_FavCancion;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-
-    public String getAudio_FavCancion() {
-        return audio_FavCancion;
-    }
-
-    public void setAudio_FavCancion(String audio_FavCancion) {
-        this.audio_FavCancion = audio_FavCancion;
-    }
-
-    public Bitmap getImagen_FavCancion() {
-        return imagen_FavCancion;
-    }
-
-    public void setImagen_FavCancion(Bitmap imagen_FavCancion) {
-        this.imagen_FavCancion = imagen_FavCancion;
-    }
-
-    private Bitmap imagen_FavCancion;
+    private String id_play_list;
+    private String id_cancion;
+    private String id_usuario;
 
     /**
      *
-     * Descripcion: Constructor con los parametros que debe tener cada cancion en la aplicacion
+     * Descripcion: Constructor con los parametros que debe tener cada playlist favoritos en la aplicacion
      *
+     * @param id_play_list
+     * @param id_cancion
+     * @param id_usuario
      */
+    public PlayList_Favorita(String id_play_list, String id_cancion, String id_usuario){
 
+        this.id_play_list = id_play_list;
+        this.id_cancion = id_cancion;
+        this.id_usuario = id_usuario;
+
+    }
+
+    /**
+     *
+     * @return identificador de la playlist en la aplicacion
+     */
+    public String getIdPlayList(){
+        return id_play_list;
+    }
+
+    /**
+     *
+     * @param id_p modificacion y asignacion nuevo id a la playlist
+     */
+    public void setIdPlayList(String id_p){
+        this.id_play_list = id_p;
+    }
+
+    /**
+     *
+     * @return identificador de la cancion de la playlist en la aplicacion
+     */
+    public String getIdCancion(){
+        return id_cancion;
+    }
+
+    /**
+     *
+     * @param id_c modificacion y asignacion nuevo id de la cancion a la playlist
+     */
+    public void setIdCancion(String id_c){
+        this.id_cancion = id_c;
+    }
+
+    /**
+     *
+     * @return identificador del usuario al que pertenece la playlist en la aplicacion
+     */
+    public String getIdUsuario(){
+        return this.id_usuario;
+    }
+
+    /**
+     *
+     * @param id_u modificacion y asignacion nuevo id del usuario a la playlist
+     */
+    public void setIdUsuario(String id_u){
+        this.id_usuario = id_u;
+    }
 }

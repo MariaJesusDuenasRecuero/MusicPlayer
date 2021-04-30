@@ -3,7 +3,6 @@ package com.example.musicplayer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -84,7 +83,7 @@ public class fragment_perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), Configuracion.class );
+                Intent i = new Intent(getActivity(), ventana_configuracion.class );
                 i.putExtra("nombre_usuario_registrado", lblNombre_usuario_perfil_BBDD.getText().toString());
                 startActivity(i);
 
@@ -96,7 +95,7 @@ public class fragment_perfil extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), MainActivity.class );
+                Intent i = new Intent(getActivity(), main_activity.class );
                 startActivity(i);
 
             }

@@ -34,10 +34,10 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(Constantes.CREAR_TABLA_USUARIO_SISTEMA);;
-        db.execSQL(Constantes.CREAR_TABLA_IMAGEN);
         db.execSQL(Constantes.CREAR_TABLA_ARTISTA);
         db.execSQL(Constantes.CREAR_TABLA_ALBUM);
         db.execSQL(Constantes.CREAR_TABLA_CANCION);
+        db.execSQL(Constantes.CREAR_TABLA_PLAYLIST);
 
     }
     /**
@@ -52,11 +52,12 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         //Si instalamos la aplicacion que borre la tabla antigua y la vuelva a generar
-        db.execSQL("DROP TABLE IF EXISTS Imagen");
+
         db.execSQL("DROP TABLE IF EXISTS Usuario");
         db.execSQL("DROP TABLE IF EXISTS Artista");
         db.execSQL("DROP TABLE IF EXISTS Album");
         db.execSQL("DROP TABLE IF EXISTS Cancion");
+        db.execSQL("DROP TABLE IF EXISTS PlayListFavorita");
         onCreate(db);
 
     }

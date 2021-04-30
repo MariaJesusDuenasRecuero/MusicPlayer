@@ -60,19 +60,21 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewCover" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnFavoritos"
         android:layout_width="92dp"
         android:layout_height="87dp"
         android:layout_marginStart="79dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="@color/black"
         app:icon="@drawable/anadirfav"
         app:iconTint="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnPlay"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreCancionMusica" />
 
     <!--seria el length de la canción-->
     android:paddingTop="40dp"

@@ -32,10 +32,10 @@
         tools:layout="@layout/fragment_perfil" />
     <activity
         android:id="@+id/ventanaArtistas"
-        android:name="com.example.musicplayer.ventanaArtistas"
+        android:name="com.example.musicplayer.ventana_artistas"
         android:label="ventanaArtistas" />
     <activity
         android:id="@+id/ventanaCanciones"
-        android:name="com.example.musicplayer.ventanaCanciones"
+        android:name="com.example.musicplayer.ventana_canciones"
         android:label="ventanaCanciones" />
 </navigation>

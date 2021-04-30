@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.musicplayer.Persistencia.ImagenDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 
 import java.io.ByteArrayOutputStream;
@@ -29,12 +28,10 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Random;
 
-public class Configuracion extends AppCompatActivity {
+public class ventana_configuracion extends AppCompatActivity {
 
     private String nombre_usuario_registrado;
     private UsuarioDAO gestor_usuario_configuracion = new UsuarioDAO();
-    private ImagenDAO gestor_imagenes_perfil = new ImagenDAO();
-    private ImagenDAO gestor_imagen = new ImagenDAO();
 
     private EditText txtNombre;
     private EditText txtCorreo;
@@ -80,7 +77,7 @@ public class Configuracion extends AppCompatActivity {
             public void onClick(View v) {
 
                 ActivityCompat.requestPermissions(
-                        Configuracion.this,
+                        ventana_configuracion.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY
                 );
@@ -95,12 +92,12 @@ public class Configuracion extends AppCompatActivity {
             public void onClick(View view) {
                 try{
 
-                    //String comprobar_nombre_imagen = gestor_imagenes_perfil.buscarDatosImagen(Configuracion.this,nombre_foto, "NombreImagen");
+                    //String comprobar_nombre_imagen = gestor_imagenes_perfil.buscarDatosImagen(ventana_configuracion.this,nombre_foto, "NombreImagen");
 
                     //Log.d("Nombre", comprobar_nombre_imagen);
 
 
-                    gestor_usuario_configuracion.updateDataImagen(Configuracion.this, nombre_usuario_registrado, imageViewToByte(imageView));
+                    gestor_usuario_configuracion.updateDataImagen(ventana_configuracion.this, nombre_usuario_registrado, imageViewToByte(imageView));
 
 
                     Toast.makeText(getApplicationContext(), "Added successfully!", Toast.LENGTH_SHORT).show();
@@ -108,7 +105,7 @@ public class Configuracion extends AppCompatActivity {
                     imageView.setImageResource(R.mipmap.ic_launcher);
 
 
-                    //imageView.setImageBitmap(gestor_imagen.buscarImagen(Configuracion.this,"Imagen3", "ContenidoImagen"));
+                    //imageView.setImageBitmap(gestor_imagen.buscarImagen(ventana_configuracion.this,"Imagen3", "ContenidoImagen"));
 
                 }
 
@@ -123,15 +120,15 @@ public class Configuracion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                new AlertDialog.Builder(Configuracion.this)
+                new AlertDialog.Builder(ventana_configuracion.this)
                         .setTitle("¿Está seguro que desea elimar su cuenta?")
                         .setMessage("Si elima la cuenta se perderan todos sus datos.")
                         .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                gestor_usuario_configuracion.eliminarUsuario(Configuracion.this, nombre_usuario_registrado);
-                                Intent i = new Intent(Configuracion.this, MainActivity.class);
+                                gestor_usuario_configuracion.eliminarUsuario(ventana_configuracion.this, nombre_usuario_registrado);
+                                Intent i = new Intent(ventana_configuracion.this, main_activity.class);
                                 startActivity(i);
                             }
                         })
@@ -156,16 +153,16 @@ public class Configuracion extends AppCompatActivity {
                 if (txtNombre.getText().toString().equals("")) {
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nombre no cambiado", Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Nombre no cambiado", Toast.LENGTH_LONG);
                     notification.show();
 
                 } else {
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                    gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Nombre", txtNombre.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado, "Nombre"), Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado, "Nombre"), Toast.LENGTH_LONG);
                     notification.show();
 
 
@@ -173,16 +170,16 @@ public class Configuracion extends AppCompatActivity {
                 if (txtCorreo.getText().toString().equals("")) {
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Correo no cambiado", Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Correo no cambiado", Toast.LENGTH_LONG);
                     notification.show();
 
                 } else {
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                    gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "CorreoElectronico", txtCorreo.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado, "CorreoElectronico"), Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado, "CorreoElectronico"), Toast.LENGTH_LONG);
                     notification.show();
 
 
@@ -190,16 +187,16 @@ public class Configuracion extends AppCompatActivity {
                 if (txtPassword.getText().toString().equals("")) {
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Password no cambiado", Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Password no cambiado", Toast.LENGTH_LONG);
                     notification.show();
 
                 } else {
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                    gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Password", txtPassword.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
+                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
                             "Password"), Toast.LENGTH_LONG);
                     notification.show();
 
@@ -208,17 +205,17 @@ public class Configuracion extends AppCompatActivity {
                 if(txtTelefono.getText().toString().equals("")){
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Telefono no cambiado", Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Telefono no cambiado", Toast.LENGTH_LONG);
                     notification.show();
 
                 }
                 else {
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                    gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "Telefono", txtTelefono.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
+                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
                             "Telefono"), Toast.LENGTH_LONG);
                     notification.show();
 
@@ -227,17 +224,17 @@ public class Configuracion extends AppCompatActivity {
                 if(txtFechaNacimiento.getText().toString().equals("")){
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Fecha Nacimeinto no cambiado", Toast.LENGTH_LONG);
+                    notification = Toast.makeText(ventana_configuracion.this, "Fecha Nacimeinto no cambiado", Toast.LENGTH_LONG);
                     notification.show();
 
                 }
                 else {
-                    gestor_usuario_configuracion.updateParametroUsuario(Configuracion.this,
+                    gestor_usuario_configuracion.updateParametroUsuario(ventana_configuracion.this,
                             nombre_usuario_registrado, "FechaNacimiento", txtFechaNacimiento.getText().toString());
 
                     Toast notification;
-                    notification = Toast.makeText(Configuracion.this, "Nuevo dato: "
-                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(Configuracion.this, nombre_usuario_registrado,
+                    notification = Toast.makeText(ventana_configuracion.this, "Nuevo dato: "
+                            + gestor_usuario_configuracion.buscarDatosUsuarioRegistrado(ventana_configuracion.this, nombre_usuario_registrado,
                             "FechaNacimiento"), Toast.LENGTH_LONG);
                     notification.show();
 
@@ -293,7 +290,7 @@ public class Configuracion extends AppCompatActivity {
      * Descripcion: Metodo que muestra un aviso al usuario dependiendo de las acciones que este realice
      *
      * @param aviso Mensaje personalizado dependiendo del mensaje del aviso
-     * @param context contexto en este caso es ventanaRegistro.this
+     * @param context contexto en este caso es ventana_registro.this
      */
     private void dialogoAviso(String aviso, Context context){
 

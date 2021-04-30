@@ -1,45 +1,22 @@
 package com.example.musicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.musicplayer.Adaptadores.AdaptadorListaArtista;
 import com.example.musicplayer.Adaptadores.AdaptadorListaCancion;
-import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Persistencia.AlbumDAO;
-import com.example.musicplayer.Persistencia.ArtistaDAO;
 import com.example.musicplayer.Persistencia.CancionDAO;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
-public class ventanaCanciones extends AppCompatActivity {
+public class ventana_canciones extends AppCompatActivity {
 
     private ArrayList<Cancion> canciones;
     private RecyclerView lstCanciones;
@@ -63,7 +40,7 @@ public class ventanaCanciones extends AppCompatActivity {
         /**
         Log.d("Debug_Excepcion", "INTEGER"+R.raw.avicii);
 
-        String codigo = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, "111","AudioCancion");
+        String codigo = gestor_cancion.buscarDatosCancion(ventana_canciones.this, "111","AudioCancion");
         int codigo_bueno = Integer.parseInt(codigo);
         MediaPlayer mp = MediaPlayer.create(this, codigo_bueno);
         mp.start();
@@ -95,7 +72,7 @@ public class ventanaCanciones extends AppCompatActivity {
 
     private void rellenarDatos(){
 
-        int max = gestor_cancion.getProfilesCount(ventanaCanciones.this);
+        int max = gestor_cancion.getProfilesCount(ventana_canciones.this);
 
         if(this.identificador_album.equals("")){
 
@@ -105,22 +82,22 @@ public class ventanaCanciones extends AppCompatActivity {
 
                     String id_cancion = i+"";
 
-                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventana_canciones.this, id_cancion,
                             "IdAlbumCancion");
 
-                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, id_cancion,
                             "IdArtistaCancion");
 
-                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, id_cancion,
                             "NombreCancion");
 
-                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, id_cancion,
                             "DuracioCancion");
 
-                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, id_cancion,
+                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, id_cancion,
                             "AudioCancion");
 
-                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventanaCanciones.this, id_cancion,
+                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventana_canciones.this, id_cancion,
                             "ImagenCancion");
 
                     canciones.add(new Cancion(id_cancion, parametro_id_album, parametro_id_cancion, parametro_nombre_cancion,
@@ -138,40 +115,40 @@ public class ventanaCanciones extends AppCompatActivity {
         else{
 
             notification = Toast.makeText(this, "Album seleccionado: "
-                        + gestor_album.buscarDatosArtista(ventanaCanciones.this, this.identificador_album,
+                        + gestor_album.buscarDatosArtista(ventana_canciones.this, this.identificador_album,
                         "NombreAlbum"), Toast.LENGTH_LONG);
 
             notification.show();
 
-            String id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, identificador_album,
+            String id_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, identificador_album,
                         "IdCancion");
 
-            int c = gestor_cancion.getNumeroCanciones(ventanaCanciones.this, identificador_album);
+            int c = gestor_cancion.getNumeroCanciones(ventana_canciones.this, identificador_album);
 
             if(c != 0){
 
-                String [] lista_id = gestor_cancion.getListaCanciones(ventanaCanciones.this, identificador_album, c);
+                String [] lista_id = gestor_cancion.getListaCanciones(ventana_canciones.this, identificador_album, c);
 
                 //if lista_id !null
 
                 for(int i = 0; i< lista_id.length; i++){
 
-                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                    String parametro_id_album = gestor_cancion.buscarDatosCancion(ventana_canciones.this, lista_id[i],
                             "IdAlbumCancion");
 
-                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                    String parametro_id_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, lista_id[i],
                             "IdArtistaCancion");
 
-                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                    String parametro_nombre_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, lista_id[i],
                             "NombreCancion");
 
-                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                    String parametro_duracion_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, lista_id[i],
                             "DuracioCancion");
 
-                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventanaCanciones.this, lista_id[i],
+                    String parametro_audio_cancion = gestor_cancion.buscarDatosCancion(ventana_canciones.this, lista_id[i],
                             "AudioCancion");
 
-                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventanaCanciones.this, lista_id[i],
+                    Bitmap bitmap = gestor_cancion.buscarImagenCancion(ventana_canciones.this, lista_id[i],
                             "ImagenCancion");
 
                     canciones.add(new Cancion(lista_id[i], parametro_id_album, parametro_id_cancion, parametro_nombre_cancion,

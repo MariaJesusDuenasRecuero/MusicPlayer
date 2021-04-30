@@ -3,14 +3,11 @@ package com.example.musicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.musicplayer.Persistencia.AlbumDAO;
-import com.example.musicplayer.Persistencia.ArtistaDAO;
 
-public class detallesAlbumes extends AppCompatActivity {
+public class ventana_detalles_albumes extends AppCompatActivity {
 
     private String identificador_album;
     private Toast notification;
@@ -21,7 +18,7 @@ public class detallesAlbumes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detalles_albumes);
+        setContentView(R.layout.activity_detalles_albumes);
 
         Bundle bundle = getIntent().getExtras();
         this.identificador_album = bundle.getString("identificador_album");
@@ -32,7 +29,7 @@ public class detallesAlbumes extends AppCompatActivity {
     private void mostarNotificacion(){
 
         notification = Toast.makeText(this, "Album seleccionado: "
-                + gestor_album.buscarDatosArtista(detallesAlbumes.this, this.identificador_album,
+                + gestor_album.buscarDatosArtista(ventana_detalles_albumes.this, this.identificador_album,
                 "NombreAlbum"), Toast.LENGTH_LONG);
         notification.show();
 

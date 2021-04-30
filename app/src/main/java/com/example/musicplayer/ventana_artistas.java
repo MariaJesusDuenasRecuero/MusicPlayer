@@ -14,7 +14,7 @@ import com.example.musicplayer.Persistencia.ArtistaDAO;
 
 import java.util.ArrayList;
 
-public class ventanaArtistas extends AppCompatActivity {
+public class ventana_artistas extends AppCompatActivity {
 
     private ArrayList<Artista> artistas;
     private RecyclerView lstArtistas;
@@ -48,7 +48,7 @@ public class ventanaArtistas extends AppCompatActivity {
 
     private void rellenarDatos(){
 
-        int max = gestor_artista.getProfilesCount(ventanaArtistas.this);
+        int max = gestor_artista.getProfilesCount(ventana_artistas.this);
 
         if(max != 0){
 
@@ -56,9 +56,9 @@ public class ventanaArtistas extends AppCompatActivity {
 
                 String j = i+"";
                 String id_artista = String.valueOf((int)i);
-                String parametro_nombre_artista = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "NombreArtista");
-                String parametro_genero = gestor_artista.buscarDatosArtista(ventanaArtistas.this, id_artista, "Tipo");
-                Bitmap bitmap =  gestor_artista.buscarImagenArtista(ventanaArtistas.this, id_artista,"ImagenArtista");
+                String parametro_nombre_artista = gestor_artista.buscarDatosArtista(ventana_artistas.this, id_artista, "NombreArtista");
+                String parametro_genero = gestor_artista.buscarDatosArtista(ventana_artistas.this, id_artista, "Tipo");
+                Bitmap bitmap =  gestor_artista.buscarImagenArtista(ventana_artistas.this, id_artista,"ImagenArtista");
 
                 artistas.add(new Artista(id_artista, parametro_nombre_artista, parametro_genero, bitmap));
 
