@@ -175,7 +175,7 @@ public class ArtistaDAO {
         return resultado_consulta;
     }
 
-    public int getProfilesCount(Context context) {
+    public int getNumeroTotalArtistas(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ARTISTA;
         SQLiteDatabase db = this.getConnRead(context);
@@ -184,6 +184,30 @@ public class ArtistaDAO {
         cursor.close();
 
         return count;
+    }
+
+    public String [] getListaArtistas(Context context, int index){
+
+        String [] id_artistas = new String[index];
+        int i = 0;
+
+        String countQuery = "SELECT IdArtista FROM " + Constantes.NOMBRE_TABLA_ARTISTA;
+
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()){
+
+            id_artistas[i] = cursor.getString(cursor.getColumnIndex("IdArtista"));
+            i = i + 1;
+
+            cursor.moveToNext();
+        }
+        db.close();
+
+        return id_artistas;
+
     }
 
 }

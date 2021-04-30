@@ -15,7 +15,7 @@
         <activity android:name=".Presentacion.ventana_reproducir" />
         <activity android:name=".ventana_album" />
         <activity android:name=".Presentacion.ventana_detalles_artistas" />
-        <activity android:name=".ventana_artistas" />
+        <activity android:name=".Presentacion.ventana_artistas" />
         <activity android:name=".ventana_configuracion" />
         <activity
             android:name=".menu_principal"

@@ -104,7 +104,7 @@ public class menu_principal extends AppCompatActivity {
                     break;
                 case R.id.artistas:
 
-                    Intent ventana_artistas = new Intent(menu_principal.this, com.example.musicplayer.ventana_artistas.class );
+                    Intent ventana_artistas = new Intent(menu_principal.this, com.example.musicplayer.Presentacion.ventana_artistas.class );
                     startActivity(ventana_artistas);
 
                     break;
