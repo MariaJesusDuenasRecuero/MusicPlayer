@@ -36,14 +36,15 @@
         android:id="@+id/btnDetener"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginStart="212dp"
+        android:layout_marginStart="264dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="132dp"
         android:background="@drawable/detener"
         android:onClick="oyente_btnDetener"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreCancionMusica" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreCancionMusica"
+        app:layout_constraintVertical_bias="0.492" />
 
     <TextView
         android:id="@+id/txtNombreCancionMusica"
@@ -57,6 +58,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewCover" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="92dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="164dp"
+        android:backgroundTint="@color/black"
+        app:icon="@drawable/anadirfav"
+        app:iconTint="@color/pink"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlay"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!--seria el length de la canción-->
     android:paddingTop="40dp"

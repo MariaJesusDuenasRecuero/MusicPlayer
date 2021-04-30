@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:paddingTop="25dp"
+    android:paddingBottom="3dp"
+
     tools:context=".fragment_inicio">
 
     <ImageView
@@ -47,8 +49,8 @@
             android:layout_marginEnd="173dp"
             android:layout_marginBottom="16dp"
             android:text="@string/btn_favSong"
-            android:textStyle="bold"
             android:textSize="16dp"
+            android:textStyle="bold"
             app:iconPadding="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -224,8 +226,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb1a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -236,8 +238,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb2a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -249,8 +251,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb3a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -262,8 +264,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb4a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -275,8 +277,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb5a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -288,8 +290,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb6a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -301,8 +303,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb7a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="1604dp"
                     android:adjustViewBounds="true"
@@ -314,8 +316,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb8a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
@@ -327,8 +329,8 @@
 
                 <ImageButton
                     android:id="@+id/imgb9a"
-                    android:layout_width="190dp"
-                    android:layout_height="163dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
