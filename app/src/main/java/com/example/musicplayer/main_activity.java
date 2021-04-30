@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.CancionDAO;
-import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
+import com.example.musicplayer.Presentacion.ventana_registro;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

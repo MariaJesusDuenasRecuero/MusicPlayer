@@ -13,13 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
-import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.main_activity;
 import com.example.musicplayer.menu_principal;
-import com.example.musicplayer.ventana_configuracion;
-import com.example.musicplayer.ventana_reproducir;
 
 import java.util.ArrayList;
 
@@ -45,6 +41,12 @@ public class AdaptadorListaPlayList extends RecyclerView.Adapter<AdaptadorListaP
         }
     }
 
+    /**
+     *
+     * Descripcion: Constructor clase AdaptadorListaPlayList
+     *
+     * @param canciones
+     */
     public AdaptadorListaPlayList(ArrayList<Cancion> canciones){
 
         this.canciones = canciones;
@@ -62,12 +64,15 @@ public class AdaptadorListaPlayList extends RecyclerView.Adapter<AdaptadorListaP
     @Override
     public void onBindViewHolder(AdaptadorListaPlayList.ViewHolder holder, int position) {
 
-        Cancion cancion = canciones.get(position);
-
         holder.lblNombre.setText(canciones.get(position).getNombreCancion());
         holder.lblDuracion.setText(canciones.get(position).getDuracionCancion());
         holder.imagCancion.setImageBitmap(canciones.get(position).getImagenCancion());
 
+        /**
+         *
+         * Descripcion: Oyente asociado al pulsar un item de la lista
+         *
+         */
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +83,7 @@ public class AdaptadorListaPlayList extends RecyclerView.Adapter<AdaptadorListaP
                             .setTitle("¿Está seguro que desea elimar esta cancion de favoritos?")
                             .setMessage("La cancion se eliminara de esta playlist.")
                             .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
@@ -91,6 +97,7 @@ public class AdaptadorListaPlayList extends RecyclerView.Adapter<AdaptadorListaP
                                             menu_principal.usuario_sesion_iniciada);
 
                                     holder.itemView.getContext().startActivity(menu_inicio);
+
                                 }
                             })
                             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -100,13 +107,17 @@ public class AdaptadorListaPlayList extends RecyclerView.Adapter<AdaptadorListaP
                                 }
                             })
                             .show();
-
                 }
             }
         });
 
     }
 
+
+    /**
+     *
+     * @param itemSelectedListener
+     */
     public void setItemSelectedListener(OnItemSelectedListener itemSelectedListener) {
         this.itemSelectedListener = itemSelectedListener;
     }

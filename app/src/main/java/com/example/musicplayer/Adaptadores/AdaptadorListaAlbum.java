@@ -39,6 +39,12 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
         }
     }
 
+    /**
+     *
+     * Descripcion: Constructor clase AdaptadorListaAlbum
+     *
+     * @param albumes
+     */
     public AdaptadorListaAlbum(ArrayList<Album> albumes){
 
         this.albumes = albumes;
@@ -56,22 +62,25 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
     @Override
     public void onBindViewHolder(AdaptadorListaAlbum.ViewHolder holder, int position) {
 
-        Album album = albumes.get(position);
-
-        AlbumDAO gestor_album = new AlbumDAO();
-
         holder.lblNombreAlbum.setText(albumes.get(position).getNombreAlbum());
         holder.lblNombreArtistaAlbum.setText(albumes.get(position).getDuracionAlbum());
         holder.imgAlbum.setImageBitmap(albumes.get(position).getImagenAlbum());
 
+        /**
+         *
+         * Descripcion: Oyente asociado al pulsar un item de la lista
+         *
+         */
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(holder.lblNombreAlbum.getText().toString() != "No disponible"){
-                    Intent intent = new Intent(holder.itemView.getContext(), ventana_canciones.class);
-                    intent.putExtra("identificador_album", albumes.get(position).getIdAlbum());
-                    holder.itemView.getContext().startActivity(intent);
+
+                    Intent canciones_asociadas = new Intent(holder.itemView.getContext(), ventana_canciones.class);
+                    canciones_asociadas.putExtra("identificador_album", albumes.get(position).getIdAlbum());
+                    holder.itemView.getContext().startActivity(canciones_asociadas);
+
                 }
 
             }
@@ -79,6 +88,10 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
 
     }
 
+    /**
+     *
+     * @param itemSelectedListener
+     */
     public void setItemSelectedListener(OnItemSelectedListener itemSelectedListener) {
         this.itemSelectedListener = itemSelectedListener;
     }

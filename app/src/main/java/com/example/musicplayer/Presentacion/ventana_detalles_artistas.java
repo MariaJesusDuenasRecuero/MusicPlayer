@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.musicplayer.Persistencia.ArtistaDAO;
+import com.example.musicplayer.R;
 
 public class ventana_detalles_artistas extends AppCompatActivity {
-
-    private String identificador_artista;
-    private Toast notification;
 
     private ImageView image_artista;
     private TextView nombre_artista;
     private TextView descripcion_artista;
+    private Toast notification;
+
+    private String identificador_artista;
 
     private ArtistaDAO gestor_artista = new ArtistaDAO();
 
@@ -25,26 +26,51 @@ public class ventana_detalles_artistas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_artista);
 
-        Bundle bundle = getIntent().getExtras();
-        this.identificador_artista = bundle.getString("identificador_artista");
-
-        nombre_artista = findViewById(R.id.lblTituloAlbum);
-        image_artista = findViewById(R.id.ivAlbum);
-        descripcion_artista = findViewById(R.id.lblDescripcionAlbum);
-
-        image_artista.setImageBitmap(gestor_artista.buscarImagenArtista(ventana_detalles_artistas.this, this.identificador_artista,
-                "ImagenArtista"));
-
-        nombre_artista.setText(gestor_artista.buscarDatosArtista(ventana_detalles_artistas.this, this.identificador_artista,
-                "NombreArtista"));
-
         inicializarDatos();
-
+        inicializarDatosBBDD();
+        inicializarDescripciones();
         mostarNotificacion();
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar los datos de la ventana detalles artistas
+     *
+     */
     private void inicializarDatos(){
+
+        this.nombre_artista = findViewById(R.id.lblTituloAlbum);
+        this.image_artista = findViewById(R.id.ivAlbum);
+        this.descripcion_artista = findViewById(R.id.lblDescripcionAlbum);
+
+        Bundle bundle = getIntent().getExtras();
+        this.identificador_artista = bundle.getString("identificador_artista");
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que inicializa los datos realizando consultas en la base de datos
+     *
+     */
+    private void inicializarDatosBBDD(){
+
+        this.image_artista.setImageBitmap(gestor_artista.buscarImagenArtista(ventana_detalles_artistas.this, this.identificador_artista,
+                "ImagenArtista"));
+
+        this.nombre_artista.setText(gestor_artista.buscarDatosArtista(ventana_detalles_artistas.this, this.identificador_artista,
+                "NombreArtista"));
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que inicializa las descripciones de cada artista
+     *
+     */
+    private void inicializarDescripciones(){
+
         switch(this.identificador_artista){
             case "1":
                 this.descripcion_artista.setText("All Time Low es un grupo estadounidense de pop punk.\n" +
@@ -99,6 +125,12 @@ public class ventana_detalles_artistas extends AppCompatActivity {
                 this.descripcion_artista.setText("Ninguna descripción disponible.");
         }
     }
+
+    /**
+     *
+     * Descripcion: Metodo que muestra una notificacion
+     *
+     */
     private void mostarNotificacion(){
 
         notification = Toast.makeText(this, "Artista seleccionado: "

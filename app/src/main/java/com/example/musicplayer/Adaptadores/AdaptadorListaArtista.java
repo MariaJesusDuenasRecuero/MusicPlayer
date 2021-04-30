@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicplayer.ventana_detalles_artistas;
+import com.example.musicplayer.Presentacion.ventana_detalles_artistas;
 import com.example.musicplayer.Dominio.Artista;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.ArtistaDAO;
@@ -39,6 +39,12 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
         }
     }
 
+    /**
+     *
+     * Descripcion: Constructor clase AdaptadorListaArtista
+     *
+     * @param artistas
+     */
     public AdaptadorListaArtista(ArrayList<Artista> artistas){
 
         this.artistas = artistas;
@@ -56,53 +62,34 @@ public class AdaptadorListaArtista extends RecyclerView.Adapter<AdaptadorListaAr
     @Override
     public void onBindViewHolder(AdaptadorListaArtista.ViewHolder holder, int position) {
 
-        Artista artista = artistas.get(position);
-
-        ArtistaDAO gestor_artista = new ArtistaDAO();
-
         holder.lblNombreArtista.setText(artistas.get(position).getNombreArtista());
         holder.lblGenero.setText(artistas.get(position).getTipo());
         holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
 
+        /**
+         *
+         * Descripcion: Oyente asociado al pulsar un item de la lista
+         *
+         */
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(holder.lblNombreArtista.getText().toString() != "No disponible"){
 
-                    Intent intent = new Intent(holder.itemView.getContext(), ventana_detalles_artistas.class);
-                    intent.putExtra("identificador_artista", artistas.get(position).getIdArtista());
-                    holder.itemView.getContext().startActivity(intent);
+                    Intent informacion_artista = new Intent(holder.itemView.getContext(), ventana_detalles_artistas.class);
+                    informacion_artista.putExtra("identificador_artista", artistas.get(position).getIdArtista());
+                    holder.itemView.getContext().startActivity(informacion_artista);
 
                 }
-
             }
         });
-        /**
-        switch (artistas.get(position).getIdArtista()){
-
-
-             case "1":
-
-                holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
-
-                break;
-
-             case "2":
-                 holder.imgArtista.setImageBitmap(artistas.get(position).getImagenArtista());
-                 break;
-
-
-         case 1: //Cargar imagen de los contactos tipo "amigos"
-         holder.imagContacto.setImageResource(R.drawable.amigo);
-         break;
-         case 2: //Cargar imagen de los contactos tipo "trabajo"
-         holder.imagContacto.setImageResource(R.drawable.trabajo);
-
-         }
-         */
     }
 
+    /**
+     *
+     * @param itemSelectedListener
+     */
     public void setItemSelectedListener(OnItemSelectedListener itemSelectedListener) {
         this.itemSelectedListener = itemSelectedListener;
     }

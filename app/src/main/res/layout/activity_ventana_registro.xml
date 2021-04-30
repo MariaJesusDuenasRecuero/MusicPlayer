@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondo_dos"
-    tools:context=".ventana_registro"
+    tools:context=".Presentacion.ventana_registro"
   >
 
 

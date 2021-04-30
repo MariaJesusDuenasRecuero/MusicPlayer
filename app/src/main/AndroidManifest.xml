@@ -12,17 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicPlayer">
         <activity android:name=".Presentacion.ventana_playlist_favoritos"></activity>
-        <activity android:name=".ventana_reproducir" />
-        <activity android:name=".ventana_detalles_albumes" />
+        <activity android:name=".Presentacion.ventana_reproducir" />
         <activity android:name=".ventana_album" />
-        <activity android:name=".ventana_detalles_artistas" />
+        <activity android:name=".Presentacion.ventana_detalles_artistas" />
         <activity android:name=".ventana_artistas" />
         <activity android:name=".ventana_configuracion" />
         <activity
             android:name=".menu_principal"
             android:label="@string/title_activity_menu_principal" />
         <activity android:name=".ventana_canciones" />
-        <activity android:name=".ventana_registro" />
+        <activity android:name=".Presentacion.ventana_registro" />
         <activity android:name=".main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

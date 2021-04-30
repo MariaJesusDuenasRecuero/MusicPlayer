@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 import com.example.musicplayer.Presentacion.fragment_inicio;
+import com.example.musicplayer.Presentacion.fragment_perfil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;

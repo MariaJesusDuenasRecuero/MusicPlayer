@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
+import com.example.musicplayer.R;
+import com.example.musicplayer.main_activity;
 
 import java.io.ByteArrayOutputStream;
 
@@ -30,16 +32,26 @@ public class ventana_registro extends AppCompatActivity {
     private EditText txtTelefono;
     private EditText txtCorreoElectronico;
     private EditText txtFechaNacimiento;
+    private ImageView imagen_perfil_estandar;
 
     private UsuarioDAO gestor_usuario = new UsuarioDAO();
     private Usuario usuario;
-
-    private ImageView i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_registro);
+
+        inicializarDatos();
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar los datos de la ventana registro
+     *
+     */
+    private void inicializarDatos(){
 
         //Obtenemos las referencias a los elementos graficos de la GUI
 
@@ -51,14 +63,16 @@ public class ventana_registro extends AppCompatActivity {
         txtCorreoElectronico = findViewById(R.id.txtCambiar_email);
         txtFechaNacimiento = findViewById(R.id.txtCambiar_FechaNacimiento);
 
-        i = findViewById(R.id.imageViewPerfil);
+        imagen_perfil_estandar = findViewById(R.id.imageViewPerfil);
 
     }
 
     /**
      *
+     * Descripcion: Metodo que permite convertir la imagen asociada al imageView a bytes
+     *
      * @param image
-     * @return
+     * @return array de bytes de la imagen
      */
     public static byte[] imageViewToByte(ImageView image) {
 
@@ -150,7 +164,7 @@ public class ventana_registro extends AppCompatActivity {
             cadena_formato_telefono = txtTelefono.getText().toString();
         }
 
-        byte [] data = imageViewToByte(i);
+        byte [] data = imageViewToByte(imagen_perfil_estandar);
 
         usuario = new Usuario(txtNombreUsuario.getText().toString(), txtNombre.getText().toString(), txtPassword.getText().toString(),
                 cadena_formato_telefono, txtCorreoElectronico.getText().toString(), cadena_formato_fecha,

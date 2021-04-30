@@ -1,13 +1,10 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.PlayListDAO;
+import com.example.musicplayer.R;
+import com.example.musicplayer.menu_principal;
 
 public class ventana_reproducir extends AppCompatActivity {
 
@@ -27,7 +26,6 @@ public class ventana_reproducir extends AppCompatActivity {
     private Toast notification_play_list;
 
     private String identificador_cancion;
-    private String identificador_usuario;
     private String nombre_cancion_BBDD;
     private Bitmap imagen_cancion;
     private int codigo_audio_BBDD;
@@ -53,7 +51,7 @@ public class ventana_reproducir extends AppCompatActivity {
 
     /**
      *
-     * Descripcion: Metodo que permite inicializar los datos de la ventana
+     * Descripcion: Metodo que permite inicializar los datos de la ventana reproductor
      *
      */
     private void inicializarDatos(){
