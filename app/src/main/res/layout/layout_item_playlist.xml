@@ -21,7 +21,7 @@
             android:id="@+id/lblNombrePlayListCancion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre_album"
+            android:text="Nombre_cancion"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/lblDuracionCancionPlayList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre_artista"
+            android:text="Duracion_cancion"
             android:textSize="18sp" />
     </LinearLayout>
 

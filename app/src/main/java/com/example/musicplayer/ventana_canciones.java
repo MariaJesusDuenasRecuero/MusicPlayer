@@ -53,7 +53,7 @@ public class ventana_canciones extends AppCompatActivity {
         */
 
         // Obtenemos una referencia a la lista grafica
-        lstCanciones = findViewById(R.id.lstCancion);
+        lstCanciones = findViewById(R.id.lstPlayList);
 
         // Crear la lista de contactos y anadir algunos datos de prueba
         canciones = new ArrayList<Cancion>();

@@ -84,4 +84,64 @@ public class PlayListDAO {
 
     }
 
+    public int getNumeroCancionesUsuario(Context context, String id_usuario) {
+
+        String countQuery = "SELECT IdCancionPlayList FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+
+                " WHERE PlayListNombreUsuario='"+id_usuario+"'";
+
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+
+        return count;
+
+    }
+
+    public String [] getListaCancionesFavoritas(Context context, String id_usuario, int index){
+
+        String [] id_canciones = new String[index];
+        int i = 0;
+
+        String countQuery = "SELECT IdCancionPlayList FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+
+                " WHERE PlayListNombreUsuario='"+id_usuario+"'";
+
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()){
+
+            id_canciones[i] = cursor.getString(cursor.getColumnIndex("IdCancionPlayList"));
+            i = i + 1;
+
+            cursor.moveToNext();
+        }
+        db.close();
+
+        return id_canciones;
+
+    }
+
+    public void eliminarCancionFavoritos(Context context, String nombre_usuario, String id_cancion){
+
+        int resultado_consulta = -1;
+        SQLiteDatabase db = this.getConnWrite(context);
+
+        String eliminar_usuario_sql = "DELETE FROM "+Constantes.NOMBRE_TABLA_PLAYLIST+
+                " WHERE PlayListNombreUsuario='"+nombre_usuario+"' AND IdCancionPlayList='"+id_cancion+"'";
+
+        try {
+
+            db.execSQL(eliminar_usuario_sql);
+            resultado_consulta = 1;
+
+        } catch (Exception e) {
+            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
+        }
+
+        db.close();
+
+    }
+
 }

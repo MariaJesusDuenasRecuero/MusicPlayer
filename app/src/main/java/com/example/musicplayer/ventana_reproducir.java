@@ -42,8 +42,8 @@ public class ventana_reproducir extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reproducir);
 
-        inicializarData();
-        inicializarDataBBDD();
+        inicializarDatos();
+        inicializarDatosBBDD();
         mostrarDatos();
         playAudio();
 
@@ -56,7 +56,7 @@ public class ventana_reproducir extends AppCompatActivity {
      * Descripcion: Metodo que permite inicializar los datos de la ventana
      *
      */
-    private void inicializarData(){
+    private void inicializarDatos(){
 
         this.btnReproducir = (Button) findViewById(R.id.btnPlay);
         this.btnDetener = (Button) findViewById(R.id.btnDetener);
@@ -74,7 +74,7 @@ public class ventana_reproducir extends AppCompatActivity {
      * Descripcion: Metodo que inicializa los datos realizando consultas en la base de datos
      *
      */
-    private void inicializarDataBBDD(){
+    private void inicializarDatosBBDD(){
 
         this.imagen_cancion = gestor_cancion.buscarImagenCancion(ventana_reproducir.this, identificador_cancion,
                 "ImagenCancion");

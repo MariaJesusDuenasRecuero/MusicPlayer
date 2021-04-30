@@ -11,26 +11,26 @@
 
     <item
         android:id="@+id/artistas"
-        android:icon="@drawable/cantante"
+        android:icon="@drawable/icono_cantante"
         android:title="Artistas"
         android:enabled="true"
         />
 
     <item
         android:id="@+id/albumes"
-        android:icon="@drawable/album"
+        android:icon="@drawable/icono_musica_favorita"
         android:title="@string/albumes"
         android:enabled="true"
         />
     <item
         android:id="@+id/canciones"
-        android:icon="@drawable/grabacion"
+        android:icon="@drawable/icono_cancion"
         android:title="Canciones"
         android:enabled="true"
         />
     <item
         android:id="@+id/perfil"
-        android:icon="@drawable/icon_perfil"
+        android:icon="@drawable/icono_perfil"
         android:title="@string/perfil"
         android:enabled="true"
         />

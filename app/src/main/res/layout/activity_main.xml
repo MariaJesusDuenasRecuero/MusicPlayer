@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoinicio"
+    android:background="@drawable/fondo_dos"
     android:orientation="vertical"
     android:paddingTop="50dp"
     tools:context=".main_activity"
@@ -16,7 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="8"
 
-        android:src="@drawable/logo" />
+        android:src="@drawable/icono_logo" />
 
     <TextView
         android:id="@+id/textView3"
@@ -43,7 +43,7 @@
         android:layout_marginRight="30dp"
         android:textColor="@color/white"
         android:layout_weight="1"
-        android:drawableStart="@drawable/icon_perfil"
+        android:drawableStart="@drawable/icono_perfil"
         android:drawablePadding="15dp"
         android:ems="10"
         android:hint="@string/nombreUsuario"
@@ -58,7 +58,7 @@
 
         android:layout_marginBottom="7dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/icon_contrasena"
+        android:drawableStart="@drawable/icono_contrasena"
         android:drawablePadding="15dp"
         android:hint="@string/Contraseña"
         android:textSize="16dp"
@@ -112,7 +112,7 @@
 
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_google" />
+            android:src="@drawable/icono_google" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -125,7 +125,7 @@
             android:layout_marginRight="20dp"
             android:cropToPadding="true"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_facebook"/>
+            android:src="@drawable/icono_facebook"/>
 
     </LinearLayout>
 

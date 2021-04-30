@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicPlayer">
-        <activity android:name=".ventana_reproducir"></activity>
+        <activity android:name=".Presentacion.ventana_playlist_favoritos"></activity>
+        <activity android:name=".ventana_reproducir" />
         <activity android:name=".ventana_detalles_albumes" />
         <activity android:name=".ventana_album" />
         <activity android:name=".ventana_detalles_artistas" />

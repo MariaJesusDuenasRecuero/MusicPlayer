@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        app:srcCompat="@drawable/icon_perfil" />
+        app:srcCompat="@drawable/icono_perfil" />
 
     <TextView
         android:id="@+id/lblTituloAlbum"

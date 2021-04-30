@@ -32,9 +32,9 @@ public class AdaptadorListaAlbum extends RecyclerView.Adapter<AdaptadorListaAlbu
 
             super(view);
 
-            lblNombreAlbum = view.findViewById(R.id.lblNombreCancionLista);
-            lblNombreArtistaAlbum = view.findViewById(R.id.lblDuracionCancion);
-            imgAlbum = view.findViewById(R.id.imgAlbum);
+            lblNombreAlbum = view.findViewById(R.id.lblNombrePlayListCancion);
+            lblNombreArtistaAlbum = view.findViewById(R.id.lblDuracionCancionPlayList);
+            imgAlbum = view.findViewById(R.id.imgPlayList);
 
         }
     }

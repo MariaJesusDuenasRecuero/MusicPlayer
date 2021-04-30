@@ -28,7 +28,7 @@ public class ventana_album extends AppCompatActivity {
         setContentView(R.layout.activity_album);
 
         // Obtenemos una referencia a la lista grafica
-        lstAlbum = findViewById(R.id.lstCancion);
+        lstAlbum = findViewById(R.id.lstPlayList);
 
 
         // Crear la lista de contactos y anadir algunos datos de prueba

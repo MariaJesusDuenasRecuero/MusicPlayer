@@ -22,7 +22,7 @@
             android:layout_width="119dp"
             android:layout_height="97dp"
             android:layout_marginBottom="450dp"
-            android:src="@drawable/icon_perfil"
+            android:src="@drawable/icono_perfil"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
