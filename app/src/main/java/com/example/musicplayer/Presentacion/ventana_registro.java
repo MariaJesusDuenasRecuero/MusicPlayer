@@ -96,7 +96,7 @@ public class ventana_registro extends AppCompatActivity {
         int validacion_registro_datos = 0;
 
         if(txtNombre.getText().toString().equals("") || txtNombreUsuario.getText().toString().equals("") || comprobar_usuario_registrado_sistema == 0
-                ||  txtPassword.toString().equals("")  || txtConfirmarPassword.toString().equals("") || comprobar_correo == false ){
+                ||  txtPassword.getText().toString().equals("")  || txtConfirmarPassword.getText().toString().equals("") || comprobar_correo == false ){
 
             dialogoAviso("Registo Incompleto. Por favor rellene los campos que faltan.", ventana_registro.this);
 
