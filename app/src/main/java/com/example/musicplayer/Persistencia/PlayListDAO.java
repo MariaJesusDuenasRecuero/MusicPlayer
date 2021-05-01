@@ -68,9 +68,11 @@ public class PlayListDAO {
      * @param id_cancion
      * @return
      */
-    public int buscarCancionRegistrada(Context context, String id_cancion) {
+    public int buscarCancionRegistrada(Context context, String id_cancion, String nombre_usuario) {
 
-        String countQuery = "SELECT PlayListNombreUsuario FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+ " WHERE IdCancionPlayList='"+id_cancion+"'";
+        String countQuery = "SELECT PlayListNombreUsuario FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+
+                " WHERE IdCancionPlayList='"+id_cancion+"' AND PlayListNombreUsuario='"+nombre_usuario+"'";
+
         SQLiteDatabase db = this.getConnRead(context);
         Cursor cursor = db.rawQuery(countQuery, null);
         int count = cursor.getCount();

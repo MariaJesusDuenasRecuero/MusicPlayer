@@ -153,7 +153,7 @@ public class ventana_reproducir extends AppCompatActivity {
     private void comprobarEstadoPlayList(){
 
         int comprobar_cancion_play_list = gestor_play_list.buscarCancionRegistrada(ventana_reproducir.this,
-                identificador_cancion);
+                identificador_cancion, menu_principal.usuario_sesion_iniciada);
 
         if(comprobar_cancion_play_list == 0){
 
