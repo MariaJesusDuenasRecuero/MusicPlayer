@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MusicPlayer">
         <activity android:name=".Presentacion.ventana_playlist_favoritos"></activity>
         <activity android:name=".Presentacion.ventana_reproducir" />
-        <activity android:name=".ventana_album" />
+        <activity android:name=".Presentacion.ventana_album" />
         <activity android:name=".Presentacion.ventana_detalles_artistas" />
         <activity android:name=".Presentacion.ventana_artistas" />
         <activity android:name=".Presentacion.ventana_configuracion" />

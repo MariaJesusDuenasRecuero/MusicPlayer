@@ -110,7 +110,7 @@ public class menu_principal extends AppCompatActivity {
                     break;
                 case R.id.albumes:
 
-                    Intent ventana_album = new Intent(menu_principal.this, com.example.musicplayer.ventana_album.class );
+                    Intent ventana_album = new Intent(menu_principal.this, com.example.musicplayer.Presentacion.ventana_album.class );
                     startActivity(ventana_album);
 
                     break;

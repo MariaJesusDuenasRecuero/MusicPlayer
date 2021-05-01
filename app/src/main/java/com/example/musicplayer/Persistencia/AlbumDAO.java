@@ -210,12 +210,9 @@ public class AlbumDAO {
         return resultado_consulta;
     }
 
-    /**
-     *
-     * @param context
-     * @return
-     */
-    public int getProfilesCountAlbum(Context context) {
+
+
+    public int getNumeroTotalAlbumes(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ALBUM;
         SQLiteDatabase db = this.getConnRead(context);
@@ -224,5 +221,29 @@ public class AlbumDAO {
         cursor.close();
 
         return count;
+    }
+
+    public String [] getListaAlbumes(Context context, int index){
+
+        String [] id_arlbumes = new String[index];
+        int i = 0;
+
+        String countQuery = "SELECT IdAlbum FROM " + Constantes.NOMBRE_TABLA_ALBUM;
+
+        SQLiteDatabase db = this.getConnRead(context);
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()){
+
+            id_arlbumes[i] = cursor.getString(cursor.getColumnIndex("IdAlbum"));
+            i = i + 1;
+
+            cursor.moveToNext();
+        }
+        db.close();
+
+        return id_arlbumes;
+
     }
 }
