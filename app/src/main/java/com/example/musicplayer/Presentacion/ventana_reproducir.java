@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -43,7 +44,6 @@ public class ventana_reproducir extends AppCompatActivity {
         inicializarDatosBBDD();
         mostrarDatos();
         playAudio();
-
         oyentesBotones();
 
     }
