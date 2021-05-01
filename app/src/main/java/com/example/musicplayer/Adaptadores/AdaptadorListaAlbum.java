@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
-import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.ventana_canciones;
+import com.example.musicplayer.Presentacion.ventana_canciones;
 
 import java.util.ArrayList;
 

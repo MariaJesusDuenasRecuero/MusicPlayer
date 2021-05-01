@@ -52,6 +52,16 @@ public class ArtistaDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite realizar una consulta para obtener un determinado dato de un
+     * artista
+     *
+     * @param context
+     * @param id_usuario
+     * @param parametro
+     * @return
+     */
     public String buscarDatosArtista(Context context, String id_usuario, String parametro){
 
         String [] clave_primaria = new String[1];
@@ -80,10 +90,21 @@ public class ArtistaDAO {
         return dato_buscado;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite realizar una consulta para obtener un determinado dato de un artista
+     * dado su clave primaria y el nombre de la columna imagen en la base de datos
+     *
+     * @param context
+     * @param id_artista
+     * @param parametro
+     * @return
+     */
     public Bitmap buscarImagenArtista(Context context, String id_artista, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
+        Bitmap bitmap = null;
 
         clave_primaria [0] = id_artista;
         parametro_buscado [0] = parametro;
@@ -100,6 +121,7 @@ public class ArtistaDAO {
             image = cursor.getBlob(0);
             cursor.close();
 
+            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
         } catch (Exception e) {
             Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
@@ -107,9 +129,17 @@ public class ArtistaDAO {
 
         db.close();
 
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
+        return bitmap;
     }
 
+    /**
+     *
+     * Descripcion:Metodo que permite insertar un artista en la tabla
+     *
+     * @param context
+     * @param artista
+     * @param imagen
+     */
     public void insertarDatosTablaArtista(Context context, Artista artista, byte [] imagen){
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -132,6 +162,14 @@ public class ArtistaDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite actualizar una imagen del artista
+     *
+     * @param context
+     * @param id_artista
+     * @param image
+     */
     public void updateDataImagen(Context context, String id_artista, byte [] image) {
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -147,6 +185,12 @@ public class ArtistaDAO {
         db.close();
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite crear la tabla Artista
+     *
+     * @param context
+     */
     public void crearTablaArtista(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -154,6 +198,13 @@ public class ArtistaDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite elimanar la tabla artista
+     *
+     * @param context
+     * @return
+     */
     public int borrarTablaArtista(Context context){
 
         int resultado_consulta = -1;
@@ -175,6 +226,13 @@ public class ArtistaDAO {
         return resultado_consulta;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtner el numero total de artistas
+     *
+     * @param context
+     * @return
+     */
     public int getNumeroTotalArtistas(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ARTISTA;
@@ -186,6 +244,14 @@ public class ArtistaDAO {
         return count;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtner los identificadores de los artistas en el sitema
+     *
+     * @param context
+     * @param index
+     * @return
+     */
     public String [] getListaArtistas(Context context, int index){
 
         String [] id_artistas = new String[index];

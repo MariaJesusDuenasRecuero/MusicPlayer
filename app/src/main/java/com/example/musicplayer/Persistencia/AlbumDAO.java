@@ -11,6 +11,7 @@ import android.util.Log;
 import com.example.musicplayer.Constantes.Constantes;
 import com.example.musicplayer.Dominio.Album;
 import com.example.musicplayer.Dominio.Artista;
+import com.example.musicplayer.R;
 
 public class AlbumDAO {
 
@@ -52,6 +53,9 @@ public class AlbumDAO {
 
     /**
      *
+     * Descripcion: Metodo que permite realizar una consulta para obtener un determinado dato de un album
+     * dado su clave primaria y el parametro que se desea obtener
+     *
      * @param context
      * @param id_album
      * @param parametro
@@ -88,6 +92,9 @@ public class AlbumDAO {
 
     /**
      *
+     * Descripcion: Metodo que permite realizar una consulta para obtener un determinado dato de un album
+     * dado su clave primaria y el nombre de la columna imagen en la base de datos
+     *
      * @param context
      * @param id_album
      * @param parametro
@@ -97,6 +104,7 @@ public class AlbumDAO {
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
+        Bitmap bitmap = null;
 
         clave_primaria [0] = id_album;
         parametro_buscado [0] = parametro;
@@ -113,6 +121,8 @@ public class AlbumDAO {
             image = cursor.getBlob(0);
             cursor.close();
 
+            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+
 
         } catch (Exception e) {
             Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
@@ -120,16 +130,18 @@ public class AlbumDAO {
 
         db.close();
 
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
+        return bitmap;
     }
 
     /**
+     *
+     * Descripcion: Metodo que permite insertar un album en la tabla
      *
      * @param context
      * @param album
      * @param imagen
      */
-    public void insertarDatosTablaArtista(Context context, Album album, byte [] imagen){
+    public void insertarDatosTablaAlbum(Context context, Album album, byte [] imagen){
 
         SQLiteDatabase db = this.getConnWrite(context);
 
@@ -154,6 +166,8 @@ public class AlbumDAO {
 
     /**
      *
+     * Descripcion: Metodo que permite actualizar una imagen del album
+     *
      * @param context
      * @param id_album
      * @param image
@@ -175,6 +189,8 @@ public class AlbumDAO {
 
     /**
      *
+     * Descripcion: Metodo que permite crear la tabla Album
+     *
      * @param context
      */
     public void crearTablaAlbum(Context context){
@@ -185,6 +201,8 @@ public class AlbumDAO {
     }
 
     /**
+     *
+     * Descripcion: Metodo que permite eleminar la tabla album
      *
      * @param context
      * @return
@@ -210,8 +228,13 @@ public class AlbumDAO {
         return resultado_consulta;
     }
 
-
-
+    /**
+     *
+     * Descripcion: Metodo que permite obtener el numero total de albumes
+     *
+     * @param context
+     * @return
+     */
     public int getNumeroTotalAlbumes(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_ALBUM;
@@ -223,6 +246,15 @@ public class AlbumDAO {
         return count;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener los identificadores de todos los albumes de la base de
+     * datos
+     *
+     * @param context
+     * @param index
+     * @return
+     */
     public String [] getListaAlbumes(Context context, int index){
 
         String [] id_arlbumes = new String[index];

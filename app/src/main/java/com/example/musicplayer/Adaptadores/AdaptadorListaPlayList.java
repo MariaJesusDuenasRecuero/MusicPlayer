@@ -15,7 +15,7 @@ import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Interfaz.OnItemSelectedListener;
 import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.menu_principal;
+import com.example.musicplayer.Presentacion.menu_principal;
 
 import java.util.ArrayList;
 

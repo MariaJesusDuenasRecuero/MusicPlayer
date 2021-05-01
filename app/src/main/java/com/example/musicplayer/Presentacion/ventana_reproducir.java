@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.menu_principal;
 
 public class ventana_reproducir extends AppCompatActivity {
 

@@ -47,6 +47,12 @@ public class PlayListDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite crear la tabla playlist
+     *
+     * @param context
+     */
     public void crearTablaPlayList(Context context){
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -54,6 +60,14 @@ public class PlayListDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener el numero de determinadas canciones
+     *
+     * @param context
+     * @param id_cancion
+     * @return
+     */
     public int buscarCancionRegistrada(Context context, String id_cancion) {
 
         String countQuery = "SELECT PlayListNombreUsuario FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+ " WHERE IdCancionPlayList='"+id_cancion+"'";
@@ -65,6 +79,14 @@ public class PlayListDAO {
         return count;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite insertar una cancion en nuestra playlist
+     *
+     * @param context
+     * @param id_usuario
+     * @param id_cancion
+     */
     public void insertarDatosTablaPlayList(Context context, String id_usuario, String id_cancion){
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -84,6 +106,14 @@ public class PlayListDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener el numero de canciones que un usuario tiene asociado
+     *
+     * @param context
+     * @param id_usuario
+     * @return
+     */
     public int getNumeroCancionesUsuario(Context context, String id_usuario) {
 
         String countQuery = "SELECT IdCancionPlayList FROM " + Constantes.NOMBRE_TABLA_PLAYLIST+
@@ -98,6 +128,16 @@ public class PlayListDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener los identificadores de las canciones que tiene asociado
+     * un determinado usuario
+     *
+     * @param context
+     * @param id_usuario
+     * @param index
+     * @return
+     */
     public String [] getListaCancionesFavoritas(Context context, String id_usuario, int index){
 
         String [] id_canciones = new String[index];
@@ -123,6 +163,15 @@ public class PlayListDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite elimanar las canciones que un usuario tiene asociado al elimar
+     * sus datos del sistema
+     *
+     * @param context
+     * @param nombre_usuario
+     * @param id_cancion
+     */
     public void eliminarCancionFavoritos(Context context, String nombre_usuario, String id_cancion){
 
         int resultado_consulta = -1;

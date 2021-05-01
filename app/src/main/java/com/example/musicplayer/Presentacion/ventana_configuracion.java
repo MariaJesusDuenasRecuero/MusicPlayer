@@ -24,8 +24,6 @@ import android.widget.Toast;
 import com.example.musicplayer.Persistencia.PlayListDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
 import com.example.musicplayer.R;
-import com.example.musicplayer.main_activity;
-import com.example.musicplayer.menu_principal;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,101 +6,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 
-import com.example.musicplayer.Dominio.Album;
-import com.example.musicplayer.Dominio.Usuario;
-import com.example.musicplayer.Persistencia.CancionDAO;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
-import com.example.musicplayer.Presentacion.ventana_registro;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.example.musicplayer.R;
 
 public class main_activity extends AppCompatActivity {
 
     private EditText txtNombreUsuarioLogin;
     private EditText txtPasswordLogin;
-    private ImageView i;
-
-    private Usuario usuario = null;
 
     private UsuarioDAO gestor_usuario_login = new UsuarioDAO();
-    private Album album;
-
-    private CancionDAO gestor_cancion = new CancionDAO();
-    //private PlayListDAO p = new PlayListDAO();
-    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Obtenemos las referencias a los elementos graficos de la GUI
+        inicializarDatos();
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar los datos de la ventana principal
+     *
+     */
+    private void inicializarDatos(){
 
         txtNombreUsuarioLogin = findViewById(R.id.txtNombreUsuarioLogin);
         txtPasswordLogin = findViewById(R.id.txtPasswordLogin);
-        i = findViewById(R.id.imageView3);
 
-        //p.crearTablaPlayList(main_activity.this);
-        //gestor_cancion.borrarTablaCancion(main_activity.this);
-        //gestor_cancion.crearTablaCancion(main_activity.this);
-        //Cancion cancion = new Cancion("111","11","1", "a","a","kl");
-        //gestor_cancion.insertarDatosTablaUsuario(main_activity.this, cancion, imageViewToByte(i));
-        //i.setImageBitmap(gestor_cancion.buscarImagenCancion(main_activity.this, "a","AudioCancion"));
-        //byte [] audio = gestor_usuario_login.buscarAudio(main_activity.this,"User1", "AudioCancion");
-        //playMp3(audio);
-
-    }
-
-    private void playMp3(byte[] mp3SoundByteArray) {
-        try {
-            // create temp file that will hold byte array
-            File tempMp3 = File.createTempFile("kurchina", "mp3", getCacheDir());
-            tempMp3.deleteOnExit();
-            FileOutputStream fos = new FileOutputStream(tempMp3);
-            fos.write(gestor_usuario_login.buscarAudio(main_activity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil"));
-            fos.close();
-
-            // resetting mediaplayer instance to evade problems
-            mediaPlayer.reset();
-
-            // In case you run into issues with threading consider new instance like:
-            //MediaPlayer mediaPlayer = new MediaPlayer();
-
-            // Tried passing path directly, but kept getting
-            // "Prepare failed.: status=0x1"
-            // so using file descriptor instead
-            FileInputStream fis = new FileInputStream(tempMp3);
-            mediaPlayer.setDataSource(fis.getFD());
-
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch (IOException ex) {
-            String s = ex.toString();
-            ex.printStackTrace();
-        }
-    }
-
-    public static byte[] imageViewToByte(ImageView image) {
-
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-
-        return byteArray;
     }
 
     /**
@@ -110,9 +49,6 @@ public class main_activity extends AppCompatActivity {
      * @param view
      */
     public void oyente_btnIniciarAplicacion(View view){
-
-        //byte [] audio = gestor_usuario_login.buscarAudio(main_activity.this, txtNombreUsuarioLogin.getText().toString(), "ImagenPerfil");
-        //playMp3(audio);
 
         if(txtNombreUsuarioLogin.getText().toString().equals("") || txtPasswordLogin.getText().toString().equals("")){
 

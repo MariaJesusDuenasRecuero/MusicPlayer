@@ -50,6 +50,15 @@ public class UsuarioDAO {
 
     }
 
+    /**
+     *
+     * Descripciom: Metodo que busca la imagen asociada al usuario en la aplicacion
+     *
+     * @param context
+     * @param nombre_usurio
+     * @param parametro
+     * @return
+     */
     public Bitmap buscarImagen(Context context, String nombre_usurio, String parametro){
 
         String [] clave_primaria = new String[1];
@@ -114,6 +123,14 @@ public class UsuarioDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que actualiza la imagen de un usuario en el sistema
+     *
+     * @param context
+     * @param nombre_usuario
+     * @param image
+     */
     public void updateDataImagen(Context context, String nombre_usuario, byte [] image) {
 
         SQLiteDatabase db = this.getConnWrite(context);

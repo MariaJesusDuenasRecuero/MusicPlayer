@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.R;
-import com.example.musicplayer.main_activity;
 
 /**
  *

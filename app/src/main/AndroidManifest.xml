@@ -18,11 +18,11 @@
         <activity android:name=".Presentacion.ventana_artistas" />
         <activity android:name=".Presentacion.ventana_configuracion" />
         <activity
-            android:name=".menu_principal"
+            android:name=".Presentacion.menu_principal"
             android:label="@string/title_activity_menu_principal" />
-        <activity android:name=".ventana_canciones" />
+        <activity android:name=".Presentacion.ventana_canciones" />
         <activity android:name=".Presentacion.ventana_registro" />
-        <activity android:name=".main_activity">
+        <activity android:name=".Presentacion.main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

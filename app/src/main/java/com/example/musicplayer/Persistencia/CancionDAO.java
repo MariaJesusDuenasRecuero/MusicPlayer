@@ -50,10 +50,20 @@ public class CancionDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite buscar la imagen asociada a una cancion
+     *
+     * @param context
+     * @param cancion_id
+     * @param parametro
+     * @return
+     */
     public Bitmap buscarImagenCancion(Context context, String cancion_id, String parametro){
 
         String [] clave_primaria = new String[1];
         String [] parametro_buscado = new String [1];
+        Bitmap bitmap = null;
 
         clave_primaria [0] = cancion_id;
         parametro_buscado [0] = parametro;
@@ -69,7 +79,7 @@ public class CancionDAO {
             cursor.moveToFirst();
             image = cursor.getBlob(0);
             cursor.close();
-
+            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
 
         } catch (Exception e) {
             Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
@@ -77,12 +87,21 @@ public class CancionDAO {
 
         db.close();
 
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
+
+
+        return bitmap;
 
     }
 
-
-    public void insertarDatosTablaUsuario(Context context, Cancion cancion, byte [] imagen){
+    /**
+     *
+     * Descripcion: Metodo que permite insertar una cancion en su respectiva tabla
+     *
+     * @param context
+     * @param cancion
+     * @param imagen
+     */
+    public void insertarDatosTablaCancion(Context context, Cancion cancion, byte [] imagen){
 
         SQLiteDatabase db = this.getConnWrite(context);
 
@@ -105,6 +124,15 @@ public class CancionDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite actualizar los datos que sean de tipo multimedia
+     *
+     * @param context
+     * @param id_cancion
+     * @param campo_modificado
+     * @param multimedia
+     */
     public void updateDataMultimedia(Context context, String id_cancion, String campo_modificado, byte [] multimedia) {
 
         SQLiteDatabase db = this.getConnWrite(context);
@@ -120,6 +148,14 @@ public class CancionDAO {
         db.close();
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite elimar una cancion de la base de datos
+     *
+     * @param context
+     * @param id_cancion
+     * @return
+     */
     public int eliminarCancion(Context context, String id_cancion){
 
         int resultado_consulta = -1;
@@ -141,6 +177,16 @@ public class CancionDAO {
         return resultado_consulta;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite actualizar un determinado dato
+     *
+     * @param context
+     * @param nombre_cancion
+     * @param nombre_campo_tabla
+     * @param parametro_nuevo
+     * @return
+     */
     public int updateParametroCancion(Context context, String nombre_cancion, String nombre_campo_tabla, String parametro_nuevo){
 
         int resultado_consulta = -1;
@@ -163,6 +209,16 @@ public class CancionDAO {
         return resultado_consulta;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener un determinado parametro al realizar una consulta
+     * proporcionando la clave primaria y el nombre de la columna con el parametro que se desa encontrar
+     *
+     * @param context
+     * @param id_cancion
+     * @param parametro
+     * @return
+     */
     public String buscarDatosCancion(Context context, String id_cancion, String parametro){
 
         String [] clave_primaria = new String[1];
@@ -192,6 +248,15 @@ public class CancionDAO {
         return dato_buscado;
     }
 
+    /**
+     *
+     * Descripcion: Metodo que permite obtener el identificador
+     *
+     * @param context
+     * @param id_album
+     * @param parametro
+     * @return
+     */
     public String buscarIdentificadoCancion(Context context, String id_album, String parametro){
 
         String [] clave_primaria = new String[1];
@@ -228,6 +293,13 @@ public class CancionDAO {
 
     }
 
+    /**
+     *
+     * Descripcion: Metodo para eliminar la tabla cancion de la base de datos
+     *
+     * @param context
+     * @return
+     */
     public int borrarTablaCancion(Context context){
 
         int resultado_consulta = -1;
@@ -249,36 +321,13 @@ public class CancionDAO {
         return resultado_consulta;
     }
 
-    public byte [] buscarAudio(Context context, String nombre_cancion, String parametro){
-
-        String [] clave_primaria = new String[1];
-        String [] parametro_buscado = new String [1];
-
-        clave_primaria [0] = nombre_cancion;
-        parametro_buscado [0] = parametro;
-
-        byte [] image = null;
-        SQLiteDatabase db = this.getConnRead(context);
-
-        try {
-
-            Cursor cursor = db.query(Constantes.NOMBRE_TABLA_CANCION, parametro_buscado,
-                    Constantes.CAMPO_CANCION_NOMBRE+"=?",clave_primaria, null,null,null);
-
-            cursor.moveToFirst();
-            image = cursor.getBlob(cursor.getColumnIndex("AudioCancion"));
-            cursor.close();
-
-
-        } catch (Exception e) {
-            Log.d("Debug_Excepcion", "Se ha producido un error al realizar la consulta");
-        }
-
-        db.close();
-
-        return image;
-    }
-
+    /**
+     *
+     * Descripcion: Metodo para obtener las filas de la tabla cancion
+     *
+     * @param context
+     * @return
+     */
     public int getProfilesCount(Context context) {
 
         String countQuery = "SELECT  * FROM " + Constantes.NOMBRE_TABLA_CANCION;
@@ -290,6 +339,16 @@ public class CancionDAO {
         return count;
     }
 
+    /**
+     *
+     * Descripcion: Metodo para obtener el identificador de las canciones pertenecientes a un
+     * album
+     *
+     * @param context
+     * @param id_album
+     * @param index
+     * @return
+     */
     public String [] getListaCanciones(Context context, String id_album, int index){
 
         String [] id_canciones = new String[index];
@@ -312,6 +371,14 @@ public class CancionDAO {
         return id_canciones;
     }
 
+    /**
+     *
+     * Descripcion: Metodo para obtener un determinado numeo de calciones de un album
+     *
+     * @param context
+     * @param id_album
+     * @return
+     */
     public int getNumeroCanciones(Context context, String id_album) {
 
         String countQuery = "SELECT IdCancion FROM " + Constantes.NOMBRE_TABLA_CANCION+ " WHERE IdAlbumCancion='"+id_album+"'";

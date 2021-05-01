@@ -74,10 +74,13 @@ public class AdaptadorListaCancion extends RecyclerView.Adapter<AdaptadorListaCa
             @Override
             public void onClick(View v) {
 
-                if(holder.lblNombre.getText().toString() != "No disponible"){
+                if(holder.lblNombre.getText().toString() != "No disponible" ||
+                        canciones.get(position).getImagenCancion() != null){
+
                     Intent reproducir_audio = new Intent(holder.itemView.getContext(), ventana_reproducir.class);
                     reproducir_audio.putExtra("identificador_cancion", canciones.get(position).getIdCancion());
                     holder.itemView.getContext().startActivity(reproducir_audio);
+
                 }
             }
         });

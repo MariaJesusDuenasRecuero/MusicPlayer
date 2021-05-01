@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,8 +8,7 @@ import android.widget.Toast;
 
 import com.example.musicplayer.Dominio.Usuario;
 import com.example.musicplayer.Persistencia.UsuarioDAO;
-import com.example.musicplayer.Presentacion.fragment_inicio;
-import com.example.musicplayer.Presentacion.fragment_perfil;
+import com.example.musicplayer.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -32,15 +31,8 @@ public class menu_principal extends AppCompatActivity {
         setContentView(R.layout.activity_menu_principal);
 
         inicializarPasoDatos();
-
-        //Inicializacion datos navegacion
-
         inicializarDatosNavegacion();
-
-        //Muestra el Fragmento de inicio el primero
-
         openInitialFragment();
-
 
     }
 
@@ -116,7 +108,7 @@ public class menu_principal extends AppCompatActivity {
                     break;
                 case R.id.canciones:
 
-                     Intent ventana_canciones = new Intent(menu_principal.this, com.example.musicplayer.ventana_canciones.class );
+                     Intent ventana_canciones = new Intent(menu_principal.this, com.example.musicplayer.Presentacion.ventana_canciones.class );
                      ventana_canciones.putExtra("identificador_album", "");
                      startActivity(ventana_canciones);
 

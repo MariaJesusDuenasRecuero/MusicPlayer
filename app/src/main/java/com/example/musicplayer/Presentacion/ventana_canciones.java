@@ -1,4 +1,4 @@
-package com.example.musicplayer;
+package com.example.musicplayer.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -13,6 +13,7 @@ import com.example.musicplayer.Adaptadores.AdaptadorListaCancion;
 import com.example.musicplayer.Dominio.Cancion;
 import com.example.musicplayer.Persistencia.AlbumDAO;
 import com.example.musicplayer.Persistencia.CancionDAO;
+import com.example.musicplayer.R;
 
 import java.util.ArrayList;
 
@@ -33,43 +34,48 @@ public class ventana_canciones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ventana_canciones);
 
+        inicializarDatos();
+        inicializarAdaptador();
+        rellenarDatos();
+
+    }
+
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar los datos de la ventana canciones
+     *
+     */
+    private void inicializarDatos(){
+
         Bundle bundle = getIntent().getExtras();
         this.identificador_album = bundle.getString("identificador_album");
 
-        //IMPORTANTE
-        /**
-        Log.d("Debug_Excepcion", "INTEGER"+R.raw.avicii);
-
-        String codigo = gestor_cancion.buscarDatosCancion(ventana_canciones.this, "111","AudioCancion");
-        int codigo_bueno = Integer.parseInt(codigo);
-        MediaPlayer mp = MediaPlayer.create(this, codigo_bueno);
-        mp.start();
-            */
-        /**IMPORTANTE
-         *
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.avicii);
-        mp.start();
-
-        */
-
-        // Obtenemos una referencia a la lista grafica
-        lstCanciones = findViewById(R.id.lstPlayList);
-
-        // Crear la lista de contactos y anadir algunos datos de prueba
-        canciones = new ArrayList<Cancion>();
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        lstCanciones.setLayoutManager(mLayoutManager);
-
-        adaptador_canciones = new AdaptadorListaCancion(canciones);
-        lstCanciones.setAdapter(adaptador_canciones);
-
-        lstCanciones.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-
-        // Metodo que rellena el array con datos de prueba
-        rellenarDatos();
     }
 
+    /**
+     *
+     * Descripcion: Obtenemos una referencia a la lista grafica y se crea
+     * la lista de canciones y anadir algunos datos de prueba
+     *
+     */
+    private void inicializarAdaptador(){
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        this.lstCanciones = findViewById(R.id.lstPlayList);
+
+        this.canciones = new ArrayList<Cancion>();
+        this.lstCanciones.setLayoutManager(mLayoutManager);
+        this.adaptador_canciones = new AdaptadorListaCancion(canciones);
+        this.lstCanciones.setAdapter(adaptador_canciones);
+        this.lstCanciones.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
+    }
+    /**
+     *
+     * Descripcion: Metodo que permite inicializar la lista dependiendo de los datos obtenidos de la
+     * consulta
+     *
+     */
     private void rellenarDatos(){
 
         int max = gestor_cancion.getProfilesCount(ventana_canciones.this);
@@ -128,8 +134,6 @@ public class ventana_canciones extends AppCompatActivity {
             if(c != 0){
 
                 String [] lista_id = gestor_cancion.getListaCanciones(ventana_canciones.this, identificador_album, c);
-
-                //if lista_id !null
 
                 for(int i = 0; i< lista_id.length; i++){
 
